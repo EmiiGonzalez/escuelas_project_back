@@ -6,8 +6,8 @@ import com.escuelas.project.escuelas_project.service.models.dtos.curso.CursoDto;
 import com.escuelas.project.escuelas_project.service.models.dtos.curso.CursoDtoUpdate;
 import com.escuelas.project.escuelas_project.service.models.dtos.curso.CursoResponseDto;
 import com.escuelas.project.escuelas_project.service.models.exceptions.EntityDisabledException;
-import com.escuelas.project.escuelas_project.service.models.exceptions.curso.CursoExistenteException;
-import com.escuelas.project.escuelas_project.service.models.exceptions.curso.CursoNoExistenteException;
+import com.escuelas.project.escuelas_project.service.models.exceptions.cursoExceptions.CursoExistenteException;
+import com.escuelas.project.escuelas_project.service.models.exceptions.cursoExceptions.CursoNoExistenteException;
 import com.escuelas.project.escuelas_project.service.models.exceptions.escuelaExceptions.EscuelaNoExistenteException;
 
 public interface CursoService {

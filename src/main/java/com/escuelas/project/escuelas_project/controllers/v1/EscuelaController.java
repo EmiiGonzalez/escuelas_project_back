@@ -1,4 +1,4 @@
-package com.escuelas.project.escuelas_project.controllers;
+package com.escuelas.project.escuelas_project.controllers.v1;
 
 import java.util.List;
 

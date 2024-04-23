@@ -1,4 +1,4 @@
-package com.escuelas.project.escuelas_project.service.models.exceptions.curso;
+package com.escuelas.project.escuelas_project.service.models.exceptions.cursoExceptions;
 
 public class CursoNoExistenteException extends Exception {
     
