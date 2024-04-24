@@ -19,10 +19,12 @@ import com.escuelas.project.escuelas_project.service.models.dtos.asistencia.Asis
 import com.escuelas.project.escuelas_project.service.models.dtos.asistencia.AsistenciaResponseDto;
 import com.escuelas.project.escuelas_project.service.models.dtos.asistencia.AsistenciaResponsePorClaseDto;
 import com.escuelas.project.escuelas_project.service.models.dtos.asistencia.AsistenciaUpdateDto;
+import com.escuelas.project.escuelas_project.service.models.dtos.response.ResponseMessage;
 import com.escuelas.project.escuelas_project.service.models.exceptions.EntityDisabledException;
 import com.escuelas.project.escuelas_project.service.models.exceptions.alumnoExceptions.AlumnoNoExistenteException;
 import com.escuelas.project.escuelas_project.service.models.exceptions.asistenciaExceptions.AsistenciaNoExistenteException;
 import com.escuelas.project.escuelas_project.service.models.exceptions.clasesExceptions.ClaseNoExistenteException;
+import com.escuelas.project.escuelas_project.service.utils.PersonalizedMessage;
 
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -33,6 +35,7 @@ import lombok.AllArgsConstructor;
 public class AsistenciaController {
     
     private final AsistenciaService asistenciaService;
+    private PersonalizedMessage personalizedMessage;
 
     //POST
 
@@ -77,9 +80,10 @@ public class AsistenciaController {
     @DeleteMapping("/delete/{id}")
     @ResponseBody
     @Transactional
-    public ResponseEntity<?> delete(@PathVariable Long id) throws AsistenciaNoExistenteException, EntityDisabledException {
+    public ResponseEntity<ResponseMessage> delete(@PathVariable Long id) throws AsistenciaNoExistenteException, EntityDisabledException {
         asistenciaService.deleteAsistencia(id);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        ResponseMessage responseMessage = new ResponseMessage(personalizedMessage.asistenciaDeleted().replace("$", id.toString()), 0);
+        return ResponseEntity.status(HttpStatus.OK).body(responseMessage);
     }
 
 }

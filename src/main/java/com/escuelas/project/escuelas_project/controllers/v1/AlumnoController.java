@@ -18,9 +18,11 @@ import com.escuelas.project.escuelas_project.service.alumno.AlumnoService;
 import com.escuelas.project.escuelas_project.service.models.dtos.alumno.AlumnoDto;
 import com.escuelas.project.escuelas_project.service.models.dtos.alumno.AlumnoDtoUpdate;
 import com.escuelas.project.escuelas_project.service.models.dtos.alumno.AlumnoResponseDto;
+import com.escuelas.project.escuelas_project.service.models.dtos.response.ResponseMessage;
 import com.escuelas.project.escuelas_project.service.models.exceptions.EntityDisabledException;
 import com.escuelas.project.escuelas_project.service.models.exceptions.alumnoExceptions.AlumnoNoExistenteException;
 import com.escuelas.project.escuelas_project.service.models.exceptions.cursoExceptions.CursoNoExistenteException;
+import com.escuelas.project.escuelas_project.service.utils.PersonalizedMessage;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -50,6 +52,7 @@ import lombok.AllArgsConstructor;
 public class AlumnoController {
 
     private final AlumnoService alumnoService;
+    private PersonalizedMessage personalizedMessage;
 
     // GET
 
@@ -166,9 +169,10 @@ public class AlumnoController {
     @PutMapping(value = "/enable/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
-    public ResponseEntity<?> enable(@PathVariable Long id) throws AlumnoNoExistenteException, EntityDisabledException {
+    public ResponseEntity<ResponseMessage> enable(@PathVariable Long id) throws AlumnoNoExistenteException, EntityDisabledException {
         alumnoService.enable(id);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        ResponseMessage responseMessage = new ResponseMessage(personalizedMessage.alumnoEnabled().replace("$", id.toString()), 0);
+        return ResponseEntity.status(HttpStatus.OK).body(responseMessage);
     }
 
     // DELETE LOGIC
@@ -186,8 +190,9 @@ public class AlumnoController {
     @DeleteMapping(value = "/delete/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
-    public ResponseEntity<?> delete(@PathVariable Long id) throws AlumnoNoExistenteException, EntityDisabledException {
+    public ResponseEntity<ResponseMessage> delete(@PathVariable Long id) throws AlumnoNoExistenteException, EntityDisabledException {
         alumnoService.disable(id);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        ResponseMessage responseMessage = new ResponseMessage(personalizedMessage.alumnoDeleted().replace("$", id.toString()), 0);
+        return ResponseEntity.status(HttpStatus.OK).body(responseMessage);
     }
 }

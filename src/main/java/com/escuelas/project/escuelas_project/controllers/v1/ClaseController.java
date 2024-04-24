@@ -18,10 +18,11 @@ import com.escuelas.project.escuelas_project.service.models.dtos.clase.ClaseCoun
 import com.escuelas.project.escuelas_project.service.models.dtos.clase.ClaseDto;
 import com.escuelas.project.escuelas_project.service.models.dtos.clase.ClaseResponseDto;
 import com.escuelas.project.escuelas_project.service.models.dtos.clase.ClaseUpdateDto;
+import com.escuelas.project.escuelas_project.service.models.dtos.response.ResponseMessage;
 import com.escuelas.project.escuelas_project.service.models.exceptions.EntityDisabledException;
-import com.escuelas.project.escuelas_project.service.models.exceptions.clasesExceptions.ClaseExistenteException;
 import com.escuelas.project.escuelas_project.service.models.exceptions.clasesExceptions.ClaseNoExistenteException;
 import com.escuelas.project.escuelas_project.service.models.exceptions.cursoExceptions.CursoNoExistenteException;
+import com.escuelas.project.escuelas_project.service.utils.PersonalizedMessage;
 
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -32,24 +33,28 @@ import lombok.AllArgsConstructor;
 public class ClaseController {
 
     private final ClaseService claseService;
+    private PersonalizedMessage personalizedMessage;
 
     // GET
 
     @GetMapping(value = "/findAll/{id}", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<List<ClaseResponseDto>> findAll(@PathVariable Long id) throws CursoNoExistenteException, EntityDisabledException {
+    public ResponseEntity<List<ClaseResponseDto>> findAll(@PathVariable Long id)
+            throws CursoNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.OK).body(claseService.findAll(id));
     }
 
     @GetMapping(value = "/{id}", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<ClaseResponseDto> findById(@PathVariable Long id) throws ClaseNoExistenteException, EntityDisabledException {
+    public ResponseEntity<ClaseResponseDto> findById(@PathVariable Long id)
+            throws ClaseNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.OK).body(claseService.findById(id));
     }
 
     @GetMapping(value = "/count/{id}", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<ClaseCountResponseDto> count(@PathVariable Long id) throws CursoNoExistenteException, EntityDisabledException {
+    public ResponseEntity<ClaseCountResponseDto> count(@PathVariable Long id)
+            throws CursoNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.OK).body(claseService.count(id));
     }
 
@@ -59,7 +64,7 @@ public class ClaseController {
     @ResponseBody
     @Transactional
     public ResponseEntity<ClaseResponseDto> save(@PathVariable Long id, @RequestBody ClaseDto dto)
-            throws ClaseExistenteException, CursoNoExistenteException, EntityDisabledException {
+            throws CursoNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.CREATED).body(claseService.save(dto, id));
     }
 
@@ -78,9 +83,10 @@ public class ClaseController {
     @PutMapping(value = "/delete/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
-    public ResponseEntity<?> delete(@PathVariable Long id) throws ClaseNoExistenteException, EntityDisabledException {
+    public ResponseEntity<ResponseMessage> delete(@PathVariable Long id) throws ClaseNoExistenteException, EntityDisabledException {
         claseService.deleteById(id);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        ResponseMessage responseMessage = new ResponseMessage(personalizedMessage.claseDeleted().replace("$", id.toString()), 0);
+        return ResponseEntity.status(HttpStatus.OK).body(responseMessage);
     }
 
 }

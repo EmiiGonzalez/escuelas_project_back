@@ -18,10 +18,12 @@ import com.escuelas.project.escuelas_project.service.curso.CursoService;
 import com.escuelas.project.escuelas_project.service.models.dtos.curso.CursoDto;
 import com.escuelas.project.escuelas_project.service.models.dtos.curso.CursoDtoUpdate;
 import com.escuelas.project.escuelas_project.service.models.dtos.curso.CursoResponseDto;
+import com.escuelas.project.escuelas_project.service.models.dtos.response.ResponseMessage;
 import com.escuelas.project.escuelas_project.service.models.exceptions.EntityDisabledException;
 import com.escuelas.project.escuelas_project.service.models.exceptions.cursoExceptions.CursoExistenteException;
 import com.escuelas.project.escuelas_project.service.models.exceptions.cursoExceptions.CursoNoExistenteException;
 import com.escuelas.project.escuelas_project.service.models.exceptions.escuelaExceptions.EscuelaNoExistenteException;
+import com.escuelas.project.escuelas_project.service.utils.PersonalizedMessage;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -33,6 +35,7 @@ import lombok.AllArgsConstructor;
 public class CursoController {
     
     private final CursoService cursoService;
+    private PersonalizedMessage personalizedMessage;
 
     //GET
     @GetMapping(value = "/findAllActive/{id}/{year}", headers = "Accept=application/json")
@@ -59,9 +62,10 @@ public class CursoController {
     @PutMapping(value = "/enable/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
-    public ResponseEntity<?> enable(@PathVariable Long id) throws EscuelaNoExistenteException, CursoNoExistenteException, EntityDisabledException {
+    public ResponseEntity<ResponseMessage> enable(@PathVariable Long id) throws EscuelaNoExistenteException, CursoNoExistenteException, EntityDisabledException {
         cursoService.enable(id);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        ResponseMessage responseMessage = new ResponseMessage(personalizedMessage.cursoEnabled().replace("$", id.toString()), 0);
+        return ResponseEntity.status(HttpStatus.OK).body(responseMessage);
     }
 
     @PutMapping(value = "/update/{id}", headers = "Accept=application/json")
@@ -75,8 +79,9 @@ public class CursoController {
     @DeleteMapping(value = "/disable/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
-    public ResponseEntity<?> disable(@PathVariable Long id) throws EscuelaNoExistenteException, EntityDisabledException, CursoNoExistenteException {
+    public ResponseEntity<ResponseMessage> disable(@PathVariable Long id) throws EscuelaNoExistenteException, EntityDisabledException, CursoNoExistenteException {
         cursoService.disable(id);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        ResponseMessage responseMessage = new ResponseMessage(personalizedMessage.cursoDeleted().replace("$", id.toString()), 0);
+        return ResponseEntity.status(HttpStatus.OK).body(responseMessage);
     }
 }
