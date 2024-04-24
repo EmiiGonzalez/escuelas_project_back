@@ -43,7 +43,7 @@ public class ClaseController {
 
     @GetMapping(value = "/{id}", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<ClaseResponseDto> findById(@PathVariable Long id) throws ClaseNoExistenteException {
+    public ResponseEntity<ClaseResponseDto> findById(@PathVariable Long id) throws ClaseNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.OK).body(claseService.findById(id));
     }
 
@@ -69,7 +69,7 @@ public class ClaseController {
     @ResponseBody
     @Transactional
     public ResponseEntity<ClaseResponseDto> update(@PathVariable Long id, @RequestBody ClaseUpdateDto dto)
-            throws ClaseNoExistenteException {
+            throws ClaseNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.OK).body(claseService.update(dto, id));
     }
 
@@ -78,7 +78,7 @@ public class ClaseController {
     @PutMapping(value = "/delete/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
-    public ResponseEntity<?> delete(@PathVariable Long id) throws ClaseNoExistenteException {
+    public ResponseEntity<?> delete(@PathVariable Long id) throws ClaseNoExistenteException, EntityDisabledException {
         claseService.deleteById(id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }

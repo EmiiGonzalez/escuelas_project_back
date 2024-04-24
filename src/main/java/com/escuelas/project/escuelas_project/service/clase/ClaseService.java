@@ -17,11 +17,11 @@ public interface ClaseService {
     
     public ClaseResponseDto save(ClaseDto dto, Long id) throws ClaseExistenteException, CursoNoExistenteException, EntityDisabledException;
 
-    public ClaseResponseDto update(ClaseUpdateDto dto, Long id) throws ClaseNoExistenteException;
+    public ClaseResponseDto update(ClaseUpdateDto dto, Long id) throws ClaseNoExistenteException, EntityDisabledException;
 
-    public ClaseResponseDto findById(Long id) throws ClaseNoExistenteException;
+    public ClaseResponseDto findById(Long id) throws ClaseNoExistenteException, EntityDisabledException;
 
-    public void deleteById(Long id) throws ClaseNoExistenteException;
+    public void deleteById(Long id) throws ClaseNoExistenteException, EntityDisabledException;
 
     public List<ClaseResponseDto> findAll(Long id) throws CursoNoExistenteException, EntityDisabledException;
 

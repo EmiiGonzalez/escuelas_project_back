@@ -63,9 +63,10 @@ public class ClaseServiceImp implements ClaseService {
      * @return el objeto DTO de la clase actualizada
      * @throws ClaseNoExistenteException si la clase con el ID proporcionado no
      *                                   existe
+     * @throws EntityDisabledException 
      */
     @Override
-    public ClaseResponseDto update(ClaseUpdateDto dto, Long id) throws ClaseNoExistenteException {
+    public ClaseResponseDto update(ClaseUpdateDto dto, Long id) throws ClaseNoExistenteException, EntityDisabledException {
         Clase clase = searchClase(id);
         clase.update(dto);
         return new ClaseResponseDto(claseRepository.save(clase));
@@ -78,9 +79,10 @@ public class ClaseServiceImp implements ClaseService {
      * @return el objeto DTO de la clase encontrada
      * @throws ClaseNoExistenteException si la clase con el ID proporcionado no
      *                                   existe
+     * @throws EntityDisabledException 
      */
     @Override
-    public ClaseResponseDto findById(Long id) throws ClaseNoExistenteException {
+    public ClaseResponseDto findById(Long id) throws ClaseNoExistenteException, EntityDisabledException {
         return new ClaseResponseDto(searchClase(id));
     }
 
@@ -90,9 +92,10 @@ public class ClaseServiceImp implements ClaseService {
      * @param id el ID de la clase a eliminar
      * @throws ClaseNoExistenteException si la clase con el ID proporcionado no
      *                                   existe
+     * @throws EntityDisabledException 
      */
     @Override
-    public void deleteById(Long id) throws ClaseNoExistenteException {
+    public void deleteById(Long id) throws ClaseNoExistenteException, EntityDisabledException {
         Clase clase = searchClase(id);
         this.claseRepository.delete(clase);
     }
@@ -156,10 +159,16 @@ public class ClaseServiceImp implements ClaseService {
      * @param id el ID de la clase a buscar
      * @return la clase encontrada
      * @throws ClaseNoExistenteException si la clase con el ID dado no existe
+     * @throws EntityDisabledException   si el curso con el ID proporcionado no
+     *                                   está habilitado
      */
-    private Clase searchClase(Long id) throws ClaseNoExistenteException {
+    private Clase searchClase(Long id) throws ClaseNoExistenteException, EntityDisabledException {
         Optional<Clase> claseOptional = this.claseRepository.findById(id);
         claseOptional.orElseThrow(() -> new ClaseNoExistenteException("La clase no existe"));
+
+        if (!claseOptional.get().getCurso().getActivo()) {
+            throw new EntityDisabledException("El curso de la clase no esta habilitado");
+        }
         return claseOptional.get();
     }
 

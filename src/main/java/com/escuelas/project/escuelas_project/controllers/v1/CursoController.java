@@ -43,7 +43,7 @@ public class CursoController {
 
     @GetMapping(value = "/findByNombre/{nombre}", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<CursoResponseDto> findByNombre(@PathVariable String nombre) throws CursoNoExistenteException {
+    public ResponseEntity<CursoResponseDto> findByNombre(@PathVariable String nombre) throws CursoNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.OK).body(cursoService.findByNombreDto(nombre));
     }
 

@@ -8,6 +8,7 @@ import com.escuelas.project.escuelas_project.service.utils.Util;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -32,7 +33,7 @@ public class Curso {
     @Temporal(TemporalType.DATE)
     private LocalDate fecha_de_curso;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "id_escuela", nullable = false)
     private Escuela escuela;
 
