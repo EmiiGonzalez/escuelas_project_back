@@ -4,17 +4,19 @@ import com.escuelas.project.escuelas_project.service.models.dtos.alumno.AlumnoDt
 import com.escuelas.project.escuelas_project.service.models.dtos.alumno.AlumnoDtoUpdate;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 import lombok.Data;
 
 @Data
 @Table(name = "alumnos")
+@Entity
 public class Alumno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +25,7 @@ public class Alumno {
     private String nombre;
     private String telefono;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "alumno", fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Curso curso;
 
     private Boolean activo;
