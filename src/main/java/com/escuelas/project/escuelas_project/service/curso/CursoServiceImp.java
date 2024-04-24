@@ -19,6 +19,14 @@ import com.escuelas.project.escuelas_project.service.models.exceptions.escuelaEx
 
 import lombok.AllArgsConstructor;
 
+/**
+ * Esta clase implementa la interfaz {@link CursoService} y proporciona las
+ * operaciones de servicio para las clases.
+ *
+ * @author Emiliano Gonzalez
+ * @version 1.0
+ * @since 1.0
+ */
 @Service
 @AllArgsConstructor
 public class CursoServiceImp implements CursoService {
@@ -26,99 +34,136 @@ public class CursoServiceImp implements CursoService {
     private final CursoRepository cursoRepository;
     private final EscuelaRepository escuelaRepository;
 
+    /**
+     * Metodo que busca todos los cursos activos de una escuela dada.
+     * @param year el año del curso.
+     * @param id el id de la escuela.
+     * @return una lista de DTOs de cursos que coinciden con los criterios de busqueda.
+     * @throws EntityDisabledException si la escuela esta deshabilitada.
+     * @throws EscuelaNoExistenteException si la escuela no existe.
+     */
     @Override
     public List<CursoResponseDto> findAllActiveDto(Integer year, Long id) throws EntityDisabledException, EscuelaNoExistenteException {
-        Optional<Escuela> escuela = this.escuelaRepository.findById(id);
-
-        if (!escuela.isPresent()) {
-            throw new EscuelaNoExistenteException("La escuela no existe");
-        }
-        Escuela escuelaEntity = escuela.get();
-
-        if (!escuelaEntity.getActivo()) {
-            throw new EntityDisabledException("La escuela esta deshabilitada");
-        }
-        
-
+        Escuela escuelaEntity = this.searchEscuela(id);
         return this.cursoRepository.findAllActiveDto(year, escuelaEntity);
     }
 
+    /**
+     * Metodo que busca un curso por su nombre.
+     * @param nombre el nombre del curso.
+     * @return un DTO de curso.
+     * @throws CursoNoExistenteException si el curso no existe.
+     */
     @Override
     public CursoResponseDto findByNombreDto(String nombre) throws CursoNoExistenteException {
         Optional<CursoResponseDto> curso = this.cursoRepository.findByNombreDto(nombre);
-        if (curso.isEmpty()) {
-            throw new CursoNoExistenteException("El curso no existe");
-        }
+        curso.orElseThrow(() -> new CursoNoExistenteException("El curso no existe"));
+
         CursoResponseDto dto = curso.get();
         return dto;
     }
 
+    /**
+     * Metodo que guarda un nuevo curso.
+     * @param dto el DTO del curso.
+     * @param id el id de la escuela.
+     * @return un DTO de curso.
+     * @throws CursoExistenteException si el curso ya existe.
+     * @throws EscuelaNoExistenteException si la escuela no existe.
+     * @throws EntityDisabledException si la escuela esta deshabilitada.
+     */
     @Override
-    public CursoResponseDto save(CursoDto dto, Long id) throws CursoExistenteException, EscuelaNoExistenteException {
-        Optional<Escuela> escuelaOptional = this.escuelaRepository.findById(id);
+    public CursoResponseDto save(CursoDto dto, Long id) throws CursoExistenteException, EscuelaNoExistenteException, EntityDisabledException {
+        Escuela escuela = searchEscuela(id);
 
-        if (escuelaOptional.isEmpty()) {
-            throw new EscuelaNoExistenteException("La escuela no existe");
-        }
-
-        if (this.cursoRepository.findByNombreActivo(dto.nombre()).isPresent()) {
+        if (this.cursoRepository.findByNombre(dto.nombre()).isPresent()) {
             throw new CursoExistenteException("El curso ya existe");
         }
 
-        Escuela escuela = escuelaOptional.get();
         Curso curso = new Curso(dto, escuela);
 
         return new CursoResponseDto(this.cursoRepository.save(curso));
     }
 
+    /**
+     * Metodo que habilita un curso.
+     * @param id el id del curso.
+     * @throws CursoNoExistenteException si el curso no existe.
+     * @throws EntityDisabledException si el curso esta deshabilitado.
+     */
     @Override
     public void enable(Long id) throws CursoNoExistenteException, EntityDisabledException {
-        Optional<Curso> cursoOptional = this.cursoRepository.findById(id);
-
-        if (cursoOptional.isEmpty()) {
-            throw new CursoNoExistenteException("El curso no existe");
-        }
-
-        Curso curso = cursoOptional.get();
+        Curso curso = searchCurso(id);
 
         if (curso.getActivo()) {
-            throw new EntityDisabledException("El curso ya estaba habilitado");
+            throw new EntityDisabledException("El curso ya estava habilitado");
         }
 
         curso.setActivo(true);
     }
 
+    /**
+     * Metodo que deshabilita un curso.
+     * @param id el id del curso.
+     * @throws CursoNoExistenteException si el curso no existe.
+     * @throws EntityDisabledException si el curso esta habilitado.
+     */
     @Override
     public void disable(Long id) throws CursoNoExistenteException, EntityDisabledException {
-        Optional<Curso> cursoOptional = this.cursoRepository.findById(id);
-
-        if (cursoOptional.isEmpty()) {
-            throw new CursoNoExistenteException("El curso no existe");
-        }
-
-        Curso curso = cursoOptional.get();
+        Curso curso = searchCurso(id);
 
         if (!curso.getActivo()) {
-            throw new EntityDisabledException("El curso ya estaba deshabilitado");
+            throw new EntityDisabledException("El curso ya estava deshabilitado");
         }
 
         curso.setActivo(false);
     }
 
+    /**
+     * Metodo que actualiza un curso.
+     * @param dto el DTO del curso.
+     * @param id el id del curso.
+     * @return un DTO de curso.
+     * @throws CursoNoExistenteException si el curso no existe.
+     * @throws EntityDisabledException si el curso esta deshabilitado.
+     */
     @Override
     public CursoResponseDto update(CursoDtoUpdate dto, Long id) throws CursoNoExistenteException, EntityDisabledException {
-        Optional<Curso> cursoOptional = this.cursoRepository.findById(id);
 
-        if (cursoOptional.isEmpty()) {
-            throw new CursoNoExistenteException("El curso no existe");
-        }
-
-        Curso curso = cursoOptional.get();
+        Curso curso = searchCurso(id);
         curso.update(dto);
 
         return new CursoResponseDto(this.cursoRepository.save(curso));
     }
-    
-    
+
+    /**
+     * Metodo privado que busca una escuela por su id.
+     * @param id el id de la escuela.
+     * @return la entidad escuela.
+     * @throws EscuelaNoExistenteException si la escuela no existe.
+     * @throws EntityDisabledException si la escuela esta deshabilitada.
+     */
+    private Curso searchCurso(Long id) throws CursoNoExistenteException{
+        return this.cursoRepository.findById(id).orElseThrow(() -> new CursoNoExistenteException("El curso no existe"));
+    }
+
+    /**
+     * Metodo privado que busca una escuela por su id.
+     * @param id el id de la escuela.
+     * @return la entidad escuela.
+     * @throws EscuelaNoExistenteException si la escuela no existe.
+     * @throws EntityDisabledException si la escuela esta deshabilitada.
+     */
+    private Escuela searchEscuela(Long id) throws EscuelaNoExistenteException, EntityDisabledException{
+        Optional<Escuela> escuela = this.escuelaRepository.findById(id);
+        escuela.orElseThrow(() -> new EscuelaNoExistenteException("La escuela no existe"));
+        Escuela escuelaEntity = escuela.get();
+
+        if (!escuelaEntity.getActivo()) {
+            throw new EntityDisabledException("La escuela está deshabilitada");
+        }
+
+        return escuelaEntity;
+    }
     
 }

@@ -51,7 +51,7 @@ public class CursoController {
     @Transactional
     @PostMapping(value = "/save/{id}", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<CursoResponseDto> save(@PathVariable Long id, @RequestBody @Valid CursoDto dto) throws CursoNoExistenteException, CursoExistenteException, EscuelaNoExistenteException {
+    public ResponseEntity<CursoResponseDto> save(@PathVariable Long id, @RequestBody @Valid CursoDto dto) throws CursoNoExistenteException, CursoExistenteException, EscuelaNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.CREATED).body(cursoService.save(dto, id));
     }
 

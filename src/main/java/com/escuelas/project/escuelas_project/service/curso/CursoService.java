@@ -15,7 +15,7 @@ public interface CursoService {
     List<CursoResponseDto> findAllActiveDto(Integer year, Long id) throws EntityDisabledException, EscuelaNoExistenteException;
     CursoResponseDto findByNombreDto(String nombre) throws CursoNoExistenteException;
 
-    CursoResponseDto save(CursoDto dto, Long id) throws CursoExistenteException, EscuelaNoExistenteException;
+    CursoResponseDto save(CursoDto dto, Long id) throws CursoExistenteException, EscuelaNoExistenteException, EntityDisabledException;
 
     void enable(Long id) throws CursoNoExistenteException, EntityDisabledException;
 

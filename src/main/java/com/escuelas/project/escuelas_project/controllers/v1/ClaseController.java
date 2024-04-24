@@ -18,6 +18,7 @@ import com.escuelas.project.escuelas_project.service.models.dtos.clase.ClaseCoun
 import com.escuelas.project.escuelas_project.service.models.dtos.clase.ClaseDto;
 import com.escuelas.project.escuelas_project.service.models.dtos.clase.ClaseResponseDto;
 import com.escuelas.project.escuelas_project.service.models.dtos.clase.ClaseUpdateDto;
+import com.escuelas.project.escuelas_project.service.models.exceptions.EntityDisabledException;
 import com.escuelas.project.escuelas_project.service.models.exceptions.clasesExceptions.ClaseExistenteException;
 import com.escuelas.project.escuelas_project.service.models.exceptions.clasesExceptions.ClaseNoExistenteException;
 import com.escuelas.project.escuelas_project.service.models.exceptions.cursoExceptions.CursoNoExistenteException;
@@ -36,7 +37,7 @@ public class ClaseController {
 
     @GetMapping(value = "/findAll/{id}", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<List<ClaseResponseDto>> findAll(@PathVariable Long id) throws CursoNoExistenteException {
+    public ResponseEntity<List<ClaseResponseDto>> findAll(@PathVariable Long id) throws CursoNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.OK).body(claseService.findAll(id));
     }
 
@@ -48,7 +49,7 @@ public class ClaseController {
 
     @GetMapping(value = "/count/{id}", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<ClaseCountResponseDto> count(@PathVariable Long id) throws CursoNoExistenteException {
+    public ResponseEntity<ClaseCountResponseDto> count(@PathVariable Long id) throws CursoNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.OK).body(claseService.count(id));
     }
 
@@ -58,7 +59,7 @@ public class ClaseController {
     @ResponseBody
     @Transactional
     public ResponseEntity<ClaseResponseDto> save(@PathVariable Long id, @RequestBody ClaseDto dto)
-            throws ClaseExistenteException, CursoNoExistenteException {
+            throws ClaseExistenteException, CursoNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.CREATED).body(claseService.save(dto, id));
     }
 

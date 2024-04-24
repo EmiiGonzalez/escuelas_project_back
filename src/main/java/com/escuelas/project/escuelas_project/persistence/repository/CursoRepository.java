@@ -23,4 +23,6 @@ public interface CursoRepository extends JpaRepository<Curso, Long> {
     @Query("SELECT c FROM Curso c WHERE c.activo = true AND c.nombre = ?1")
     public Optional<Curso> findByNombreActivo(String nombre);
 
+    public Optional<Curso> findByNombre(String nombre);
+
 }

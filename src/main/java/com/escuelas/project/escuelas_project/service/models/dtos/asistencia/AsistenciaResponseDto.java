@@ -1,0 +1,14 @@
+package com.escuelas.project.escuelas_project.service.models.dtos.asistencia;
+
+import com.escuelas.project.escuelas_project.persistence.entity.Asistencia;
+
+public record AsistenciaResponseDto(
+        Long id,
+        String contenido,
+        String fecha,
+        Boolean asistio) {
+    public AsistenciaResponseDto(Asistencia asistencia) {
+        this(asistencia.getId_asistecia(), asistencia.getClase().getContenido(), asistencia.getClase().getFechaString(),
+                asistencia.getAsistio());
+    }
+}
