@@ -51,13 +51,13 @@ public class EscuelaController {
         return ResponseEntity.ok(escuelaService.findById(id));
     }
 
-    @GetMapping(value = "/findAllActive", headers = "Accept=application/json")
+    @GetMapping(value = "/find/all/active", headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<List<EscuelaResponseDto>> findAllActive() {
         return ResponseEntity.status(HttpStatus.OK).body(escuelaService.findAllActive());
     }
 
-    @GetMapping(value = "/findAll", headers = "Accept=application/json")
+    @GetMapping(value = "/find/all", headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<List<EscuelaResponseDto>> findAll() {
         return ResponseEntity.status(HttpStatus.OK).body(escuelaService.findAll());
