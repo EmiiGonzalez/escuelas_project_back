@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.escuelas.project.escuelas_project.persistence.entity.Alumno;
 import com.escuelas.project.escuelas_project.service.alumno.AlumnoService;
 import com.escuelas.project.escuelas_project.service.models.dtos.alumno.AlumnoDto;
 import com.escuelas.project.escuelas_project.service.models.dtos.alumno.AlumnoDtoUpdate;
@@ -54,7 +55,7 @@ public class AlumnoController {
     private final AlumnoService alumnoService;
     private PersonalizedMessage personalizedMessage;
 
-    // GET
+    //----------------------- GET START ----------------------------------
 
     /**
      * Retorna una lista de objetos {@link AlumnoResponseDto} que representan
@@ -115,14 +116,16 @@ public class AlumnoController {
      * @throws EntityDisabledException    si la entidad está deshabilitada
      * @throws AlumnoNoExistenteException si el Alumno no existe
      */
-    @GetMapping(value = "/{id}", headers = "Accept=application/json")
+    @GetMapping(value = "find/{id}", headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<AlumnoResponseDto> findById(@PathVariable Long id)
             throws EntityDisabledException, AlumnoNoExistenteException {
         return ResponseEntity.status(HttpStatus.OK).body(alumnoService.findById(id));
     }
 
-    // POST
+    //----------------------- GET END ----------------------------------
+
+    //----------------------- POST START -------------------------------
 
     /**
      * Guarda un objeto Alumno con el ID y DTO proporcionados.
@@ -139,7 +142,9 @@ public class AlumnoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(alumnoService.create(dto, id));
     }
 
-    // PUT
+    //----------------------- POST END -------------------------------
+
+    //----------------------- PUT START -------------------------------
 
     /**
      * Actualiza un Alumno con el ID y DTO proporcionados.
@@ -175,7 +180,9 @@ public class AlumnoController {
         return ResponseEntity.status(HttpStatus.OK).body(responseMessage);
     }
 
-    // DELETE LOGIC
+    //----------------------- PUT END -------------------------------
+
+    //----------------------- DELETE START -------------------------------
 
     /**
      * Realiza una eliminación lógica de un Alumno con el ID especificado.
@@ -195,4 +202,6 @@ public class AlumnoController {
         ResponseMessage responseMessage = new ResponseMessage(personalizedMessage.alumnoDeleted().replace("$", id.toString()), 0);
         return ResponseEntity.status(HttpStatus.OK).body(responseMessage);
     }
+
+    //----------------------- DELETE END -------------------------------
 }

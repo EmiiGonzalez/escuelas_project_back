@@ -1,5 +1,6 @@
 package com.escuelas.project.escuelas_project.service.asistencia;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.escuelas.project.escuelas_project.service.models.dtos.asistencia.AsistenciaDto;
 import com.escuelas.project.escuelas_project.service.models.dtos.asistencia.AsistenciaResponseDto;
@@ -41,14 +42,13 @@ public interface AsistenciaService {
      * Crea una asistencia para un alumno en una clase.
      *
      * @param  asistenciaDto  Datos de la asistencia a crear.
-     * @param  idAlumno       Identificador del alumno.
      * @param  idClase        Identificador de la clase.
      * @return                Datos de la asistencia creada.
      * @throws AlumnoNoExistenteException Si el alumno no existe.
      * @throws EntityDisabledException   Si la entidad está deshabilitada.
      * @throws ClaseNoExistenteException   Si la clase no existe.
      */
-    AsistenciaResponseDto createAsistencia(AsistenciaDto asistenciaDto, Long idAlumno, Long idClase) throws AlumnoNoExistenteException, EntityDisabledException, ClaseNoExistenteException;
+    ArrayList<AsistenciaResponseDto> createAsistencia(List<AsistenciaDto> asistenciaDto, Long idClase) throws AlumnoNoExistenteException, EntityDisabledException, ClaseNoExistenteException;
 
     
     /**

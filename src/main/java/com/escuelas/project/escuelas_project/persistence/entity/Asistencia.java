@@ -4,13 +4,11 @@ import com.escuelas.project.escuelas_project.service.models.dtos.asistencia.Asis
 import com.escuelas.project.escuelas_project.service.models.dtos.asistencia.AsistenciaUpdateDto;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,13 +26,13 @@ public class Asistencia {
 
     private Boolean asistio;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_alumno", nullable = false)
-    private Alumno alumno;
-
-    @OneToOne
-    @JoinColumn(name = "id_clase", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "id_clase")
     private Clase clase;
+
+    @ManyToOne
+    @JoinColumn(name = "id_alumno")
+    private Alumno alumno;
 
     public Asistencia(Alumno alumno, Clase clase, AsistenciaDto dto) {
         this.alumno = alumno;
@@ -45,7 +43,6 @@ public class Asistencia {
     public void update(AsistenciaUpdateDto dto) {
         if (dto.asistio() != null) {
             this.asistio = dto.asistio();
-            
         }
     }
 }

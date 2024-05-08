@@ -41,6 +41,7 @@ public class Clase {
     @JoinColumn(name = "id_curso", nullable = false)
     private Curso curso;
 
+
     public Clase(Curso curso, ClaseDto dto) {
         this.curso = curso;
         this.fecha_de_clase = Util.parsearFecha(dto.fecha());

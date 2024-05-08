@@ -2,7 +2,6 @@ package com.escuelas.project.escuelas_project.persistence.entity;
 
 import com.escuelas.project.escuelas_project.service.models.dtos.alumno.AlumnoDto;
 import com.escuelas.project.escuelas_project.service.models.dtos.alumno.AlumnoDtoUpdate;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

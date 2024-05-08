@@ -1,5 +1,6 @@
 package com.escuelas.project.escuelas_project.service.asistencia;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,16 +39,28 @@ public class AsistenciaServiceImp implements AsistenciaService {
     private final AlumnoRepository alumnoRepository;
 
     @Override
-    public AsistenciaResponseDto createAsistencia(AsistenciaDto asistenciaDto, Long idAlumno, Long idClase)
+    public ArrayList<AsistenciaResponseDto> createAsistencia(List<AsistenciaDto> asistenciaDto, Long idClase)
             throws AlumnoNoExistenteException, EntityDisabledException, ClaseNoExistenteException {
-        Alumno alumno = this.searchAlumno(idAlumno);
+
         Clase clase = this.searchClase(idClase);
 
-        return new AsistenciaResponseDto(this.asistenciaRepository.save(new Asistencia(alumno, clase, asistenciaDto)));
+        ArrayList<AsistenciaResponseDto> asistenciaList = new ArrayList<>();
+
+        for (AsistenciaDto asistencia : asistenciaDto) {
+
+            Alumno alumno = this.searchAlumno(asistencia.id());
+            Asistencia asistenciaEntity = new Asistencia(alumno, clase, asistencia);
+
+            this.asistenciaRepository.save(asistenciaEntity);
+            asistenciaList.add(new AsistenciaResponseDto(asistenciaEntity));
+        }
+
+        return asistenciaList;
     }
 
     @Override
-    public AsistenciaResponseDto updateAsistencia(Long id, AsistenciaUpdateDto asistenciaUpdateDto) throws AsistenciaNoExistenteException, EntityDisabledException {
+    public AsistenciaResponseDto updateAsistencia(Long id, AsistenciaUpdateDto asistenciaUpdateDto)
+            throws AsistenciaNoExistenteException, EntityDisabledException {
         Asistencia asistencia = this.searchAsistencia(id);
         asistencia.update(asistenciaUpdateDto);
 
@@ -60,18 +73,21 @@ public class AsistenciaServiceImp implements AsistenciaService {
     }
 
     @Override
-    public AsistenciaResponseDto findByIdAsistencia(Long id) throws AsistenciaNoExistenteException, EntityDisabledException {
+    public AsistenciaResponseDto findByIdAsistencia(Long id)
+            throws AsistenciaNoExistenteException, EntityDisabledException {
         return new AsistenciaResponseDto(this.searchAsistencia(id));
     }
 
     @Override
-    public List<AsistenciaResponseDto> findAllAsistenciaDtoByAlumno(Long id) throws AlumnoNoExistenteException, EntityDisabledException {
+    public List<AsistenciaResponseDto> findAllAsistenciaDtoByAlumno(Long id)
+            throws AlumnoNoExistenteException, EntityDisabledException {
         Alumno alumno = this.searchAlumno(id);
         return this.asistenciaRepository.findAllAsistenciaDtoByAlumno(alumno);
     }
 
     @Override
-    public List<AsistenciaResponsePorClaseDto> findAllAsistenciaDtoByClase(Long id) throws ClaseNoExistenteException, EntityDisabledException {
+    public List<AsistenciaResponsePorClaseDto> findAllAsistenciaDtoByClase(Long id)
+            throws ClaseNoExistenteException, EntityDisabledException {
         Clase clase = this.searchClase(id);
         return this.asistenciaRepository.findAllAsistenciaDtoByClase(clase);
     }
