@@ -47,14 +47,17 @@ public class AsistenciaServiceImp implements AsistenciaService {
         ArrayList<AsistenciaResponseDto> asistenciaList = new ArrayList<>();
 
         for (AsistenciaDto asistencia : asistenciaDto) {
-
             Alumno alumno = this.searchAlumno(asistencia.id());
-            Asistencia asistenciaEntity = new Asistencia(alumno, clase, asistencia);
+            Optional<Asistencia> asistenciaOptional = this.asistenciaRepository.findByAlumnoAndClase(alumno, clase);
+            asistenciaOptional.ifPresentOrElse(a -> {
+                asistenciaOptional.get().update(asistencia);
+                asistenciaList.add(new AsistenciaResponseDto(asistenciaOptional.get()));
+            }, () -> {
+                Asistencia newAsistencia = new Asistencia(alumno, clase, asistencia);
+                asistenciaList.add(new AsistenciaResponseDto(this.asistenciaRepository.save(newAsistencia)));
+            });
 
-            this.asistenciaRepository.save(asistenciaEntity);
-            asistenciaList.add(new AsistenciaResponseDto(asistenciaEntity));
         }
-
         return asistenciaList;
     }
 
@@ -139,6 +142,16 @@ public class AsistenciaServiceImp implements AsistenciaService {
         return claseOptional.get();
     }
 
+    /**
+     * Busca una Asistencia por su ID y lanza una excepción si no existe.
+     *
+     * @param id el ID de la Asistencia a buscar
+     * @return la Asistencia encontrada
+     * @throws AsistenciaNoExistenteException si la Asistencia con el ID dado no
+     *                                        existe
+     * @throws EntityDisabledException        si el Alumno o el Curso de la
+     *                                        Asistencia no están activos
+     */
     private Asistencia searchAsistencia(Long id) throws AsistenciaNoExistenteException, EntityDisabledException {
         Optional<Asistencia> asistenciaOptional = this.asistenciaRepository.findById(id);
 

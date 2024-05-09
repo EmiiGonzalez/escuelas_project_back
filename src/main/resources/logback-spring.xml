@@ -1,0 +1,30 @@
+<configuration>
+
+    <!-- Definir la salida a consola -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %cyan(%logger{36}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Definir la política de rotación de logs -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/escuelas_project.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+        
+        <!-- Configuración de la política de rotación -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/escuelas_project.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory> <!-- Máximo número de archivos de log a mantener -->
+        </rollingPolicy>
+    </appender>
+
+    <!-- Configuración del nivel de log para el root logger -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/> <!-- Agregar la salida a consola -->
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>

@@ -45,4 +45,10 @@ public class Asistencia {
             this.asistio = dto.asistio();
         }
     }
+
+    public void update(AsistenciaDto asistencia) {
+        if (asistencia.asistio() != null) {
+            this.asistio = asistencia.asistio();
+        }
+    }
 }
