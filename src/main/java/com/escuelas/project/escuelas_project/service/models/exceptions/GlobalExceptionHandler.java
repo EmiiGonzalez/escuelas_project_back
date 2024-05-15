@@ -10,6 +10,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.escuelas.project.escuelas_project.service.models.dtos.response.ResponseMessage;
 import com.escuelas.project.escuelas_project.service.models.exceptions.alumnoExceptions.AlumnoNoExistenteException;
@@ -32,8 +34,6 @@ public class GlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<List<ResponseMessage>> validationError(MethodArgumentNotValidException e) {
-        System.out.println(e);
-
         List<ResponseMessage> errorsList = new ArrayList<>();
         e.getFieldErrors().stream().forEach(error -> {
             ResponseMessage responseMessage = new ResponseMessage(error.getDefaultMessage(), 1);
@@ -45,7 +45,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ResponseMessage> validationError(HttpMessageNotReadableException e) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(e.getLocalizedMessage(), 1));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(personalizedMessage.bodyNotValid(), 1));
     }
 
     // VALIDATION EXCEPTIONS DTOS END
@@ -61,6 +61,22 @@ public class GlobalExceptionHandler {
     }
 
     // ENTITY EXCEPTIONS END
+
+    // VALIDATION ROUTES NOT FOUND AND BAD ARGUMENTS START
+
+    @ResponseBody
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<ResponseMessage> validationError(MethodArgumentTypeMismatchException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(personalizedMessage.badArgument(), 5));
+    }
+
+    @ResponseBody
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public ResponseEntity<ResponseMessage> validationErrorRutaNoMapeada(NoHandlerFoundException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseMessage(personalizedMessage.routeNotFound(), 6));
+    }
+
+    // VALIDATION ROUTES NOT FOUND AND BAD ARGUMENTS END
 
     // CURSO EXCEPTIONS START
     @ResponseBody

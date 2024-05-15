@@ -1,0 +1,456 @@
+2024-05-11 17:30:08.519 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-11 17:30:08.574 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Starting EscuelasProjectApplicationTests using Java 17.0.9 with PID 9300 (started by Usuario in G:\Desktop\EscuelasProject\escuelas_project)
+2024-05-11 17:30:08.576 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2024-05-11 17:30:09.592 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-11 17:30:09.675 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 73 ms. Found 5 JPA repository interfaces.
+2024-05-11 17:30:10.691 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-11 17:30:10.786 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-11 17:30:10.837 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-11 17:30:11.231 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-11 17:30:11.289 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-11 17:30:11.756 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@210c1b9d
+2024-05-11 17:30:11.759 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-11 17:30:13.009 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-11 17:30:13.116 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:30:13.841 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-11 17:30:16.297 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2024-05-11 17:30:16.297 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2024-05-11 17:30:16.300 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 2 ms
+2024-05-11 17:30:16.375 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Started EscuelasProjectApplicationTests in 8.277 seconds (process running for 9.396)
+2024-05-11 17:30:17.097 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findById(..), URL: http://localhost/api/v1/escuelas/find/3, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 17:30:17.265 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findById(..), Respuesta: <200 OK OK,EscuelaResponseDto[id=3, nombre=test],[]>
+2024-05-11 17:30:17.397 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:30:17.401 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-11 17:30:17.413 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-11 17:38:46.658 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-11 17:38:46.695 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Starting EscuelasProjectApplicationTests using Java 17.0.9 with PID 7904 (started by Usuario in G:\Desktop\EscuelasProject\escuelas_project)
+2024-05-11 17:38:46.696 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2024-05-11 17:38:47.746 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-11 17:38:47.834 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 78 ms. Found 5 JPA repository interfaces.
+2024-05-11 17:38:48.858 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-11 17:38:48.949 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-11 17:38:48.998 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-11 17:38:49.453 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-11 17:38:49.496 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-11 17:38:49.861 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6ed691fd
+2024-05-11 17:38:49.864 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-11 17:38:51.168 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-11 17:38:51.270 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:38:51.870 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-11 17:38:54.331 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2024-05-11 17:38:54.331 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2024-05-11 17:38:54.336 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 3 ms
+2024-05-11 17:38:54.423 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Started EscuelasProjectApplicationTests in 8.167 seconds (process running for 9.306)
+2024-05-11 17:38:55.095 [main] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /api/v1/escuelas/find/
+2024-05-11 17:38:55.103 [main] WARN  o.s.web.servlet.PageNotFound - No endpoint GET /api/v1/escuelas/find/.
+2024-05-11 17:38:55.162 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:38:55.166 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-11 17:38:55.178 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-11 17:40:16.835 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-11 17:40:16.874 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Starting EscuelasProjectApplicationTests using Java 17.0.9 with PID 7764 (started by Usuario in G:\Desktop\EscuelasProject\escuelas_project)
+2024-05-11 17:40:16.876 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2024-05-11 17:40:17.966 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-11 17:40:18.050 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 74 ms. Found 5 JPA repository interfaces.
+2024-05-11 17:40:18.950 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-11 17:40:19.046 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-11 17:40:19.096 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-11 17:40:19.548 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-11 17:40:19.588 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-11 17:40:19.934 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2fcc5f49
+2024-05-11 17:40:19.937 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-11 17:40:21.165 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-11 17:40:21.258 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:40:21.899 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-11 17:40:24.693 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2024-05-11 17:40:24.694 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2024-05-11 17:40:24.696 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+2024-05-11 17:40:24.756 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Started EscuelasProjectApplicationTests in 8.322 seconds (process running for 9.414)
+2024-05-11 17:40:25.521 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findById(..), URL: http://localhost/api/v1/escuelas/find/1, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 17:40:25.680 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: escuelaNoExistenteException, Arguments: [com.escuelas.project.escuelas_project.service.models.exceptions.escuelaExceptions.EscuelaNoExistenteException: La escuela no existe en la base de datos]
+2024-05-11 17:40:25.789 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.escuelaNoExistenteException(..), Respuesta: <404 NOT_FOUND Not Found,ResponseMessage[message=La escuela no fue encontrada en la base de datos, errorCode=3],[]>
+2024-05-11 17:40:25.907 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:40:25.911 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-11 17:40:25.923 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-11 17:41:48.218 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-11 17:41:48.256 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Starting EscuelasProjectApplicationTests using Java 17.0.9 with PID 2104 (started by Usuario in G:\Desktop\EscuelasProject\escuelas_project)
+2024-05-11 17:41:48.258 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2024-05-11 17:41:49.348 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-11 17:41:49.451 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 94 ms. Found 5 JPA repository interfaces.
+2024-05-11 17:41:50.395 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-11 17:41:50.488 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-11 17:41:50.537 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-11 17:41:50.950 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-11 17:41:50.989 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-11 17:41:51.361 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@62054faf
+2024-05-11 17:41:51.364 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-11 17:41:52.608 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-11 17:41:52.707 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:41:53.322 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-11 17:41:55.821 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2024-05-11 17:41:55.821 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2024-05-11 17:41:55.826 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 3 ms
+2024-05-11 17:41:55.884 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Started EscuelasProjectApplicationTests in 8.07 seconds (process running for 9.225)
+2024-05-11 17:41:56.570 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findById(..), URL: http://localhost/api/v1/escuelas/find/1, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 17:41:56.675 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: entityDisabledException, Arguments: [com.escuelas.project.escuelas_project.service.models.exceptions.EntityDisabledException: La escuela esta deshabilitada]
+2024-05-11 17:41:56.685 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.entityDisabledException(..), Respuesta: <400 BAD_REQUEST Bad Request,ResponseMessage[message=Ocurrio un error al realizar la operacion ya que una entidad se encuentra deshabilitada: La escuela esta deshabilitada, errorCode=2],[]>
+2024-05-11 17:41:56.884 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:41:56.887 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-11 17:41:56.900 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-11 17:42:55.207 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-11 17:42:55.247 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Starting EscuelasProjectApplicationTests using Java 17.0.9 with PID 4956 (started by Usuario in G:\Desktop\EscuelasProject\escuelas_project)
+2024-05-11 17:42:55.248 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2024-05-11 17:42:56.240 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-11 17:42:56.321 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 73 ms. Found 5 JPA repository interfaces.
+2024-05-11 17:42:57.214 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-11 17:42:57.305 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-11 17:42:57.355 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-11 17:42:57.730 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-11 17:42:57.772 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-11 17:42:58.151 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2fcc5f49
+2024-05-11 17:42:58.154 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-11 17:42:59.519 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-11 17:42:59.635 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:43:00.294 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-11 17:43:02.817 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2024-05-11 17:43:02.817 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2024-05-11 17:43:02.820 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 2 ms
+2024-05-11 17:43:02.883 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Started EscuelasProjectApplicationTests in 8.171 seconds (process running for 9.393)
+2024-05-11 17:43:03.558 [main] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /api/v1/escuelas/find/
+2024-05-11 17:43:03.567 [main] WARN  o.s.web.servlet.PageNotFound - No endpoint GET /api/v1/escuelas/find/.
+2024-05-11 17:43:03.624 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:43:03.627 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-11 17:43:03.643 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-11 17:44:08.862 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-11 17:44:08.907 [restartedMain] INFO  c.e.p.e.EscuelasProjectApplication - Starting EscuelasProjectApplication using Java 17.0.9 with PID 10628 (G:\Desktop\EscuelasProject\escuelas_project\target\classes started by Usuario in G:\Desktop\EscuelasProject\escuelas_project)
+2024-05-11 17:44:08.908 [restartedMain] INFO  c.e.p.e.EscuelasProjectApplication - No active profile set, falling back to 1 default profile: "default"
+2024-05-11 17:44:08.964 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-05-11 17:44:08.965 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-05-11 17:44:10.179 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-11 17:44:10.279 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 90 ms. Found 5 JPA repository interfaces.
+2024-05-11 17:44:11.566 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 3000 (http)
+2024-05-11 17:44:11.583 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-3000"]
+2024-05-11 17:44:11.589 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-05-11 17:44:11.590 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-11 17:44:11.701 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-05-11 17:44:11.703 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2736 ms
+2024-05-11 17:44:12.041 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-11 17:44:12.116 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-11 17:44:12.166 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-11 17:44:12.468 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-11 17:44:13.843 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-11 17:44:14.190 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1858bd74
+2024-05-11 17:44:14.193 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-11 17:44:15.586 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-11 17:44:15.686 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:44:16.413 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-11 17:44:18.947 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-05-11 17:44:19.017 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-3000"]
+2024-05-11 17:44:19.051 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 3000 (http) with context path ''
+2024-05-11 17:44:19.067 [restartedMain] INFO  c.e.p.e.EscuelasProjectApplication - Started EscuelasProjectApplication in 10.644 seconds (process running for 11.315)
+2024-05-11 17:44:35.743 [http-nio-3000-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-11 17:44:35.743 [http-nio-3000-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-05-11 17:44:35.745 [http-nio-3000-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-05-11 17:44:35.760 [http-nio-3000-exec-2] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /api/v1/escuelas/find/
+2024-05-11 17:44:35.766 [http-nio-3000-exec-2] WARN  o.s.web.servlet.PageNotFound - No endpoint GET /api/v1/escuelas/find/.
+2024-05-11 17:44:44.753 [http-nio-3000-exec-3] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findById(..), URL: http://localhost:3000/api/v1/escuelas/find/1, IP: 0:0:0:0:0:0:0:1, Parámetros: org.apache.catalina.util.ParameterMap@daed67d
+2024-05-11 17:44:44.887 [http-nio-3000-exec-3] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: entityDisabledException, Arguments: [com.escuelas.project.escuelas_project.service.models.exceptions.EntityDisabledException: La escuela esta deshabilitada]
+2024-05-11 17:44:44.896 [http-nio-3000-exec-3] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.entityDisabledException(..), Respuesta: <400 BAD_REQUEST Bad Request,ResponseMessage[message=Ocurrio un error al realizar la operacion ya que una entidad se encuentra deshabilitada: La escuela esta deshabilitada, errorCode=2],[]>
+2024-05-11 17:46:14.385 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-11 17:46:14.423 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Starting EscuelasProjectApplicationTests using Java 17.0.9 with PID 6084 (started by Usuario in G:\Desktop\EscuelasProject\escuelas_project)
+2024-05-11 17:46:14.424 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2024-05-11 17:46:15.543 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-11 17:46:15.625 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 73 ms. Found 5 JPA repository interfaces.
+2024-05-11 17:46:16.535 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-11 17:46:16.631 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-11 17:46:16.684 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-11 17:46:17.097 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-11 17:46:17.152 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-11 17:46:17.528 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4ede035e
+2024-05-11 17:46:17.531 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-11 17:46:18.857 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-11 17:46:18.951 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:46:19.530 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-11 17:46:22.072 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2024-05-11 17:46:22.073 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2024-05-11 17:46:22.076 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 2 ms
+2024-05-11 17:46:22.139 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Started EscuelasProjectApplicationTests in 8.175 seconds (process running for 9.31)
+2024-05-11 17:46:22.872 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findById(..), URL: http://localhost/api/v1/escuelas/find/90, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 17:46:22.948 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: escuelaNoExistenteException, Arguments: [com.escuelas.project.escuelas_project.service.models.exceptions.escuelaExceptions.EscuelaNoExistenteException: La escuela no existe en la base de datos]
+2024-05-11 17:46:22.956 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.escuelaNoExistenteException(..), Respuesta: <404 NOT_FOUND Not Found,ResponseMessage[message=La escuela no fue encontrada en la base de datos, errorCode=3],[]>
+2024-05-11 17:46:23.110 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:46:23.113 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-11 17:46:23.128 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-11 17:46:42.941 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-11 17:46:42.978 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Starting EscuelasProjectApplicationTests using Java 17.0.9 with PID 2956 (started by Usuario in G:\Desktop\EscuelasProject\escuelas_project)
+2024-05-11 17:46:42.979 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2024-05-11 17:46:44.060 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-11 17:46:44.145 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 74 ms. Found 5 JPA repository interfaces.
+2024-05-11 17:46:45.201 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-11 17:46:45.335 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-11 17:46:45.395 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-11 17:46:45.878 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-11 17:46:45.920 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-11 17:46:46.289 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6ed691fd
+2024-05-11 17:46:46.292 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-11 17:46:47.695 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-11 17:46:47.787 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:46:48.375 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-11 17:46:50.877 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2024-05-11 17:46:50.877 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2024-05-11 17:46:50.881 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 2 ms
+2024-05-11 17:46:50.942 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Started EscuelasProjectApplicationTests in 8.402 seconds (process running for 9.506)
+2024-05-11 17:46:51.664 [main] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "error"]
+2024-05-11 17:46:51.713 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:46:51.716 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-11 17:46:51.727 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-11 17:46:58.578 [http-nio-3000-exec-5] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "eerror"]
+2024-05-11 17:50:46.651 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-11 17:50:46.696 [restartedMain] INFO  c.e.p.e.EscuelasProjectApplication - Starting EscuelasProjectApplication using Java 17.0.9 with PID 2088 (G:\Desktop\EscuelasProject\escuelas_project\target\classes started by Usuario in G:\Desktop\EscuelasProject\escuelas_project)
+2024-05-11 17:50:46.698 [restartedMain] INFO  c.e.p.e.EscuelasProjectApplication - No active profile set, falling back to 1 default profile: "default"
+2024-05-11 17:50:46.758 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-05-11 17:50:46.759 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-05-11 17:50:47.966 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-11 17:50:48.053 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 75 ms. Found 5 JPA repository interfaces.
+2024-05-11 17:50:49.105 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 3000 (http)
+2024-05-11 17:50:49.119 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-3000"]
+2024-05-11 17:50:49.123 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-05-11 17:50:49.124 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-11 17:50:49.212 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-05-11 17:50:49.213 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2451 ms
+2024-05-11 17:50:49.481 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-11 17:50:49.558 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-11 17:50:49.607 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-11 17:50:49.892 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-11 17:50:49.931 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-11 17:50:50.289 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@18fe5334
+2024-05-11 17:50:50.292 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-11 17:50:51.398 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-11 17:50:51.488 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:50:52.047 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-11 17:50:54.727 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-05-11 17:50:54.822 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-3000"]
+2024-05-11 17:50:54.862 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 3000 (http) with context path ''
+2024-05-11 17:50:54.891 [restartedMain] INFO  c.e.p.e.EscuelasProjectApplication - Started EscuelasProjectApplication in 8.712 seconds (process running for 9.408)
+2024-05-11 17:50:57.886 [http-nio-3000-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-11 17:50:57.887 [http-nio-3000-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-05-11 17:50:57.889 [http-nio-3000-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2024-05-11 17:50:57.954 [http-nio-3000-exec-1] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: validationError, Arguments: [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "eerror"]
+2024-05-11 17:50:57.961 [http-nio-3000-exec-1] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.validationError(..), Respuesta: <400 BAD_REQUEST Bad Request,ResponseMessage[message=Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "eerror", errorCode=5],[]>
+2024-05-11 17:52:32.140 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-05-11 17:52:32.159 [Thread-5] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-3000"]
+2024-05-11 17:52:32.194 [Thread-5] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:52:32.199 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-11 17:52:32.234 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-11 17:52:32.352 [restartedMain] INFO  c.e.p.e.EscuelasProjectApplication - Starting EscuelasProjectApplication using Java 17.0.9 with PID 2088 (G:\Desktop\EscuelasProject\escuelas_project\target\classes started by Usuario in G:\Desktop\EscuelasProject\escuelas_project)
+2024-05-11 17:52:32.353 [restartedMain] INFO  c.e.p.e.EscuelasProjectApplication - No active profile set, falling back to 1 default profile: "default"
+2024-05-11 17:52:32.993 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-11 17:52:33.161 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 166 ms. Found 5 JPA repository interfaces.
+2024-05-11 17:52:33.967 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 3000 (http)
+2024-05-11 17:52:33.968 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-3000"]
+2024-05-11 17:52:33.970 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-05-11 17:52:33.971 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-11 17:54:27.355 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-11 17:54:27.397 [restartedMain] INFO  c.e.p.e.EscuelasProjectApplication - Starting EscuelasProjectApplication using Java 17.0.9 with PID 5228 (G:\Desktop\EscuelasProject\escuelas_project\target\classes started by Usuario in G:\Desktop\EscuelasProject\escuelas_project)
+2024-05-11 17:54:27.399 [restartedMain] INFO  c.e.p.e.EscuelasProjectApplication - No active profile set, falling back to 1 default profile: "default"
+2024-05-11 17:54:27.453 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-05-11 17:54:27.454 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-05-11 17:54:28.599 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-11 17:54:28.690 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 82 ms. Found 5 JPA repository interfaces.
+2024-05-11 17:54:29.847 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 3000 (http)
+2024-05-11 17:54:29.860 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-3000"]
+2024-05-11 17:54:29.864 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-05-11 17:54:29.865 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-11 17:54:29.971 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-05-11 17:54:29.973 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2516 ms
+2024-05-11 17:54:30.245 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-11 17:54:30.347 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-11 17:54:30.410 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-11 17:54:30.783 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-11 17:54:30.809 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-11 17:54:31.141 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@73c1fcd
+2024-05-11 17:54:31.145 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-11 17:54:32.324 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-11 17:54:32.423 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:54:33.017 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-11 17:54:35.298 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-05-11 17:54:35.352 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-3000"]
+2024-05-11 17:54:35.376 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 3000 (http) with context path ''
+2024-05-11 17:54:35.392 [restartedMain] INFO  c.e.p.e.EscuelasProjectApplication - Started EscuelasProjectApplication in 8.472 seconds (process running for 9.197)
+2024-05-11 17:54:41.231 [http-nio-3000-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-11 17:54:41.233 [http-nio-3000-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-05-11 17:54:41.235 [http-nio-3000-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2024-05-11 17:54:41.291 [http-nio-3000-exec-2] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: validationError, Arguments: [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "eerror"]
+2024-05-11 17:54:41.307 [http-nio-3000-exec-2] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.validationError(..), Respuesta: <400 BAD_REQUEST Bad Request,ResponseMessage[message=El dato enviado por url es invalido, por favor revise la documentacion y los tipos de datos permitdos, errorCode=5],[]>
+2024-05-11 17:55:29.331 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-11 17:55:29.366 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Starting EscuelasProjectApplicationTests using Java 17.0.9 with PID 2592 (started by Usuario in G:\Desktop\EscuelasProject\escuelas_project)
+2024-05-11 17:55:29.367 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2024-05-11 17:55:30.579 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-11 17:55:30.673 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 84 ms. Found 5 JPA repository interfaces.
+2024-05-11 17:55:31.645 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-11 17:55:31.743 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-11 17:55:31.795 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-11 17:55:32.165 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-11 17:55:32.209 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-11 17:55:32.553 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@43756cb
+2024-05-11 17:55:32.555 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-11 17:55:33.727 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-11 17:55:33.823 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:55:34.410 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-11 17:55:36.988 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2024-05-11 17:55:36.989 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2024-05-11 17:55:36.992 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 2 ms
+2024-05-11 17:55:37.056 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Started EscuelasProjectApplicationTests in 8.181 seconds (process running for 9.474)
+2024-05-11 17:55:37.744 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: validationError, Arguments: [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "error"]
+2024-05-11 17:55:37.754 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.validationError(..), Respuesta: <400 BAD_REQUEST Bad Request,ResponseMessage[message=El dato enviado por url es invalido, por favor revise la documentacion y los tipos de datos permitdos, errorCode=5],[]>
+2024-05-11 17:55:37.918 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:55:37.922 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-11 17:55:37.935 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-11 17:56:42.786 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-11 17:56:42.821 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Starting EscuelasProjectApplicationTests using Java 17.0.9 with PID 8388 (started by Usuario in G:\Desktop\EscuelasProject\escuelas_project)
+2024-05-11 17:56:42.822 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2024-05-11 17:56:43.865 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-11 17:56:43.951 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 75 ms. Found 5 JPA repository interfaces.
+2024-05-11 17:56:44.898 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-11 17:56:45.006 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-11 17:56:45.057 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-11 17:56:45.428 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-11 17:56:45.468 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-11 17:56:45.860 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3578a45b
+2024-05-11 17:56:45.863 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-11 17:56:47.018 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-11 17:56:47.116 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:56:47.725 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-11 17:56:50.221 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2024-05-11 17:56:50.222 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2024-05-11 17:56:50.226 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 3 ms
+2024-05-11 17:56:50.294 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Started EscuelasProjectApplicationTests in 7.996 seconds (process running for 9.178)
+2024-05-11 17:56:51.032 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findById(..), URL: http://localhost/api/v1/escuelas/find/99999, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 17:56:51.107 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: escuelaNoExistenteException, Arguments: [com.escuelas.project.escuelas_project.service.models.exceptions.escuelaExceptions.EscuelaNoExistenteException: La escuela no existe en la base de datos]
+2024-05-11 17:56:51.117 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.escuelaNoExistenteException(..), Respuesta: <404 NOT_FOUND Not Found,ResponseMessage[message=La escuela no fue encontrada en la base de datos, errorCode=3],[]>
+2024-05-11 17:56:51.268 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:56:51.271 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-11 17:56:51.284 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-11 17:58:58.177 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-11 17:58:58.219 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Starting EscuelasProjectApplicationTests using Java 17.0.9 with PID 11720 (started by Usuario in G:\Desktop\EscuelasProject\escuelas_project)
+2024-05-11 17:58:58.221 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2024-05-11 17:58:59.365 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-11 17:58:59.476 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 89 ms. Found 5 JPA repository interfaces.
+2024-05-11 17:59:00.355 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-11 17:59:00.450 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-11 17:59:00.504 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-11 17:59:00.971 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-11 17:59:01.027 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-11 17:59:01.398 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@210c1b9d
+2024-05-11 17:59:01.401 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-11 17:59:02.523 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-11 17:59:02.619 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:59:03.213 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-11 17:59:05.883 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2024-05-11 17:59:05.883 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2024-05-11 17:59:05.887 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+2024-05-11 17:59:05.962 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Started EscuelasProjectApplicationTests in 8.191 seconds (process running for 9.363)
+2024-05-11 17:59:06.664 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findById(..), URL: http://localhost/api/v1/escuelas/find/99999, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 17:59:06.745 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: escuelaNoExistenteException, Arguments: [com.escuelas.project.escuelas_project.service.models.exceptions.escuelaExceptions.EscuelaNoExistenteException: La escuela no existe en la base de datos]
+2024-05-11 17:59:06.755 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.escuelaNoExistenteException(..), Respuesta: <404 NOT_FOUND Not Found,ResponseMessage[message=La escuela no fue encontrada en la base de datos, errorCode=3],[]>
+2024-05-11 17:59:06.902 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findById(..), URL: http://localhost/api/v1/escuelas/find/3, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 17:59:06.924 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findById(..), Respuesta: <200 OK OK,EscuelaResponseDto[id=3, nombre=test],[]>
+2024-05-11 17:59:06.937 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: validationError, Arguments: [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "error"]
+2024-05-11 17:59:06.938 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.validationError(..), Respuesta: <400 BAD_REQUEST Bad Request,ResponseMessage[message=El dato enviado por url es invalido, por favor revise la documentacion y los tipos de datos permitdos, errorCode=5],[]>
+2024-05-11 17:59:07.054 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.save(..), URL: http://localhost/api/v1/escuelas/save, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 17:59:07.122 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: escuelaExistenteException, Arguments: [com.escuelas.project.escuelas_project.service.models.exceptions.escuelaExceptions.EscuelaExistenteException: La escuela ya existe en la base de datos]
+2024-05-11 17:59:07.122 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.escuelaExistenteException(..), Respuesta: <400 BAD_REQUEST Bad Request,ResponseMessage[message=No se pudo registrar el escuela con el nombre ingresado ya que la misma ya se encuentra registrada, errorCode=4],[]>
+2024-05-11 17:59:07.144 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findById(..), URL: http://localhost/api/v1/escuelas/find/1, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 17:59:07.151 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: entityDisabledException, Arguments: [com.escuelas.project.escuelas_project.service.models.exceptions.EntityDisabledException: La escuela esta deshabilitada]
+2024-05-11 17:59:07.151 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.entityDisabledException(..), Respuesta: <400 BAD_REQUEST Bad Request,ResponseMessage[message=Ocurrio un error al realizar la operacion ya que una entidad se encuentra deshabilitada: La escuela esta deshabilitada, errorCode=2],[]>
+2024-05-11 17:59:07.214 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: validationError, Arguments: [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.escuelas.project.escuelas_project.service.models.dtos.escuela.EscuelaResponseDto> com.escuelas.project.escuelas_project.controllers.v1.EscuelaController.save(com.escuelas.project.escuelas_project.service.models.dtos.escuela.EscuelaDto) throws com.escuelas.project.escuelas_project.service.models.exceptions.escuelaExceptions.EscuelaExistenteException: [Field error in object 'escuelaDto' on field 'nombre': rejected value []; codes [NotBlank.escuelaDto.nombre,NotBlank.nombre,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [escuelaDto.nombre,nombre]; arguments []; default message [nombre]]; default message [El nombre de la escuela es requerido para la creacion de una nueva escuela]] ]
+2024-05-11 17:59:07.216 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.validationError(..), Respuesta: <400 BAD_REQUEST Bad Request,[ResponseMessage[message=El nombre de la escuela es requerido para la creacion de una nueva escuela, errorCode=1]],[]>
+2024-05-11 17:59:07.233 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.save(..), URL: http://localhost/api/v1/escuelas/save, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 17:59:07.253 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: escuelaExistenteException, Arguments: [com.escuelas.project.escuelas_project.service.models.exceptions.escuelaExceptions.EscuelaExistenteException: La escuela ya existe en la base de datos]
+2024-05-11 17:59:07.254 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.escuelaExistenteException(..), Respuesta: <400 BAD_REQUEST Bad Request,ResponseMessage[message=No se pudo registrar el escuela con el nombre ingresado ya que la misma ya se encuentra registrada, errorCode=4],[]>
+2024-05-11 17:59:07.264 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findAll(), URL: http://localhost/api/v1/escuelas/find/all, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 17:59:07.273 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findAll(), Respuesta: <200 OK OK,[EscuelaResponseDto[id=1, nombre=ESS 4], EscuelaResponseDto[id=2, nombre=TEC 1], EscuelaResponseDto[id=3, nombre=test]],[]>
+2024-05-11 17:59:07.292 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:59:07.296 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-11 17:59:07.309 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-11 17:59:49.211 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-11 17:59:49.251 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Starting EscuelasProjectApplicationTests using Java 17.0.9 with PID 3268 (started by Usuario in G:\Desktop\EscuelasProject\escuelas_project)
+2024-05-11 17:59:49.253 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2024-05-11 17:59:50.350 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-11 17:59:50.427 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 69 ms. Found 5 JPA repository interfaces.
+2024-05-11 17:59:51.434 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-11 17:59:51.534 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-11 17:59:51.584 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-11 17:59:51.996 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-11 17:59:52.037 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-11 17:59:52.419 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@69bc4024
+2024-05-11 17:59:52.421 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-11 17:59:53.641 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-11 17:59:53.747 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:59:54.397 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-11 17:59:57.048 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2024-05-11 17:59:57.048 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2024-05-11 17:59:57.051 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 2 ms
+2024-05-11 17:59:57.118 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Started EscuelasProjectApplicationTests in 8.32 seconds (process running for 9.47)
+2024-05-11 17:59:57.884 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findById(..), URL: http://localhost/api/v1/escuelas/find/99999, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 17:59:57.967 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: escuelaNoExistenteException, Arguments: [com.escuelas.project.escuelas_project.service.models.exceptions.escuelaExceptions.EscuelaNoExistenteException: La escuela no existe en la base de datos]
+2024-05-11 17:59:57.975 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.escuelaNoExistenteException(..), Respuesta: <404 NOT_FOUND Not Found,ResponseMessage[message=La escuela no fue encontrada en la base de datos, errorCode=3],[]>
+2024-05-11 17:59:58.118 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findById(..), URL: http://localhost/api/v1/escuelas/find/3, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 17:59:58.135 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findById(..), Respuesta: <200 OK OK,EscuelaResponseDto[id=3, nombre=test],[]>
+2024-05-11 17:59:58.149 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: validationError, Arguments: [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "error"]
+2024-05-11 17:59:58.150 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.validationError(..), Respuesta: <400 BAD_REQUEST Bad Request,ResponseMessage[message=El dato enviado por url es invalido, por favor revise la documentacion y los tipos de datos permitdos, errorCode=5],[]>
+2024-05-11 17:59:58.233 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.save(..), URL: http://localhost/api/v1/escuelas/save, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 17:59:58.336 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.save(..), Respuesta: <201 CREATED Created,EscuelaResponseDto[id=8, nombre=test2],[]>
+2024-05-11 17:59:58.358 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findById(..), URL: http://localhost/api/v1/escuelas/find/1, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 17:59:58.364 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: entityDisabledException, Arguments: [com.escuelas.project.escuelas_project.service.models.exceptions.EntityDisabledException: La escuela esta deshabilitada]
+2024-05-11 17:59:58.365 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.entityDisabledException(..), Respuesta: <400 BAD_REQUEST Bad Request,ResponseMessage[message=Ocurrio un error al realizar la operacion ya que una entidad se encuentra deshabilitada: La escuela esta deshabilitada, errorCode=2],[]>
+2024-05-11 17:59:58.409 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: validationError, Arguments: [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.escuelas.project.escuelas_project.service.models.dtos.escuela.EscuelaResponseDto> com.escuelas.project.escuelas_project.controllers.v1.EscuelaController.save(com.escuelas.project.escuelas_project.service.models.dtos.escuela.EscuelaDto) throws com.escuelas.project.escuelas_project.service.models.exceptions.escuelaExceptions.EscuelaExistenteException: [Field error in object 'escuelaDto' on field 'nombre': rejected value []; codes [NotBlank.escuelaDto.nombre,NotBlank.nombre,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [escuelaDto.nombre,nombre]; arguments []; default message [nombre]]; default message [El nombre de la escuela es requerido para la creacion de una nueva escuela]] ]
+2024-05-11 17:59:58.410 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.validationError(..), Respuesta: <400 BAD_REQUEST Bad Request,[ResponseMessage[message=El nombre de la escuela es requerido para la creacion de una nueva escuela, errorCode=1]],[]>
+2024-05-11 17:59:58.428 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.save(..), URL: http://localhost/api/v1/escuelas/save, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 17:59:58.443 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: escuelaExistenteException, Arguments: [com.escuelas.project.escuelas_project.service.models.exceptions.escuelaExceptions.EscuelaExistenteException: La escuela ya existe en la base de datos]
+2024-05-11 17:59:58.444 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.escuelaExistenteException(..), Respuesta: <400 BAD_REQUEST Bad Request,ResponseMessage[message=No se pudo registrar el escuela con el nombre ingresado ya que la misma ya se encuentra registrada, errorCode=4],[]>
+2024-05-11 17:59:58.454 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findAll(), URL: http://localhost/api/v1/escuelas/find/all, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 17:59:58.465 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findAll(), Respuesta: <200 OK OK,[EscuelaResponseDto[id=1, nombre=ESS 4], EscuelaResponseDto[id=2, nombre=TEC 1], EscuelaResponseDto[id=3, nombre=test]],[]>
+2024-05-11 17:59:58.483 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 17:59:58.487 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-11 17:59:58.499 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-05-11 18:00:13.124 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-05-11 18:00:13.159 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Starting EscuelasProjectApplicationTests using Java 17.0.9 with PID 8948 (started by Usuario in G:\Desktop\EscuelasProject\escuelas_project)
+2024-05-11 18:00:13.161 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2024-05-11 18:00:14.250 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-11 18:00:14.328 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 70 ms. Found 5 JPA repository interfaces.
+2024-05-11 18:00:15.188 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-11 18:00:15.285 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-11 18:00:15.336 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-05-11 18:00:15.771 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-11 18:00:15.808 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-05-11 18:00:16.210 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@24f177f5
+2024-05-11 18:00:16.212 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-05-11 18:00:17.322 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-11 18:00:17.415 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 18:00:18.028 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-11 18:00:20.545 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2024-05-11 18:00:20.545 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+2024-05-11 18:00:20.548 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 2 ms
+2024-05-11 18:00:20.606 [main] INFO  c.e.p.e.EscuelasProjectApplicationTests - Started EscuelasProjectApplicationTests in 7.888 seconds (process running for 9.022)
+2024-05-11 18:00:21.340 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findById(..), URL: http://localhost/api/v1/escuelas/find/99999, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 18:00:21.417 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: escuelaNoExistenteException, Arguments: [com.escuelas.project.escuelas_project.service.models.exceptions.escuelaExceptions.EscuelaNoExistenteException: La escuela no existe en la base de datos]
+2024-05-11 18:00:21.427 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.escuelaNoExistenteException(..), Respuesta: <404 NOT_FOUND Not Found,ResponseMessage[message=La escuela no fue encontrada en la base de datos, errorCode=3],[]>
+2024-05-11 18:00:21.586 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findById(..), URL: http://localhost/api/v1/escuelas/find/3, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 18:00:21.603 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findById(..), Respuesta: <200 OK OK,EscuelaResponseDto[id=3, nombre=test],[]>
+2024-05-11 18:00:21.619 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: validationError, Arguments: [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "error"]
+2024-05-11 18:00:21.619 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.validationError(..), Respuesta: <400 BAD_REQUEST Bad Request,ResponseMessage[message=El dato enviado por url es invalido, por favor revise la documentacion y los tipos de datos permitdos, errorCode=5],[]>
+2024-05-11 18:00:21.748 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.save(..), URL: http://localhost/api/v1/escuelas/save, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 18:00:21.870 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.save(..), Respuesta: <201 CREATED Created,EscuelaResponseDto[id=9, nombre=test2],[]>
+2024-05-11 18:00:21.909 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findById(..), URL: http://localhost/api/v1/escuelas/find/1, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 18:00:21.913 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: entityDisabledException, Arguments: [com.escuelas.project.escuelas_project.service.models.exceptions.EntityDisabledException: La escuela esta deshabilitada]
+2024-05-11 18:00:21.914 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.entityDisabledException(..), Respuesta: <400 BAD_REQUEST Bad Request,ResponseMessage[message=Ocurrio un error al realizar la operacion ya que una entidad se encuentra deshabilitada: La escuela esta deshabilitada, errorCode=2],[]>
+2024-05-11 18:00:21.948 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: validationError, Arguments: [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.escuelas.project.escuelas_project.service.models.dtos.escuela.EscuelaResponseDto> com.escuelas.project.escuelas_project.controllers.v1.EscuelaController.save(com.escuelas.project.escuelas_project.service.models.dtos.escuela.EscuelaDto) throws com.escuelas.project.escuelas_project.service.models.exceptions.escuelaExceptions.EscuelaExistenteException: [Field error in object 'escuelaDto' on field 'nombre': rejected value []; codes [NotBlank.escuelaDto.nombre,NotBlank.nombre,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [escuelaDto.nombre,nombre]; arguments []; default message [nombre]]; default message [El nombre de la escuela es requerido para la creacion de una nueva escuela]] ]
+2024-05-11 18:00:21.949 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.validationError(..), Respuesta: <400 BAD_REQUEST Bad Request,[ResponseMessage[message=El nombre de la escuela es requerido para la creacion de una nueva escuela, errorCode=1]],[]>
+2024-05-11 18:00:21.965 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.save(..), URL: http://localhost/api/v1/escuelas/save, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 18:00:21.978 [main] ERROR c.e.p.e.aop.ExceptionHandlerAOP - Exception in method: escuelaExistenteException, Arguments: [com.escuelas.project.escuelas_project.service.models.exceptions.escuelaExceptions.EscuelaExistenteException: La escuela ya existe en la base de datos]
+2024-05-11 18:00:21.978 [main] INFO  c.e.p.e.aop.ExceptionHandlerAOP - Método: GlobalExceptionHandler.escuelaExistenteException(..), Respuesta: <400 BAD_REQUEST Bad Request,ResponseMessage[message=No se pudo registrar el escuela con el nombre ingresado ya que la misma ya se encuentra registrada, errorCode=4],[]>
+2024-05-11 18:00:21.987 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findAll(), URL: http://localhost/api/v1/escuelas/find/all, IP: 127.0.0.1, Parámetros: {}
+2024-05-11 18:00:21.995 [main] INFO  c.e.p.e.aop.HttpRequestAspect - Método: EscuelaController.findAll(), Respuesta: <200 OK OK,[EscuelaResponseDto[id=1, nombre=ESS 4], EscuelaResponseDto[id=2, nombre=TEC 1], EscuelaResponseDto[id=3, nombre=test]],[]>
+2024-05-11 18:00:22.011 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-11 18:00:22.014 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-05-11 18:00:22.027 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

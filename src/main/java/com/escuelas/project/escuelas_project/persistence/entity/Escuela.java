@@ -29,7 +29,7 @@ public class Escuela {
     }
 
     public void update(EscuelaDtoUpdate escuela) {
-        if (escuela.nombre() != null) {
+        if (escuela.nombre() != null && !escuela.nombre().trim().isEmpty()) {
             this.setNombre(escuela.nombre());
         }
     }

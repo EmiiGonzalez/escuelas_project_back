@@ -86,12 +86,12 @@ public class EscuelaServiceImp implements EscuelaService {
      * @throws EntityDisabledException     si la Escuela está deshabilitada
      */
     private Escuela searchEscuela(Long id) throws EscuelaNoExistenteException, EntityDisabledException {
-        Optional<Escuela> escuelaOptional = escuelaRepository.findByIdActive(id);
+        Optional<Escuela> escuelaOptional = escuelaRepository.findById(id);
         escuelaOptional.orElseThrow(() -> new EscuelaNoExistenteException("La escuela no existe en la base de datos"));
 
         Escuela escuela = escuelaOptional.get();
         if (!escuela.getActivo()) {
-            throw new EntityDisabledException("La escuela esta deshabilitada");
+            throw new EntityDisabledException("La escuela que busca se encuentra deshabilitada");
         }
         return escuela;
     }

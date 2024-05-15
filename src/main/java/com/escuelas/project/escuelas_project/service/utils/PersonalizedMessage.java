@@ -95,6 +95,18 @@ public class PersonalizedMessage {
         return messageSource.getMessage("entity.disable.message", null, null);
     }
 
+    public String badArgument() {
+        return messageSource.getMessage("bad.argument", null, null);
+    }
+
+    public String routeNotFound() {
+        return messageSource.getMessage("route.not.found", null, null);
+    }
+
+    public String bodyNotValid() {
+        return messageSource.getMessage("body.not.valid", null, null);
+    }
+
 
 
     // ERRORS MESSAGE ENDS
