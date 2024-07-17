@@ -1,0 +1,5 @@
+CREATE TABLE escuelas (
+    id_escuela BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    activo BOOLEAN DEFAULT TRUE
+);

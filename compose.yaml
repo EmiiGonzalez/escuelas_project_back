@@ -1,13 +1,34 @@
 services:
   escuelas-db:
     image: mysql:5.7
+    container_name: escuelas-db
     volumes:
-      - escuelas_db:/data/db
+      - escuelas_db:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=42039714Emi
+      - MYSQL_ROOT_PASSWORD=
       - MYSQL_DATABASE=escuelas_project
     ports:
-      - "3307:3306"
+      - "3306:3306"
+    networks:
+      - escuelas-network
+
+  escuelas-backend:
+    build: .
+    depends_on:
+      - escuelas-db
+    ports:
+      - "3000:3000"
+    networks:
+      - escuelas-network
+    environment:
+      DB_URL: jdbc:mysql://escuelas-db:3306/escuelas_project
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 
 
 volumes:
+  escuelas-backend:
   escuelas_db:
+
+networks:
+  escuelas-network:
+    driver: bridge
