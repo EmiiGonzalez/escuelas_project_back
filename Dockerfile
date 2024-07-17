@@ -1,4 +1,5 @@
-FROM maven:3.9.8-amazoncorretto-17-al2023 AS build
+# Usar una imagen base de Maven para construir el proyecto
+FROM maven:3.8.5-openjdk-17-slim AS build
 
 # Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /usr/src/app
@@ -9,8 +10,8 @@ COPY . .
 # Construir el proyecto usando Maven
 RUN mvn clean package -DskipTests
 
-# Usar una imagen base de Java para correr la aplicación
-FROM amazoncorretto:17-alpine-jdk
+# Usar una imagen base de OpenJDK 17 para correr la aplicación
+FROM openjdk:17-alpine
 
 # Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /usr/src/app
