@@ -19,6 +19,7 @@ WORKDIR /usr/src/app
 # Instalar bash y copiar wait-for-it.sh al contenedor
 RUN apk add --no-cache bash
 COPY wait-for-it.sh /usr/src/app/
+RUN chmod +x /usr/src/app/wait-for-it.sh
 
 # Copiar el archivo JAR desde la fase de construcción
 COPY --from=build /usr/src/app/target/escuelas_project-v1.jar escuelas_project-v1.jar
@@ -27,4 +28,4 @@ COPY --from=build /usr/src/app/target/escuelas_project-v1.jar escuelas_project-v
 EXPOSE 3000
 
 # Ejecutar el JAR
-ENTRYPOINT ["/usr/src/app/wait-for-it.sh", "escuelas-db:3306", "-t", "60", "-s", "--", "java", "-jar", "escuelas_project-v1.jar"]
+CMD ["/usr/src/app/wait-for-it.sh", "escuelas-db:3306", "-t", "60", "-s", "--", "java", "-jar", "escuelas_project-v1.jar"]
