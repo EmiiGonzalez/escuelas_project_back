@@ -34,3 +34,6 @@ build/
 
 ### Logs ###
 .logs
+
+### Properties ###
+!**/src/main/resources/aplication.properties

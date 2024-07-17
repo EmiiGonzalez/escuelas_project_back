@@ -1,0 +1,13 @@
+services:
+  escuelas-db:
+    image: mysql:5.7
+    volumes:
+      - escuelas_db:/data/db
+    environment:
+      - MYSQL_ROOT_PASSWORD=42039714Emi
+      - MYSQL_DATABASE=escuelas_project
+    ports:
+      - "3307:3306"
+
+volumes:
+  escuelas_db:
