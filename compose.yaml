@@ -25,6 +25,7 @@ services:
       - DB_URL=jdbc:mysql://escuelas-db:3306/escuelas_project
       - MYSQL_USER=root
       - MYSQL_PASSWORD=
+      
 
 volumes:
   escuelas-backend:
