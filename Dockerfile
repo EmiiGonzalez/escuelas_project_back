@@ -16,16 +16,12 @@ FROM openjdk:17-alpine
 # Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /usr/src/app
 
-# Instalar bash y copiar wait-for-it.sh al contenedor
-RUN apk add --no-cache bash
-COPY wait-for-it.sh /usr/src/app/
-RUN chmod +x /usr/src/app/wait-for-it.sh
-
 # Copiar el archivo JAR desde la fase de construcción
 COPY --from=build /usr/src/app/target/escuelas_project-v1.jar escuelas_project-v1.jar
+COPY wait-for-service.jar wait-for-service.jar
 
 # Exponer el puerto
 EXPOSE 3000
 
 # Ejecutar el JAR
-CMD ["/usr/src/app/wait-for-it.sh", "escuelas-db:3306", "-t", "60", "-s", "--", "java", "-jar", "escuelas_project-v1.jar"]
+CMD ["java", "-cp", "wait-for-service.jar:escuelas_project-v1.jar", "WaitForService", "escuelas-db", "3306", "60", "java", "-jar", "escuelas_project-v1.jar"]

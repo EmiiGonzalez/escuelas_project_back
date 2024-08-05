@@ -1,0 +1,1 @@
+java -jar wait-for-service.jar <host> <port> --t <tiempo en segundos>
