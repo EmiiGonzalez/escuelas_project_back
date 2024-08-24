@@ -41,18 +41,13 @@ public class CursoServiceImp implements CursoService {
         return this.cursoRepository.findAllActiveDto(year, escuelaEntity);
     }
 
-    @Override
-    public CursoResponseDto findByNombreDto(String nombre) throws CursoNoExistenteException, EntityDisabledException {
-        CursoResponseDto dto = new CursoResponseDto(searchCurso(nombre));
-        return dto;
-    }
 
     @Override
     public CursoResponseDto save(CursoDto dto, Long id)
             throws CursoExistenteException, EscuelaNoExistenteException, EntityDisabledException {
         Escuela escuela = searchEscuela(id);
 
-        if (this.cursoRepository.findByNombre(dto.nombre()).isPresent()) {
+        if (this.cursoRepository.findByNombre(dto.nombre(), escuela).isPresent()) {
             throw new CursoExistenteException("El curso ya existe");
         }
 
@@ -110,17 +105,6 @@ public class CursoServiceImp implements CursoService {
         }
 
         return curso;
-    }
-
-    private Curso searchCurso(String curso) throws CursoNoExistenteException, EntityDisabledException {
-        Curso cursoEntity = this.cursoRepository.findByNombre(curso)
-                .orElseThrow(() -> new CursoNoExistenteException("El curso no existe"));
-
-        if (!cursoEntity.getEscuela().getActivo()) {
-            throw new EntityDisabledException("La escuela de este curso está deshabilitada");
-        }
-
-        return cursoEntity;
     }
 
     /**

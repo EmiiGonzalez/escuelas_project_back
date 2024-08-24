@@ -81,26 +81,6 @@ public class CursoController {
         return ResponseEntity.status(HttpStatus.OK).body(cursoService.findAllActiveDto(year, id));
     }
 
-    /**
-     * Busca un Curso por su nombre.
-     *
-     * Este método maneja una solicitud HTTP GET para buscar un Curso por su nombre.
-     * El nombre del Curso se proporciona en la URL de la solicitud.
-     *
-     * @param nombre El nombre del Curso a buscar.
-     * @return Una respuesta HTTP 200 (OK) con el Curso encontrado en el cuerpo de
-     *         la respuesta.
-     * @throws CursoNoExistenteException Si el Curso con el nombre especificado no
-     *                                   existe.
-     * @throws EntityDisabledException   Si el Curso con el nombre especificado está
-     *                                   deshabilitado.
-     */
-    @GetMapping(value = "/find/name/{nombre}", headers = "Accept=application/json")
-    @ResponseBody
-    public ResponseEntity<CursoResponseDto> findByNombre(@PathVariable String nombre)
-            throws CursoNoExistenteException, EntityDisabledException {
-        return ResponseEntity.status(HttpStatus.OK).body(cursoService.findByNombreDto(nombre));
-    }
 
     // ----------------------- GET END ----------------------------------
 

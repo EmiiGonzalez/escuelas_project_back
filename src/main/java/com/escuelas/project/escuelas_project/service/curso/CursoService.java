@@ -39,15 +39,6 @@ public interface CursoService {
     List<CursoResponseDto> findAllActiveDto(Integer year, Long id)
             throws EntityDisabledException, EscuelaNoExistenteException;
 
-    /**
-     * Metodo que busca un curso por su nombre.
-     * 
-     * @param nombre el nombre del curso.
-     * @return un DTO de curso.
-     * @throws CursoNoExistenteException si el curso no existe.
-     * @throws EntityDisabledException
-     */
-    CursoResponseDto findByNombreDto(String nombre) throws CursoNoExistenteException, EntityDisabledException;
 
     /**
      * Metodo que guarda un nuevo curso.
