@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.1</version>
+		<version>3.3.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.escuelas.project</groupId>
@@ -19,12 +19,13 @@
 	<dependencies>
 
 
-<!-- https://mvnrepository.com/artifact/com.google.code.findbugs/jsr305 -->
+<!-- https://mvnrepository.com/artifact/org.jetbrains/annotations -->
 		<dependency>
-			<groupId>com.google.code.findbugs</groupId>
-			<artifactId>jsr305</artifactId>
-			<version>3.0.2</version>
+			<groupId>org.jetbrains</groupId>
+			<artifactId>annotations</artifactId>
+			<version>24.1.0</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.flywaydb</groupId>
