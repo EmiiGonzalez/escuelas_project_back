@@ -13,7 +13,7 @@ import com.escuelas.project.escuelas_project.escuela.entities.EscuelaResponseDto
 @Repository
 public interface EscuelaRepository extends JpaRepository<Escuela, Long> {
     
-    @Query("SELECT new com.escuelas.project.escuelas_project.service.models.dtos.escuela.EscuelaResponseDto(e) FROM Escuela e WHERE e.activo = true")
+    @Query("SELECT new com.escuelas.project.escuelas_project.escuela.entities.EscuelaResponseDto(e) FROM Escuela e WHERE e.activo = true")
     public List<EscuelaResponseDto> findAllActive();
 
     @Query("SELECT e FROM Escuela e WHERE e.activo = true AND e.id_escuela = ?1")

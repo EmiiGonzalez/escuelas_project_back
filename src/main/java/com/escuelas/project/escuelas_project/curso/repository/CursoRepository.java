@@ -14,10 +14,10 @@ import com.escuelas.project.escuelas_project.escuela.entities.Escuela;
 @Repository
 public interface CursoRepository extends JpaRepository<Curso, Long> {
     
-    @Query("SELECT new com.escuelas.project.escuelas_project.service.models.dtos.curso.CursoResponseDto(c) FROM Curso c WHERE c.activo = true")
+    @Query("SELECT new com.escuelas.project.escuelas_project.curso.entities.CursoResponseDto(c) FROM Curso c WHERE c.activo = true")
     public Optional<CursoResponseDto> findByNombreDto(String nombre);
 
-    @Query("SELECT new com.escuelas.project.escuelas_project.service.models.dtos.curso.CursoResponseDto(c) FROM Curso c WHERE YEAR(c.fecha_de_curso) = ?1 AND c.escuela = ?2 AND c.activo = true")
+    @Query("SELECT new com.escuelas.project.escuelas_project.curso.entities.CursoResponseDto(c) FROM Curso c WHERE YEAR(c.fecha_de_curso) = ?1 AND c.escuela = ?2 AND c.activo = true")
     public List<CursoResponseDto> findAllActiveDto(Integer year, Escuela escuela);
 
     @Query("SELECT c FROM Curso c WHERE c.activo = true AND c.nombre = ?1")

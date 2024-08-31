@@ -15,13 +15,13 @@ import com.escuelas.project.escuelas_project.curso.entities.Curso;
 @Repository
 public interface ClaseRepository extends JpaRepository<Clase, Long> {
 
-    @Query("SELECT new com.escuelas.project.escuelas_project.service.models.dtos.clase.ClaseResponseDto(c) FROM Clase c WHERE c.curso = ?1")
+    @Query("SELECT new com.escuelas.project.escuelas_project.clase.entities.ClaseResponseDto(c) FROM Clase c WHERE c.curso = ?1")
     public List<ClaseResponseDto> findAllClasesDto(Curso curso);
 
-    @Query("SELECT new com.escuelas.project.escuelas_project.service.models.dtos.clase.ClaseResponseDto(c) FROM Clase c WHERE c.id_clase = ?1")
+    @Query("SELECT new com.escuelas.project.escuelas_project.clase.entities.ClaseResponseDto(c) FROM Clase c WHERE c.id_clase = ?1")
     public Optional<ClaseResponseDto> findByIdClaseResponseDto(Long id);
 
-    @Query("SELECT new com.escuelas.project.escuelas_project.service.models.dtos.clase.ClaseCountResponseDto(COUNT(c)) FROM Clase c WHERE c.curso = ?1")
+    @Query("SELECT new com.escuelas.project.escuelas_project.clase.entities.ClaseCountResponseDto(COUNT(c)) FROM Clase c WHERE c.curso = ?1")
     public Optional<ClaseCountResponseDto> countByCurso(Curso curso);
 
 }
