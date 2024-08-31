@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.escuelas.project.escuelas_project.custom.CommonTestUtils;
-import com.escuelas.project.escuelas_project.service.models.dtos.escuela.EscuelaResponseDto;
+import com.escuelas.project.escuelas_project.escuela.entities.EscuelaResponseDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;

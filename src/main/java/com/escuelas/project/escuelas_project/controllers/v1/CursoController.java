@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.escuelas.project.escuelas_project.service.curso.CursoService;
-import com.escuelas.project.escuelas_project.service.models.dtos.curso.CursoDto;
-import com.escuelas.project.escuelas_project.service.models.dtos.curso.CursoDtoUpdate;
-import com.escuelas.project.escuelas_project.service.models.dtos.curso.CursoResponseDto;
+import com.escuelas.project.escuelas_project.curso.entities.CursoDto;
+import com.escuelas.project.escuelas_project.curso.entities.CursoDtoUpdate;
+import com.escuelas.project.escuelas_project.curso.entities.CursoResponseDto;
+import com.escuelas.project.escuelas_project.curso.exceptions.CursoExistenteException;
+import com.escuelas.project.escuelas_project.curso.exceptions.CursoNoExistenteException;
+import com.escuelas.project.escuelas_project.curso.services.CursoService;
+import com.escuelas.project.escuelas_project.escuela.exceptions.EscuelaNoExistenteException;
+import com.escuelas.project.escuelas_project.service.exceptions.EntityDisabledException;
 import com.escuelas.project.escuelas_project.service.models.dtos.response.ResponseMessage;
-import com.escuelas.project.escuelas_project.service.models.exceptions.EntityDisabledException;
-import com.escuelas.project.escuelas_project.service.models.exceptions.cursoExceptions.CursoExistenteException;
-import com.escuelas.project.escuelas_project.service.models.exceptions.cursoExceptions.CursoNoExistenteException;
-import com.escuelas.project.escuelas_project.service.models.exceptions.escuelaExceptions.EscuelaNoExistenteException;
 import com.escuelas.project.escuelas_project.service.utils.PersonalizedMessage;
 
 import jakarta.transaction.Transactional;
