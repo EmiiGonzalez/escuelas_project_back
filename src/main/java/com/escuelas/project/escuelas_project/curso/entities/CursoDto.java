@@ -8,6 +8,9 @@ public record CursoDto(
     String nombre,
     @NotBlank(message = "{curso.fecha.not.blank}")
     @Pattern(message = "{curso.pattern.message}", regexp = "^\\d{2}-\\d{2}-\\d{4}$")
-    String fecha
+    String fecha,
+
+    @NotBlank(message = "{curso.materia.not.blank}")
+    String materia
 ) {
 } 

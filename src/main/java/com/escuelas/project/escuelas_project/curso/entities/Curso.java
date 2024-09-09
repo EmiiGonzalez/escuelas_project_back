@@ -31,6 +31,8 @@ public class Curso {
     private Long id_curso;
     private String nombre;
 
+    private String materia;
+
     @Temporal(TemporalType.DATE)
     private LocalDate fecha_de_curso;
 
@@ -46,6 +48,7 @@ public class Curso {
         LocalDate fechaParseada = Util.parsearFecha(dto.fecha());
         this.fecha_de_curso = fechaParseada;
         this.escuela = escuela;
+        this.materia = dto.materia();
         this.activo = true;
     }
 
@@ -56,6 +59,10 @@ public class Curso {
         if (curso.fecha() != null) {
             LocalDate fechaParseada = Util.parsearFecha(curso.fecha());
             this.setFecha_de_curso(fechaParseada);
+        }
+
+        if (curso.materia() != null) {
+            this.setMateria(curso.materia());
         }
     }
 
