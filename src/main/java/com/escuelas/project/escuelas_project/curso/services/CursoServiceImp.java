@@ -41,6 +41,15 @@ public class CursoServiceImp implements CursoService {
         return this.cursoRepository.findAllActiveDto(year, escuelaEntity);
     }
 
+    @Override
+    public CursoResponseDto findById(Long id) throws EntityDisabledException, CursoNoExistenteException {
+        Optional<Curso> optional = this.cursoRepository.findById(id);
+
+        optional.orElseThrow(() -> new CursoNoExistenteException("El curso no existe"));
+
+        return new CursoResponseDto(optional.get());
+    }
+    
 
     @Override
     public CursoResponseDto save(CursoDto dto, Long id)

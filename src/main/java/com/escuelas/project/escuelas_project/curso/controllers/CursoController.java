@@ -1,4 +1,4 @@
-package com.escuelas.project.escuelas_project.controllers.v1;
+package com.escuelas.project.escuelas_project.curso.controllers;
 
 import java.util.List;
 
@@ -81,6 +81,19 @@ public class CursoController {
         return ResponseEntity.status(HttpStatus.OK).body(cursoService.findAllActiveDto(year, id));
     }
 
+    /**
+     * Busca un Curso por su ID.
+     * @param id
+     * @return  un DTO de curso.
+     * @throws EntityDisabledException
+     * @throws CursoNoExistenteException
+     */
+
+    @GetMapping(value = "/find/{id}", headers = "Accept=application/json")
+    @ResponseBody
+    public ResponseEntity<CursoResponseDto> findById(@PathVariable Long id) throws EntityDisabledException, CursoNoExistenteException {
+        return ResponseEntity.status(HttpStatus.OK).body(cursoService.findById(id));
+    }
 
     // ----------------------- GET END ----------------------------------
 

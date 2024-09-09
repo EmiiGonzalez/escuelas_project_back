@@ -26,59 +26,69 @@ import com.escuelas.project.escuelas_project.service.exceptions.EntityDisabledEx
  * @see CursoExistenteException
  */
 public interface CursoService {
-    /**
-     * Metodo que busca todos los cursos activos de una escuela dada.
-     * 
-     * @param year el año del curso.
-     * @param id   el id de la escuela.
-     * @return una lista de DTOs de cursos que coinciden con los criterios de
-     *         busqueda.
-     * @throws EntityDisabledException     si la escuela esta deshabilitada.
-     * @throws EscuelaNoExistenteException si la escuela no existe.
-     */
-    List<CursoResponseDto> findAllActiveDto(Integer year, Long id)
-            throws EntityDisabledException, EscuelaNoExistenteException;
 
+        /**
+         * Busca un curso por su ID.
+         * 
+         * @param id el ID del curso.
+         * @return un DTO de curso.
+         * @throws EntityDisabledException   si la escuela esta deshabilitada.
+         * @throws CursoNoExistenteException si el curso no existe.
+         */
+        CursoResponseDto findById(Long id) throws EntityDisabledException, CursoNoExistenteException;
 
-    /**
-     * Metodo que guarda un nuevo curso.
-     * 
-     * @param dto el DTO del curso.
-     * @param id  el id de la escuela.
-     * @return un DTO de curso.
-     * @throws CursoExistenteException     si el curso ya existe.
-     * @throws EscuelaNoExistenteException si la escuela no existe.
-     * @throws EntityDisabledException     si la escuela esta deshabilitada.
-     */
-    CursoResponseDto save(CursoDto dto, Long id)
-            throws CursoExistenteException, EscuelaNoExistenteException, EntityDisabledException;
+        /**
+         * Metodo que busca todos los cursos activos de una escuela dada.
+         * 
+         * @param year el año del curso.
+         * @param id   el id de la escuela.
+         * @return una lista de DTOs de cursos que coinciden con los criterios de
+         *         busqueda.
+         * @throws EntityDisabledException     si la escuela esta deshabilitada.
+         * @throws EscuelaNoExistenteException si la escuela no existe.
+         */
+        List<CursoResponseDto> findAllActiveDto(Integer year, Long id)
+                        throws EntityDisabledException, EscuelaNoExistenteException;
 
-    /**
-     * Metodo que habilita un curso.
-     * 
-     * @param id el id del curso.
-     * @throws CursoNoExistenteException si el curso no existe.
-     * @throws EntityDisabledException   si el curso esta deshabilitado.
-     */
-    void enable(Long id) throws CursoNoExistenteException, EntityDisabledException;
+        /**
+         * Metodo que guarda un nuevo curso.
+         * 
+         * @param dto el DTO del curso.
+         * @param id  el id de la escuela.
+         * @return un DTO de curso.
+         * @throws CursoExistenteException     si el curso ya existe.
+         * @throws EscuelaNoExistenteException si la escuela no existe.
+         * @throws EntityDisabledException     si la escuela esta deshabilitada.
+         */
+        CursoResponseDto save(CursoDto dto, Long id)
+                        throws CursoExistenteException, EscuelaNoExistenteException, EntityDisabledException;
 
-    /**
-     * Metodo que deshabilita un curso.
-     * 
-     * @param id el id del curso.
-     * @throws CursoNoExistenteException si el curso no existe.
-     * @throws EntityDisabledException   si el curso esta habilitado.
-     */
-    void disable(Long id) throws CursoNoExistenteException, EntityDisabledException;
+        /**
+         * Metodo que habilita un curso.
+         * 
+         * @param id el id del curso.
+         * @throws CursoNoExistenteException si el curso no existe.
+         * @throws EntityDisabledException   si el curso esta deshabilitado.
+         */
+        void enable(Long id) throws CursoNoExistenteException, EntityDisabledException;
 
-    /**
-     * Metodo que actualiza un curso.
-     * 
-     * @param dto el DTO del curso.
-     * @param id  el id del curso.
-     * @return un DTO de curso.
-     * @throws CursoNoExistenteException si el curso no existe.
-     * @throws EntityDisabledException   si el curso esta deshabilitado.
-     */
-    CursoResponseDto update(CursoDtoUpdate dto, Long id) throws CursoNoExistenteException, EntityDisabledException;
+        /**
+         * Metodo que deshabilita un curso.
+         * 
+         * @param id el id del curso.
+         * @throws CursoNoExistenteException si el curso no existe.
+         * @throws EntityDisabledException   si el curso esta habilitado.
+         */
+        void disable(Long id) throws CursoNoExistenteException, EntityDisabledException;
+
+        /**
+         * Metodo que actualiza un curso.
+         * 
+         * @param dto el DTO del curso.
+         * @param id  el id del curso.
+         * @return un DTO de curso.
+         * @throws CursoNoExistenteException si el curso no existe.
+         * @throws EntityDisabledException   si el curso esta deshabilitado.
+         */
+        CursoResponseDto update(CursoDtoUpdate dto, Long id) throws CursoNoExistenteException, EntityDisabledException;
 }
