@@ -4,9 +4,10 @@ public record CursoResponseDto(
     Long id,
     String nombre,
     String escuela,
-    String materia
+    String materia,
+    String escuelaId
 ) {
     public CursoResponseDto(Curso curso) {
-        this(curso.getId_curso(), curso.getNombre(), curso.getEscuela().getNombre(), curso.getMateria());
+        this(curso.getId_curso(), curso.getNombre(), curso.getEscuela().getNombre(), curso.getMateria(), curso.getEscuela().getId_escuela().toString());
     }
 }
