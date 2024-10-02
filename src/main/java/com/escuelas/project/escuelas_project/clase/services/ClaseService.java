@@ -2,6 +2,9 @@ package com.escuelas.project.escuelas_project.clase.services;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.escuelas.project.escuelas_project.clase.entities.ClaseCountResponseDto;
 import com.escuelas.project.escuelas_project.clase.entities.ClaseDto;
 import com.escuelas.project.escuelas_project.clase.entities.ClaseResponseDto;
@@ -89,7 +92,7 @@ public interface ClaseService {
      * @throws EntityDisabledException   si el curso con el ID proporcionado
      *                                   no está habilitado
      */
-    public List<ClaseResponseDto> findAll(Long id) throws CursoNoExistenteException, EntityDisabledException;
+    public Page<ClaseResponseDto> findAll(Long id, Pageable pageable) throws CursoNoExistenteException, EntityDisabledException;
 
     /**
      * Cuenta el número de clases de un curso por su ID.

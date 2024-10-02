@@ -3,6 +3,8 @@ package com.escuelas.project.escuelas_project.clase.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.escuelas.project.escuelas_project.clase.entities.Clase;
@@ -61,9 +63,9 @@ public class ClaseServiceImp implements ClaseService {
     }
 
     @Override
-    public List<ClaseResponseDto> findAll(Long id) throws CursoNoExistenteException, EntityDisabledException {
+    public Page<ClaseResponseDto> findAll(Long id, Pageable pageable) throws CursoNoExistenteException, EntityDisabledException {
         Curso curso = searchCurso(id);
-        return this.claseRepository.findAllClasesDto(curso);
+        return this.claseRepository.findAllClasesDto(curso, pageable);
     }
 
     @Override

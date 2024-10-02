@@ -2,6 +2,11 @@ package com.escuelas.project.escuelas_project.clase.controllers;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,9 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.escuelas.project.escuelas_project.clase.entities.Clase;
 import com.escuelas.project.escuelas_project.clase.entities.ClaseCountResponseDto;
 import com.escuelas.project.escuelas_project.clase.entities.ClaseDto;
 import com.escuelas.project.escuelas_project.clase.entities.ClaseResponseDto;
@@ -65,9 +72,14 @@ public class ClaseController {
      */
     @GetMapping(value = "/find/all/{id}", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<List<ClaseResponseDto>> findAll(@PathVariable Long id)
+    public ResponseEntity<Page<ClaseResponseDto>> findAll(@PathVariable Long id,
+            @PageableDefault(size = 5, page = 0) Pageable pageable,
+            @RequestParam(name = "sort", defaultValue = "fecha_de_clase") String sortBy,
+            @RequestParam(name = "direction", defaultValue = "DESC") String direction)
             throws CursoNoExistenteException, EntityDisabledException {
-        return ResponseEntity.status(HttpStatus.OK).body(claseService.findAll(id));
+        Sort sort = Sort.by(Sort.Direction.fromString(direction), sortBy);
+        pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort);
+        return ResponseEntity.status(HttpStatus.OK).body(claseService.findAll(id, pageable));
     }
 
     /**
