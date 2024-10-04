@@ -48,6 +48,7 @@ public class Clase {
         this.fecha_de_clase = Util.parsearFecha(dto.fecha());
         this.contenido = dto.contenido();
         this.numero_de_clase = dto.numeroDeClase();
+        this.activo = true;
     }
 
     public void update(ClaseUpdateDto dto) {
