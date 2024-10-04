@@ -36,6 +36,8 @@ public class Clase {
 
     private Integer numero_de_clase;
 
+    private Boolean activo;
+
     @ManyToOne
     @JoinColumn(name = "id_curso", nullable = false)
     private Curso curso;

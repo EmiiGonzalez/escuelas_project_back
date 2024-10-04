@@ -59,7 +59,8 @@ public class ClaseServiceImp implements ClaseService {
     @Override
     public void deleteById(Long id) throws ClaseNoExistenteException, EntityDisabledException {
         Clase clase = searchClase(id);
-        this.claseRepository.delete(clase);
+        clase.setActivo(false);
+        claseRepository.save(clase);
     }
 
     @Override

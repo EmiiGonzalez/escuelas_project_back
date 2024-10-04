@@ -1,7 +1,5 @@
 package com.escuelas.project.escuelas_project.clase.controllers;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -9,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -174,7 +173,7 @@ public class ClaseController {
      * @throws EntityDisabledException   Excepción lanzada si la entidad está
      *                                   deshabilitada.
      */
-    @PutMapping(value = "/delete/{id}", headers = "Accept=application/json")
+    @DeleteMapping(value = "/delete/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
     public ResponseEntity<ResponseMessage> delete(@PathVariable Long id)
