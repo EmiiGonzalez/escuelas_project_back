@@ -1,6 +1,5 @@
 package com.escuelas.project.escuelas_project.clase.services;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;

@@ -1,7 +1,9 @@
 package com.escuelas.project.escuelas_project.curso.entities;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import com.escuelas.project.escuelas_project.alumno.entities.Alumno;
 import com.escuelas.project.escuelas_project.escuela.entities.Escuela;
 import com.escuelas.project.escuelas_project.service.utils.Util;
 
@@ -13,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -41,6 +44,9 @@ public class Curso {
     private Escuela escuela;
 
     private Boolean activo;
+
+    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Alumno> alumnos;
 
 
     public Curso(CursoDto dto, Escuela escuela) {
