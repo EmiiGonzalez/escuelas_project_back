@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class Asistencia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_asistecia;
+    private Long id_asistencia;
 
     private Boolean asistio;
 

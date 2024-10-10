@@ -6,6 +6,6 @@ public record AsistenciaResponsePorClaseDto(
     String alumno
 ) {
     public AsistenciaResponsePorClaseDto(Asistencia asistencia) {
-        this( asistencia.getId_asistecia(), asistencia.getAsistio(), asistencia.getAlumno().getNombre() );
+        this( asistencia.getId_asistencia(), asistencia.getAsistio(), asistencia.getAlumno().getNombre() );
     }
 }

@@ -1,5 +1,8 @@
 package com.escuelas.project.escuelas_project.alumno.entities;
 
+import java.util.List;
+
+import com.escuelas.project.escuelas_project.asistencia.entities.Asistencia;
 import com.escuelas.project.escuelas_project.curso.entities.Curso;
 
 import jakarta.persistence.CascadeType;
@@ -10,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 import lombok.Data;
@@ -28,7 +32,9 @@ public class Alumno {
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "curso_id", nullable = false)
     private Curso curso;
-    
+
+    @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Asistencia> asistencias;
 
     private Boolean activo;
 

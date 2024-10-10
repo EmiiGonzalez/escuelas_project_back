@@ -19,7 +19,7 @@ public interface AsistenciaRepository extends JpaRepository<Asistencia, Long> {
     @Query("SELECT new com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponseDto(a) FROM Asistencia a WHERE a.alumno = ?1 AND a.clase.activo = true")
     public List<AsistenciaResponseDto> findAllAsistenciaDtoByAlumno(Alumno alumno);
 
-    @Query("SELECT new com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponseDto(a) FROM Asistencia a WHERE a.id_asistecia = ?1 AND a.clase.activo = true")
+    @Query("SELECT new com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponseDto(a) FROM Asistencia a WHERE a.id_asistencia = ?1 AND a.clase.activo = true")
     public Optional<AsistenciaResponseDto> findByIdAsistenciaResponseDto(Long id);
 
     @Query("SELECT new com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponseDto(a) FROM Asistencia a WHERE a.clase = ?1 AND a.clase.activo = true")

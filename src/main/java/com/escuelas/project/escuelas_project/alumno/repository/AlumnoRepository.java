@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.escuelas.project.escuelas_project.alumno.entities.Alumno;
 import com.escuelas.project.escuelas_project.alumno.entities.AlumnoResponseDto;
+import com.escuelas.project.escuelas_project.alumno.entities.AlumnoResponseDtoWithAsistencia;
 import com.escuelas.project.escuelas_project.curso.entities.Curso;
 
 @Repository
@@ -20,8 +21,8 @@ public interface AlumnoRepository extends JpaRepository<Alumno, Long> {
     @Query("SELECT new com.escuelas.project.escuelas_project.alumno.entities.AlumnoResponseDto(a) FROM Alumno a WHERE a.activo = true AND a.id_alumno = ?1")
     public Optional<AlumnoResponseDto> findByIdActivo(Long id);
 
-    @Query("SELECT new com.escuelas.project.escuelas_project.alumno.entities.AlumnoResponseDto(a) FROM Alumno a WHERE a.activo = true AND a.curso = ?1")
-    public List<AlumnoResponseDto> findAllActiveByCurso(Curso curso);
+    @Query("SELECT new com.escuelas.project.escuelas_project.alumno.entities.AlumnoResponseDtoWithAsistencia(a) FROM Alumno a WHERE a.activo = true AND a.curso = ?1")
+    public List<AlumnoResponseDtoWithAsistencia> findAllActiveByCurso(Curso curso);
 
     @Query("SELECT new com.escuelas.project.escuelas_project.alumno.entities.AlumnoResponseDto(a) FROM Alumno a WHERE a.activo = true")
     public List<AlumnoResponseDto> findAllActive();

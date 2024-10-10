@@ -9,6 +9,7 @@ import com.escuelas.project.escuelas_project.alumno.entities.Alumno;
 import com.escuelas.project.escuelas_project.alumno.entities.AlumnoDto;
 import com.escuelas.project.escuelas_project.alumno.entities.AlumnoDtoUpdate;
 import com.escuelas.project.escuelas_project.alumno.entities.AlumnoResponseDto;
+import com.escuelas.project.escuelas_project.alumno.entities.AlumnoResponseDtoWithAsistencia;
 import com.escuelas.project.escuelas_project.alumno.exceptions.AlumnoNoExistenteException;
 import com.escuelas.project.escuelas_project.alumno.repository.AlumnoRepository;
 import com.escuelas.project.escuelas_project.curso.entities.Curso;
@@ -70,7 +71,7 @@ public class AlumnoServiceImp implements AlumnoService {
     }
 
     @Override
-    public List<AlumnoResponseDto> findAllActiveCurso(Long id)
+    public List<AlumnoResponseDtoWithAsistencia> findAllActiveCurso(Long id)
             throws EntityDisabledException, CursoNoExistenteException {
         Curso curso = searchCurso(id);
         return this.alumnoRepository.findAllActiveByCurso(curso);

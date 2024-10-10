@@ -2,11 +2,14 @@ package com.escuelas.project.escuelas_project.alumno.services;
 
 import java.util.List;
 
+import com.escuelas.project.escuelas_project.alumno.entities.Alumno;
 import com.escuelas.project.escuelas_project.alumno.entities.AlumnoDto;
 import com.escuelas.project.escuelas_project.alumno.entities.AlumnoDtoUpdate;
 import com.escuelas.project.escuelas_project.alumno.entities.AlumnoResponseDto;
+import com.escuelas.project.escuelas_project.alumno.entities.AlumnoResponseDtoWithAsistencia;
 import com.escuelas.project.escuelas_project.alumno.exceptions.AlumnoNoExistenteException;
 import com.escuelas.project.escuelas_project.curso.exceptions.CursoNoExistenteException;
+import com.escuelas.project.escuelas_project.escuela.exceptions.EscuelaNoExistenteException;
 import com.escuelas.project.escuelas_project.service.exceptions.EntityDisabledException;
 
 /**
@@ -94,7 +97,7 @@ public interface AlumnoService {
      * @throws EntityDisabledException   si el curso está deshabilitado
      * @throws CursoNoExistenteException si el curso no existe
      */
-    public List<AlumnoResponseDto> findAllActiveCurso(Long id)
+    public List<AlumnoResponseDtoWithAsistencia> findAllActiveCurso(Long id)
             throws EntityDisabledException, CursoNoExistenteException;
 
     /**
