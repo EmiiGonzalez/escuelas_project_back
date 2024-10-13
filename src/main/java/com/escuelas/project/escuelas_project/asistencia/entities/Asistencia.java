@@ -10,12 +10,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "asistencias")
+@Table(name = "asistencias",
+uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"id_alumno", "id_clase"})
+})
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,11 +31,11 @@ public class Asistencia {
     private Boolean asistio;
 
     @ManyToOne
-    @JoinColumn(name = "id_clase")
+    @JoinColumn(name = "id_clase", nullable = false)
     private Clase clase;
 
     @ManyToOne
-    @JoinColumn(name = "id_alumno")
+    @JoinColumn(name = "id_alumno", nullable = false)
     private Alumno alumno;
 
     public Asistencia(Alumno alumno, Clase clase, AsistenciaDto dto) {
