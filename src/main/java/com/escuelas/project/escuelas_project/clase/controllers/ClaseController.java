@@ -71,6 +71,7 @@ public class ClaseController {
      */
     @GetMapping(value = "/find/all/{id}", headers = "Accept=application/json")
     @ResponseBody
+    @Transactional
     public ResponseEntity<Page<ClaseResponseDto>> findAll(@PathVariable Long id,
             @PageableDefault(size = 5, page = 0) Pageable pageable,
             @RequestParam(name = "sort", defaultValue = "fecha_de_clase") String sortBy,
@@ -92,6 +93,7 @@ public class ClaseController {
      */
     @GetMapping(value = "find/{id}", headers = "Accept=application/json")
     @ResponseBody
+    @Transactional
     public ResponseEntity<ClaseResponseDto> findById(@PathVariable Long id)
             throws ClaseNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.OK).body(claseService.findById(id));
