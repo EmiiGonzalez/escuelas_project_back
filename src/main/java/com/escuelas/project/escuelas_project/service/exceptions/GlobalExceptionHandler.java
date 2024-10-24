@@ -14,6 +14,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import com.escuelas.project.escuelas_project.alumno.exceptions.AlumnoNoExistenteException;
+import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaExistenteException;
 import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaNoExistenteException;
 import com.escuelas.project.escuelas_project.clase.exceptions.ClaseNoExistenteException;
 import com.escuelas.project.escuelas_project.curso.exceptions.CursoExistenteException;
@@ -137,6 +138,14 @@ public class GlobalExceptionHandler {
         ResponseMessage responseMessage = new ResponseMessage(personalizedMessage.asistenciaNotFound(), 3);
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseMessage);
+    }
+
+    @ResponseBody
+    @ExceptionHandler(AsistenciaExistenteException.class)
+    public ResponseEntity<ResponseMessage> asistenciaExistenteException(AsistenciaExistenteException e) {
+        ResponseMessage responseMessage = new ResponseMessage(personalizedMessage.asistenciaAlredyExist(), 4);
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseMessage);
     }
 
     // ASISTENCIA EXCEPTIONS END

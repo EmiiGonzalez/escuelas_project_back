@@ -8,6 +8,7 @@ import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaDto;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponseDto;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponsePorClaseDto;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaUpdateDto;
+import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaExistenteException;
 import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaNoExistenteException;
 import com.escuelas.project.escuelas_project.clase.exceptions.ClaseNoExistenteException;
 import com.escuelas.project.escuelas_project.service.exceptions.EntityDisabledException;
@@ -48,8 +49,9 @@ public interface AsistenciaService {
      * @throws AlumnoNoExistenteException Si el alumno no existe.
      * @throws EntityDisabledException   Si la entidad está deshabilitada.
      * @throws ClaseNoExistenteException   Si la clase no existe.
+     * @throws AsistenciaExistenteException 
      */
-    ArrayList<AsistenciaResponseDto> createAsistencia(List<AsistenciaDto> asistenciaDto, Long idClase) throws AlumnoNoExistenteException, EntityDisabledException, ClaseNoExistenteException;
+    ArrayList<AsistenciaResponseDto> createAsistencia(List<AsistenciaDto> asistenciaDto, Long idClase) throws AlumnoNoExistenteException, EntityDisabledException, ClaseNoExistenteException, AsistenciaExistenteException;
 
     
     /**

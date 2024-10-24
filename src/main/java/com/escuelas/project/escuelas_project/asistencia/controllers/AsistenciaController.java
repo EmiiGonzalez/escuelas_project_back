@@ -20,6 +20,7 @@ import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaDto;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponseDto;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponsePorClaseDto;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaUpdateDto;
+import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaExistenteException;
 import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaNoExistenteException;
 import com.escuelas.project.escuelas_project.asistencia.services.AsistenciaService;
 import com.escuelas.project.escuelas_project.clase.exceptions.ClaseNoExistenteException;
@@ -73,13 +74,14 @@ public class AsistenciaController {
      * @throws EntityDisabledException    si una entidad está deshabilitada
      * @throws ClaseNoExistenteException  si una Clase con el ID proporcionado no
      *                                    existe
+     * @throws AsistenciaExistenteException 
      */
     @PostMapping("/save/{claseId}")
     @ResponseBody
     @Transactional
     public ResponseEntity<ArrayList<AsistenciaResponseDto>> save(@PathVariable Long claseId,
             @RequestBody @Valid List<AsistenciaDto> dto)
-            throws AlumnoNoExistenteException, EntityDisabledException, ClaseNoExistenteException {
+            throws AlumnoNoExistenteException, EntityDisabledException, ClaseNoExistenteException, AsistenciaExistenteException {
         return ResponseEntity.status(HttpStatus.CREATED).body(asistenciaService.createAsistencia(dto, claseId));
     }
 

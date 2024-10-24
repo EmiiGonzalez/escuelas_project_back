@@ -14,6 +14,7 @@ import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaDto;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponseDto;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponsePorClaseDto;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaUpdateDto;
+import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaExistenteException;
 import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaNoExistenteException;
 import com.escuelas.project.escuelas_project.asistencia.repository.AsistenciaRepository;
 import com.escuelas.project.escuelas_project.clase.entities.Clase;
@@ -41,9 +42,13 @@ public class AsistenciaServiceImp implements AsistenciaService {
 
     @Override
     public ArrayList<AsistenciaResponseDto> createAsistencia(List<AsistenciaDto> asistenciaDto, Long idClase)
-            throws AlumnoNoExistenteException, EntityDisabledException, ClaseNoExistenteException {
+            throws AlumnoNoExistenteException, EntityDisabledException, ClaseNoExistenteException, AsistenciaExistenteException {
 
         Clase clase = this.searchClase(idClase);
+
+        if (clase.getAsistencias().size() > 0) {
+            throw new AsistenciaExistenteException("La clase ya tiene asistencias");
+        }
 
         ArrayList<AsistenciaResponseDto> asistenciaList = new ArrayList<>();
 

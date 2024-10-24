@@ -107,7 +107,9 @@ public class PersonalizedMessage {
         return messageSource.getMessage("body.not.valid", null, null);
     }
 
-
+    public String asistenciaAlredyExist() {
+        return messageSource.getMessage("asistencia.already.exists", null, null);
+    }
 
     // ERRORS MESSAGE ENDS
 }
