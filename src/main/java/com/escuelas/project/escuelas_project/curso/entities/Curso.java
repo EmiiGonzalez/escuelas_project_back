@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.escuelas.project.escuelas_project.alumno.entities.Alumno;
+import com.escuelas.project.escuelas_project.clase.entities.Clase;
 import com.escuelas.project.escuelas_project.escuela.entities.Escuela;
 import com.escuelas.project.escuelas_project.service.utils.Util;
 
@@ -48,6 +49,8 @@ public class Curso {
     @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Alumno> alumnos;
 
+    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Clase> clases;
 
     public Curso(CursoDto dto, Escuela escuela) {
         this.nombre = dto.nombre();

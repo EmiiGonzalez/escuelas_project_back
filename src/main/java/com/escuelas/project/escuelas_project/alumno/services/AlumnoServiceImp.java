@@ -12,6 +12,10 @@ import com.escuelas.project.escuelas_project.alumno.entities.AlumnoResponseDto;
 import com.escuelas.project.escuelas_project.alumno.entities.AlumnoResponseDtoWithAsistencia;
 import com.escuelas.project.escuelas_project.alumno.exceptions.AlumnoNoExistenteException;
 import com.escuelas.project.escuelas_project.alumno.repository.AlumnoRepository;
+import com.escuelas.project.escuelas_project.asistencia.entities.Asistencia;
+import com.escuelas.project.escuelas_project.asistencia.entities.AsistioEnum;
+import com.escuelas.project.escuelas_project.asistencia.repository.AsistenciaRepository;
+import com.escuelas.project.escuelas_project.clase.repository.ClaseRepository;
 import com.escuelas.project.escuelas_project.curso.entities.Curso;
 import com.escuelas.project.escuelas_project.curso.exceptions.CursoNoExistenteException;
 import com.escuelas.project.escuelas_project.curso.repository.CursoRepository;
@@ -39,7 +43,19 @@ public class AlumnoServiceImp implements AlumnoService {
     public AlumnoResponseDto create(AlumnoDto dto, Long id)
             throws CursoNoExistenteException, EntityDisabledException {
         Curso curso = searchCurso(id);
-        return new AlumnoResponseDto(this.alumnoRepository.save(new Alumno(dto, curso)));
+        Alumno alumno = this.alumnoRepository.save(new Alumno(dto, curso));
+        curso.getClases().stream().forEach(
+                (clase) -> {
+                    if (clase.getActivo()) {
+                        clase.getAsistencias().add(new Asistencia(
+                                alumno,
+                                clase,
+                                AsistioEnum.NOENLISTADO));
+                    }
+                });
+        
+        
+        return new AlumnoResponseDto(alumno);
     }
 
     @Override
