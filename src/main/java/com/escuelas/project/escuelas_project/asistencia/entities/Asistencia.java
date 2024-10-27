@@ -4,6 +4,8 @@ import com.escuelas.project.escuelas_project.alumno.entities.Alumno;
 import com.escuelas.project.escuelas_project.clase.entities.Clase;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -28,7 +30,8 @@ public class Asistencia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_asistencia;
 
-    private Boolean asistio;
+    @Enumerated(EnumType.STRING)
+    private AsistioEnum asistio;
 
     @ManyToOne
     @JoinColumn(name = "id_clase", nullable = false)
@@ -41,18 +44,18 @@ public class Asistencia {
     public Asistencia(Alumno alumno, Clase clase, AsistenciaDto dto) {
         this.alumno = alumno;
         this.clase = clase;
-        this.asistio = dto.asistio();
+        this.asistio = AsistioEnum.convertToAsistioEnum(dto.asistio());
     }
 
     public void update(AsistenciaUpdateDto dto) {
         if (dto.asistio() != null) {
-            this.asistio = dto.asistio();
+            this.asistio = AsistioEnum.convertToAsistioEnum(dto.asistio());
         }
     }
 
     public void update(AsistenciaDto asistencia) {
-        if (asistencia.asistio() != null) {
-            this.asistio = asistencia.asistio();
+        if (asistencia.asistio() != null ) {
+            this.asistio = AsistioEnum.convertToAsistioEnum(asistencia.asistio());
         }
     }
 }

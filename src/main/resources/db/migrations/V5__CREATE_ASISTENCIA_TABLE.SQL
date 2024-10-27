@@ -1,6 +1,6 @@
 CREATE TABLE asistencias (
     id_asistencia BIGINT AUTO_INCREMENT PRIMARY KEY,
-    asistio BOOLEAN,
+    asistio ENUM('PRESENTE', 'AUSENTE', 'JUSTIFICADO', 'NOENLISTADO') NOT NULL DEFAULT 'AUSENTE',
     id_clase BIGINT,
     id_alumno BIGINT,
     FOREIGN KEY (id_clase) REFERENCES clases(id_clase),
