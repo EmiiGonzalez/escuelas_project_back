@@ -14,8 +14,6 @@ import com.escuelas.project.escuelas_project.alumno.exceptions.AlumnoNoExistente
 import com.escuelas.project.escuelas_project.alumno.repository.AlumnoRepository;
 import com.escuelas.project.escuelas_project.asistencia.entities.Asistencia;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistioEnum;
-import com.escuelas.project.escuelas_project.asistencia.repository.AsistenciaRepository;
-import com.escuelas.project.escuelas_project.clase.repository.ClaseRepository;
 import com.escuelas.project.escuelas_project.curso.entities.Curso;
 import com.escuelas.project.escuelas_project.curso.exceptions.CursoNoExistenteException;
 import com.escuelas.project.escuelas_project.curso.repository.CursoRepository;
