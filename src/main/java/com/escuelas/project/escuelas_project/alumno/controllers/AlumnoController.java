@@ -18,7 +18,6 @@ import com.escuelas.project.escuelas_project.alumno.entities.Alumno;
 import com.escuelas.project.escuelas_project.alumno.entities.AlumnoDto;
 import com.escuelas.project.escuelas_project.alumno.entities.AlumnoDtoUpdate;
 import com.escuelas.project.escuelas_project.alumno.entities.AlumnoResponseDto;
-import com.escuelas.project.escuelas_project.alumno.entities.AlumnoResponseDtoWithAsistencia;
 import com.escuelas.project.escuelas_project.alumno.exceptions.AlumnoNoExistenteException;
 import com.escuelas.project.escuelas_project.alumno.services.AlumnoService;
 import com.escuelas.project.escuelas_project.curso.exceptions.CursoNoExistenteException;
@@ -104,7 +103,7 @@ public class AlumnoController {
      */
     @GetMapping(value = "/find/all/active/{id}", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<List<AlumnoResponseDtoWithAsistencia>> findAllActiveCurso(@PathVariable Long id)
+    public ResponseEntity<List<AlumnoResponseDto>> findAllActiveCurso(@PathVariable Long id)
             throws EntityDisabledException, CursoNoExistenteException {
         return ResponseEntity.status(HttpStatus.OK).body(alumnoService.findAllActiveCurso(id));
     }
