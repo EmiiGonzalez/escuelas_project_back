@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.escuelas.project.escuelas_project.alumno.exceptions.AlumnoNoExistenteException;
+import com.escuelas.project.escuelas_project.asistencia.entities.Asistencia;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaDto;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponseDto;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponsePorClaseDto;
+import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaStats;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaUpdateDto;
 import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaExistenteException;
 import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaNoExistenteException;
 import com.escuelas.project.escuelas_project.clase.exceptions.ClaseNoExistenteException;
+import com.escuelas.project.escuelas_project.escuela.exceptions.EscuelaExistenteException;
+import com.escuelas.project.escuelas_project.escuela.exceptions.EscuelaNoExistenteException;
 import com.escuelas.project.escuelas_project.service.exceptions.EntityDisabledException;
 
 /**
@@ -104,5 +108,15 @@ public interface AsistenciaService {
      * @throws EntityDisabledException     Si la entidad está deshabilitada.
      */
     List<AsistenciaResponsePorClaseDto> findAllAsistenciaDtoByClase(Long id) throws ClaseNoExistenteException, EntityDisabledException;
+
+
+    /**
+     * 
+     * @param id Identificador de la Clase
+     * @return  Lista de AsistenciaStats de la Clase
+     * @throws ClaseNoExistenteException si la Clase no existe
+     * @throws EntityDisabledException si la entidad esta deshabilitada
+     */
+    List <AsistenciaStats> findAllAsistenciaDtoByClaseStats(Long id) throws ClaseNoExistenteException, EntityDisabledException;
 
 } 

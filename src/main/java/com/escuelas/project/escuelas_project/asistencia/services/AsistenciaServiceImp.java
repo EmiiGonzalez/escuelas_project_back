@@ -1,6 +1,7 @@
 package com.escuelas.project.escuelas_project.asistencia.services;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +14,9 @@ import com.escuelas.project.escuelas_project.asistencia.entities.Asistencia;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaDto;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponseDto;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponsePorClaseDto;
+import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaStats;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaUpdateDto;
+import com.escuelas.project.escuelas_project.asistencia.entities.AsistioEnum;
 import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaExistenteException;
 import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaNoExistenteException;
 import com.escuelas.project.escuelas_project.asistencia.repository.AsistenciaRepository;
@@ -101,6 +104,26 @@ public class AsistenciaServiceImp implements AsistenciaService {
         return this.asistenciaRepository.findAllAsistenciaDtoByClase(clase);
     }
 
+    @Override
+    public List<AsistenciaStats> findAllAsistenciaDtoByClaseStats(Long id) throws ClaseNoExistenteException, EntityDisabledException {
+
+        List<Asistencia> asistencias = this.findAllAsistenciaByClase(id);
+        HashMap<AsistioEnum, AsistenciaStats> asistenciasStats = new HashMap<>();
+
+        asistencias.stream().forEach(a -> {
+            AsistioEnum asistio = a.getAsistio();
+
+            if (!asistenciasStats.containsKey(asistio)) {
+                asistenciasStats.put(asistio, new AsistenciaStats(asistio));
+            }
+
+            asistenciasStats.get(asistio).updateTotal();
+            
+        });
+
+        return new ArrayList<>(asistenciasStats.values());
+    }
+
     /**
      * Busca un Alumno por ID y asegura su disponibilidad.
      *
@@ -173,4 +196,16 @@ public class AsistenciaServiceImp implements AsistenciaService {
 
         return asistenciaOptional.get();
     }
+
+    private List<Asistencia> findAllAsistenciaByClase(Long id) throws ClaseNoExistenteException, EntityDisabledException {
+        Clase clase = this.searchClase(id);
+        Optional<List<Asistencia>> asistencias = this.asistenciaRepository.findAllAsistenciaByClase(clase);
+
+        if (!asistencias.isPresent()) {
+            throw new ClaseNoExistenteException("La clase no existe");
+        }
+
+        return asistencias.get();
+    }
+
 }

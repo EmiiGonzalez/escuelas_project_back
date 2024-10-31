@@ -29,4 +29,7 @@ public interface AsistenciaRepository extends JpaRepository<Asistencia, Long> {
     public List<AsistenciaResponsePorClaseDto> findAllAsistenciaDtoByClase(Clase clase);
 
     public Optional<Asistencia> findByAlumnoAndClase(Alumno alumno, Clase clase);
+
+    @Query("SELECT a FROM Asistencia a WHERE a.clase = ?1 AND a.clase.activo = true")
+    public Optional<List<Asistencia>> findAllAsistenciaByClase(Clase clase);
 }

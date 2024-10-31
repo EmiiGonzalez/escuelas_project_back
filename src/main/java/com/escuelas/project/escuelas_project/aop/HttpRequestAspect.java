@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
 @Component
 public class HttpRequestAspect {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    @Before("execution(* com.escuelas.project.escuelas_project.controllers.v1.*.*(..))")
+    @Before("execution(* com.escuelas.project.escuelas_project..controllers.*.*(..))")
     public void logHttpBeforeReturning(JoinPoint joinPoint) {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
@@ -26,7 +26,7 @@ public class HttpRequestAspect {
                 request.getRemoteAddr(), request.getParameterMap());
     }
 
-    @AfterReturning(pointcut = "execution(* com.escuelas.project.escuelas_project.controllers.v1.*.*(..))", returning = "result")
+    @AfterReturning(pointcut = "execution(* com.escuelas.project.escuelas_project..controllers.*.*(..))", returning = "result")
     public void logHttpAfterReturning(JoinPoint joinPoint, Object result) {
         logger.info("Método: {}, Respuesta: {}", joinPoint.getSignature().toShortString(), result);
     }

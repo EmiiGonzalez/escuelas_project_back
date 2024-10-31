@@ -19,6 +19,7 @@ import com.escuelas.project.escuelas_project.alumno.exceptions.AlumnoNoExistente
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaDto;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponseDto;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponsePorClaseDto;
+import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaStats;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaUpdateDto;
 import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaExistenteException;
 import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaNoExistenteException;
@@ -115,6 +116,22 @@ public class AsistenciaController {
     public ResponseEntity<List<AsistenciaResponseDto>> findAllByAlumno(@PathVariable Long id)
             throws EntityDisabledException, AlumnoNoExistenteException {
         return ResponseEntity.ok(asistenciaService.findAllAsistenciaDtoByAlumno(id));
+    }
+
+    /**
+     * Recupera una_lista de AsistenciaResponseDto por el ID de la Clase.
+     *
+     * @param id el ID de la Clase para recuperar AsistenciaResponseDto
+     * @return un ResponseEntity que contiene una_lista de AsistenciaResponseDto
+     *         para la Clase
+     * @throws EntityDisabledException    si una entidad está deshabilitada
+     * @throws ClaseNoExistenteException  si la Clase no existe
+     */
+    @GetMapping("/find/all/clase/stats/{id}")
+    @ResponseBody
+    public ResponseEntity<List<AsistenciaStats>> findAllByClaseStats(@PathVariable Long id)
+            throws EntityDisabledException, ClaseNoExistenteException {
+        return ResponseEntity.ok(asistenciaService.findAllAsistenciaDtoByClaseStats(id));
     }
 
     /**
