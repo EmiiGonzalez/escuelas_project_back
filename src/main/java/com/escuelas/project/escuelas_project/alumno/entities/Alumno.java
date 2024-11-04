@@ -55,6 +55,10 @@ public class Alumno {
         if (dto.nombre() != null) {
             this.setNombre(dto.nombre());
         }
+
+        if (dto.telefono() != null) {
+            this.setTelefono(dto.telefono().trim());
+        }
     }
 
     public void disable() {
