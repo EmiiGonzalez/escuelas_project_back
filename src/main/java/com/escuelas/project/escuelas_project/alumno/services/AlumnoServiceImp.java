@@ -66,15 +66,21 @@ public class AlumnoServiceImp implements AlumnoService {
 
     @Override
     public void disable(Long id) throws AlumnoNoExistenteException, EntityDisabledException {
-        String msg = "El alumno ya estaba deshabilitado";
-        Alumno alumno = changeStatus(id, msg);
+        Alumno alumno = searchAlumno(id);
+        if (!alumno.getActivo()) {
+            throw new EntityDisabledException("El alumno ya estaba deshabilitado");            
+        }
+
         alumno.setActivo(false);
     }
 
     @Override
     public void enable(Long id) throws AlumnoNoExistenteException, EntityDisabledException {
-        String msg = "El alumno ya estaba habilitado";
-        Alumno alumno = changeStatus(id, msg);
+        Alumno alumno = searchAlumno(id);
+        if (alumno.getActivo()) {
+            throw new EntityDisabledException("El alumno ya estaba habilitado");
+        }
+
         alumno.setActivo(true);
     }
 
@@ -132,30 +138,6 @@ public class AlumnoServiceImp implements AlumnoService {
             throw new EntityDisabledException(msg);
         }
 
-        return alumno;
-    }
-
-    /**
-     * Busca un Alumno por ID, asegura su disponibilidad y realiza un delete logico
-     * o habilita.
-     *
-     * @param id el ID del Alumno a buscar
-     * @return el Alumno si se encuentra y está activo
-     * @throws AlumnoNoExistenteException si no existe un curso con el ID
-     *                                    proporcionado
-     * @throws EntityDisabledException    si el Curso del Alumno no está habilitado
-     */
-
-    private Alumno changeStatus(Long id, String messaje) throws AlumnoNoExistenteException, EntityDisabledException {
-        Optional<Alumno> alumnoOptional = this.alumnoRepository.findById(id);
-        alumnoOptional.orElseThrow(() -> new AlumnoNoExistenteException("El alumno no existe"));
-        Alumno alumno = alumnoOptional.get();
-        if (alumno.getActivo() || !alumno.getCurso().getActivo()) {
-
-            String msg = alumno.getActivo() == true ? messaje
-                    : "El curso del alumno no esta habilitado";
-            throw new EntityDisabledException(msg);
-        }
         return alumno;
     }
 

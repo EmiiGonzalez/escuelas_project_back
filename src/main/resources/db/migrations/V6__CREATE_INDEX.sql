@@ -1,0 +1,1 @@
+CREATE INDEX idx_asistencia_alumno_clase ON asistencias (id_alumno, id_clase);
