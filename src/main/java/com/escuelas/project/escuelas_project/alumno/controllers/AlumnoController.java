@@ -18,6 +18,7 @@ import com.escuelas.project.escuelas_project.alumno.entities.Alumno;
 import com.escuelas.project.escuelas_project.alumno.entities.AlumnoDto;
 import com.escuelas.project.escuelas_project.alumno.entities.AlumnoDtoUpdate;
 import com.escuelas.project.escuelas_project.alumno.entities.AlumnoResponseDto;
+import com.escuelas.project.escuelas_project.alumno.entities.AlumnoWithFullDataResponseDto;
 import com.escuelas.project.escuelas_project.alumno.exceptions.AlumnoNoExistenteException;
 import com.escuelas.project.escuelas_project.alumno.services.AlumnoService;
 import com.escuelas.project.escuelas_project.curso.exceptions.CursoNoExistenteException;
@@ -121,6 +122,21 @@ public class AlumnoController {
     public ResponseEntity<AlumnoResponseDto> findById(@PathVariable Long id)
             throws EntityDisabledException, AlumnoNoExistenteException {
         return ResponseEntity.status(HttpStatus.OK).body(alumnoService.findById(id));
+    }
+    /**
+     * Recupera un objeto AlumnoResponseDto por su ID.
+     *
+     * @param id el ID del Alumno
+     * @return un ResponseEntity que contiene el objeto AlumnoResponseDto
+     * @throws EntityDisabledException    si la entidad está deshabilitada
+     * @throws AlumnoNoExistenteException si el Alumno no existe
+     */
+    @GetMapping(value = "find/full/{id}", headers = "Accept=application/json")
+    @ResponseBody
+    @Transactional
+    public ResponseEntity<AlumnoWithFullDataResponseDto> findByIdWithData(@PathVariable Long id)
+            throws EntityDisabledException, AlumnoNoExistenteException {
+        return ResponseEntity.status(HttpStatus.OK).body(alumnoService.findByIdWithData(id));
     }
 
     //----------------------- GET END ----------------------------------

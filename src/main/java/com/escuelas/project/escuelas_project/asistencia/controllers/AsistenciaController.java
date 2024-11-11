@@ -163,7 +163,7 @@ public class AsistenciaController {
     @PutMapping("/update/{id}")
     @ResponseBody
     @Transactional
-    public ResponseEntity<AsistenciaResponseDto> update(@RequestBody AsistenciaUpdateDto dto, @PathVariable Long id)
+    public ResponseEntity<AsistenciaResponseDto> update(@RequestBody @Valid AsistenciaUpdateDto dto, @PathVariable Long id)
             throws AsistenciaNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.OK).body(asistenciaService.updateAsistencia(id, dto));
     }

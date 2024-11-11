@@ -73,6 +73,7 @@ public class AsistenciaServiceImp implements AsistenciaService {
     @Override
     public AsistenciaResponseDto updateAsistencia(Long id, AsistenciaUpdateDto asistenciaUpdateDto)
             throws AsistenciaNoExistenteException, EntityDisabledException {
+                System.out.println(asistenciaUpdateDto);
         Asistencia asistencia = this.searchAsistencia(id);
         asistencia.update(asistenciaUpdateDto);
 

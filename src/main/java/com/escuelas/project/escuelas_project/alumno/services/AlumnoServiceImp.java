@@ -1,5 +1,6 @@
 package com.escuelas.project.escuelas_project.alumno.services;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,9 +10,11 @@ import com.escuelas.project.escuelas_project.alumno.entities.Alumno;
 import com.escuelas.project.escuelas_project.alumno.entities.AlumnoDto;
 import com.escuelas.project.escuelas_project.alumno.entities.AlumnoDtoUpdate;
 import com.escuelas.project.escuelas_project.alumno.entities.AlumnoResponseDto;
+import com.escuelas.project.escuelas_project.alumno.entities.AlumnoWithFullDataResponseDto;
 import com.escuelas.project.escuelas_project.alumno.exceptions.AlumnoNoExistenteException;
 import com.escuelas.project.escuelas_project.alumno.repository.AlumnoRepository;
 import com.escuelas.project.escuelas_project.asistencia.entities.Asistencia;
+import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaStats;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistioEnum;
 import com.escuelas.project.escuelas_project.curso.entities.Curso;
 import com.escuelas.project.escuelas_project.curso.exceptions.CursoNoExistenteException;
@@ -99,6 +102,12 @@ public class AlumnoServiceImp implements AlumnoService {
     public List<AlumnoResponseDto> findAll() {
         return this.alumnoRepository.findAllDto();
     };
+
+    @Override
+    public AlumnoWithFullDataResponseDto findByIdWithData(Long id) throws AlumnoNoExistenteException, EntityDisabledException {
+        Alumno alumno = searchAlumno(id);
+        return new AlumnoWithFullDataResponseDto(alumno);
+    }
 
     /**
      * Busca un Alumno por ID y asegura su disponibilidad.
