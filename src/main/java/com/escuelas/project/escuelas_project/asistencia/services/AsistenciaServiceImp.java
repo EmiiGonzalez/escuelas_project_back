@@ -45,7 +45,8 @@ public class AsistenciaServiceImp implements AsistenciaService {
 
     @Override
     public ArrayList<AsistenciaResponseDto> createAsistencia(List<AsistenciaDto> asistenciaDto, Long idClase)
-            throws AlumnoNoExistenteException, EntityDisabledException, ClaseNoExistenteException, AsistenciaExistenteException {
+            throws AlumnoNoExistenteException, EntityDisabledException, ClaseNoExistenteException,
+            AsistenciaExistenteException {
 
         Clase clase = this.searchClase(idClase);
 
@@ -73,7 +74,7 @@ public class AsistenciaServiceImp implements AsistenciaService {
     @Override
     public AsistenciaResponseDto updateAsistencia(Long id, AsistenciaUpdateDto asistenciaUpdateDto)
             throws AsistenciaNoExistenteException, EntityDisabledException {
-                System.out.println(asistenciaUpdateDto);
+        System.out.println(asistenciaUpdateDto);
         Asistencia asistencia = this.searchAsistencia(id);
         asistencia.update(asistenciaUpdateDto);
 
@@ -106,21 +107,13 @@ public class AsistenciaServiceImp implements AsistenciaService {
     }
 
     @Override
-    public List<AsistenciaStats> findAllAsistenciaDtoByClaseStats(Long id) throws ClaseNoExistenteException, EntityDisabledException {
+    public List<AsistenciaStats> findAllAsistenciaDtoByClaseStats(Long id)
+            throws ClaseNoExistenteException, EntityDisabledException {
 
         List<Asistencia> asistencias = this.findAllAsistenciaByClase(id);
         HashMap<AsistioEnum, AsistenciaStats> asistenciasStats = new HashMap<>();
 
-        asistencias.stream().forEach(a -> {
-            AsistioEnum asistio = a.getAsistio();
-
-            if (!asistenciasStats.containsKey(asistio)) {
-                asistenciasStats.put(asistio, new AsistenciaStats(asistio));
-            }
-
-            asistenciasStats.get(asistio).updateTotal();
-            
-        });
+        asistencias.forEach(a -> asistenciasStats.computeIfAbsent(a.getAsistio(), AsistenciaStats::new).updateTotal());
 
         return new ArrayList<>(asistenciasStats.values());
     }
@@ -198,7 +191,8 @@ public class AsistenciaServiceImp implements AsistenciaService {
         return asistenciaOptional.get();
     }
 
-    private List<Asistencia> findAllAsistenciaByClase(Long id) throws ClaseNoExistenteException, EntityDisabledException {
+    private List<Asistencia> findAllAsistenciaByClase(Long id)
+            throws ClaseNoExistenteException, EntityDisabledException {
         Clase clase = this.searchClase(id);
         Optional<List<Asistencia>> asistencias = this.asistenciaRepository.findAllAsistenciaByClase(clase);
 
