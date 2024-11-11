@@ -1,6 +1,5 @@
 package com.escuelas.project.escuelas_project.alumno.services;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,7 +13,6 @@ import com.escuelas.project.escuelas_project.alumno.entities.AlumnoWithFullDataR
 import com.escuelas.project.escuelas_project.alumno.exceptions.AlumnoNoExistenteException;
 import com.escuelas.project.escuelas_project.alumno.repository.AlumnoRepository;
 import com.escuelas.project.escuelas_project.asistencia.entities.Asistencia;
-import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaStats;
 import com.escuelas.project.escuelas_project.asistencia.entities.AsistioEnum;
 import com.escuelas.project.escuelas_project.curso.entities.Curso;
 import com.escuelas.project.escuelas_project.curso.exceptions.CursoNoExistenteException;
