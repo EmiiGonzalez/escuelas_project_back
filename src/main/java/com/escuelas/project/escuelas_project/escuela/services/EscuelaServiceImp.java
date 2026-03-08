@@ -2,13 +2,14 @@ package com.escuelas.project.escuelas_project.escuela.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
 import com.escuelas.project.escuelas_project.escuela.entities.Escuela;
-import com.escuelas.project.escuelas_project.escuela.entities.EscuelaDto;
-import com.escuelas.project.escuelas_project.escuela.entities.EscuelaDtoUpdate;
-import com.escuelas.project.escuelas_project.escuela.entities.EscuelaResponseDto;
+import com.escuelas.project.escuelas_project.escuela.dtos.EscuelaDto;
+import com.escuelas.project.escuelas_project.escuela.dtos.EscuelaDtoUpdate;
+import com.escuelas.project.escuelas_project.escuela.dtos.EscuelaResponseDto;
 import com.escuelas.project.escuelas_project.escuela.exceptions.EscuelaExistenteException;
 import com.escuelas.project.escuelas_project.escuela.exceptions.EscuelaNoExistenteException;
 import com.escuelas.project.escuelas_project.escuela.repository.EscuelaRepository;
@@ -42,13 +43,13 @@ public class EscuelaServiceImp implements EscuelaService {
     }
 
     @Override
-    public EscuelaResponseDto findById(Long id) throws EscuelaNoExistenteException, EntityDisabledException {
+    public EscuelaResponseDto findById(UUID id) throws EscuelaNoExistenteException, EntityDisabledException {
         Escuela escuela = searchEscuela(id);
         return new EscuelaResponseDto(escuela);
     }
 
     @Override
-    public EscuelaResponseDto update(EscuelaDtoUpdate escuela, Long id)
+    public EscuelaResponseDto update(EscuelaDtoUpdate escuela, UUID id)
             throws EscuelaNoExistenteException, EntityDisabledException {
         Escuela escuelaUpdate = searchEscuela(id);
         escuelaUpdate.update(escuela);
@@ -66,12 +67,12 @@ public class EscuelaServiceImp implements EscuelaService {
     }
 
     @Override
-    public void disable(Long id) throws EscuelaNoExistenteException, EntityDisabledException {
+    public void disable(UUID id) throws EscuelaNoExistenteException, EntityDisabledException {
         changeState(id, false);
     }
 
     @Override
-    public void enable(Long id) throws EscuelaNoExistenteException, EntityDisabledException {
+    public void enable(UUID id) throws EscuelaNoExistenteException, EntityDisabledException {
         changeState(id, true);
     }
 
@@ -85,7 +86,7 @@ public class EscuelaServiceImp implements EscuelaService {
      *                                     datos
      * @throws EntityDisabledException     si la Escuela está deshabilitada
      */
-    private Escuela searchEscuela(Long id) throws EscuelaNoExistenteException, EntityDisabledException {
+    private Escuela searchEscuela(UUID id) throws EscuelaNoExistenteException, EntityDisabledException {
         Optional<Escuela> escuelaOptional = escuelaRepository.findById(id);
         escuelaOptional.orElseThrow(() -> new EscuelaNoExistenteException("La escuela no existe en la base de datos"));
 
@@ -107,7 +108,7 @@ public class EscuelaServiceImp implements EscuelaService {
      * @throws EscuelaNoExistenteException si la Escuela no existe en la base de
      *                                     datos
      */
-    private void changeState(Long id, Boolean state) throws EntityDisabledException, EscuelaNoExistenteException {
+    private void changeState(UUID id, Boolean state) throws EntityDisabledException, EscuelaNoExistenteException {
         Optional<Escuela> escuelaOptional = escuelaRepository.findById(id);
         if (!escuelaOptional.isPresent()) {
             throw new EscuelaNoExistenteException("La escuela no existe en la base de datos");

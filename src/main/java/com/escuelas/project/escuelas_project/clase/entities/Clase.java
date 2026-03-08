@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.escuelas.project.escuelas_project.asistencia.entities.Asistencia;
+import com.escuelas.project.escuelas_project.clase.dtos.ClaseDto;
+import com.escuelas.project.escuelas_project.clase.dtos.ClaseUpdateDto;
+import com.escuelas.project.escuelas_project.common.entities.BaseEntity;
 import com.escuelas.project.escuelas_project.curso.entities.Curso;
 import com.escuelas.project.escuelas_project.service.utils.Util;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -22,18 +22,16 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "clases")
 @Data
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class Clase {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_clase;
+public class Clase extends BaseEntity {
 
     @Temporal(TemporalType.DATE)
     private LocalDate fecha_de_clase;
@@ -45,12 +43,11 @@ public class Clase {
     private Boolean activo;
 
     @ManyToOne
-    @JoinColumn(name = "id_curso", nullable = false)
+    @JoinColumn(name = "curso_id", nullable = false)
     private Curso curso;
 
     @OneToMany(mappedBy = "clase", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Asistencia> asistencias;
-
 
     public Clase(Curso curso, ClaseDto dto) {
         this.curso = curso;
@@ -77,5 +74,4 @@ public class Clase {
     public String getFechaString() {
         return Util.parsearFechaString(this.getFecha_de_clase());
     }
-
 }

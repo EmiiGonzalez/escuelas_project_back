@@ -2,14 +2,15 @@ package com.escuelas.project.escuelas_project.asistencia.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import com.escuelas.project.escuelas_project.alumno.exceptions.AlumnoNoExistenteException;
 import com.escuelas.project.escuelas_project.asistencia.entities.Asistencia;
-import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaDto;
-import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponseDto;
-import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponsePorClaseDto;
-import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaStats;
-import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaUpdateDto;
+import com.escuelas.project.escuelas_project.asistencia.dtos.AsistenciaDto;
+import com.escuelas.project.escuelas_project.asistencia.dtos.AsistenciaResponseDto;
+import com.escuelas.project.escuelas_project.asistencia.dtos.AsistenciaResponsePorClaseDto;
+import com.escuelas.project.escuelas_project.asistencia.dtos.AsistenciaStats;
+import com.escuelas.project.escuelas_project.asistencia.dtos.AsistenciaUpdateDto;
 import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaExistenteException;
 import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaNoExistenteException;
 import com.escuelas.project.escuelas_project.clase.exceptions.ClaseNoExistenteException;
@@ -55,7 +56,7 @@ public interface AsistenciaService {
      * @throws ClaseNoExistenteException   Si la clase no existe.
      * @throws AsistenciaExistenteException 
      */
-    ArrayList<AsistenciaResponseDto> createAsistencia(List<AsistenciaDto> asistenciaDto, Long idClase) throws AlumnoNoExistenteException, EntityDisabledException, ClaseNoExistenteException, AsistenciaExistenteException;
+    ArrayList<AsistenciaResponseDto> createAsistencia(List<AsistenciaDto> asistenciaDto, UUID idClase) throws AlumnoNoExistenteException, EntityDisabledException, ClaseNoExistenteException, AsistenciaExistenteException;
 
     
     /**
@@ -67,7 +68,7 @@ public interface AsistenciaService {
      * @throws AsistenciaNoExistenteException Si la asistencia no existe.
      * @throws EntityDisabledException      Si la entidad está deshabilitada.
      */
-    AsistenciaResponseDto updateAsistencia(Long id, AsistenciaUpdateDto asistenciaUpdateDto) throws AsistenciaNoExistenteException, EntityDisabledException;
+    AsistenciaResponseDto updateAsistencia(UUID id, AsistenciaUpdateDto asistenciaUpdateDto) throws AsistenciaNoExistenteException, EntityDisabledException;
 
     /**
      * Elimina una asistencia.
@@ -76,7 +77,7 @@ public interface AsistenciaService {
      * @throws AsistenciaNoExistenteException Si la asistencia no existe.
      * @throws EntityDisabledException      Si la entidad está deshabilitada.
      */
-    void deleteAsistencia(Long id) throws AsistenciaNoExistenteException, EntityDisabledException; 
+    void deleteAsistencia(UUID id) throws AsistenciaNoExistenteException, EntityDisabledException; 
 
 
     /**
@@ -87,7 +88,7 @@ public interface AsistenciaService {
      * @throws AsistenciaNoExistenteException Si la asistencia no existe.
      * @throws EntityDisabledException      Si la entidad está deshabilitada.
      */
-    AsistenciaResponseDto findByIdAsistencia(Long id) throws AsistenciaNoExistenteException, EntityDisabledException; 
+    AsistenciaResponseDto findByIdAsistencia(UUID id) throws AsistenciaNoExistenteException, EntityDisabledException; 
 
     /**
      * Busca todas las asistencias por su identificador de alumno.
@@ -97,7 +98,7 @@ public interface AsistenciaService {
      * @throws AlumnoNoExistenteException Si el alumno no existe.
      * @throws EntityDisabledException   Si la entidad está deshabilitada.
      */
-    List<AsistenciaResponseDto> findAllAsistenciaDtoByAlumno(Long id) throws AlumnoNoExistenteException, EntityDisabledException; 
+    List<AsistenciaResponseDto> findAllAsistenciaDtoByAlumno(UUID id) throws AlumnoNoExistenteException, EntityDisabledException; 
 
     /**
      * Busca todas las asistencias por su identificador de clase.
@@ -107,7 +108,7 @@ public interface AsistenciaService {
      * @throws ClaseNoExistenteException   Si la clase no existe.
      * @throws EntityDisabledException     Si la entidad está deshabilitada.
      */
-    List<AsistenciaResponsePorClaseDto> findAllAsistenciaDtoByClase(Long id) throws ClaseNoExistenteException, EntityDisabledException;
+    List<AsistenciaResponsePorClaseDto> findAllAsistenciaDtoByClase(UUID id) throws ClaseNoExistenteException, EntityDisabledException;
 
 
     /**
@@ -117,6 +118,6 @@ public interface AsistenciaService {
      * @throws ClaseNoExistenteException si la Clase no existe
      * @throws EntityDisabledException si la entidad esta deshabilitada
      */
-    List <AsistenciaStats> findAllAsistenciaDtoByClaseStats(Long id) throws ClaseNoExistenteException, EntityDisabledException;
+    List <AsistenciaStats> findAllAsistenciaDtoByClaseStats(UUID id) throws ClaseNoExistenteException, EntityDisabledException;
 
 } 

@@ -2,18 +2,19 @@ package com.escuelas.project.escuelas_project.alumno.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
 import com.escuelas.project.escuelas_project.alumno.entities.Alumno;
-import com.escuelas.project.escuelas_project.alumno.entities.AlumnoDto;
-import com.escuelas.project.escuelas_project.alumno.entities.AlumnoDtoUpdate;
-import com.escuelas.project.escuelas_project.alumno.entities.AlumnoResponseDto;
-import com.escuelas.project.escuelas_project.alumno.entities.AlumnoWithFullDataResponseDto;
+import com.escuelas.project.escuelas_project.alumno.dtos.AlumnoDto;
+import com.escuelas.project.escuelas_project.alumno.dtos.AlumnoDtoUpdate;
+import com.escuelas.project.escuelas_project.alumno.dtos.AlumnoResponseDto;
+import com.escuelas.project.escuelas_project.alumno.dtos.AlumnoWithFullDataResponseDto;
 import com.escuelas.project.escuelas_project.alumno.exceptions.AlumnoNoExistenteException;
 import com.escuelas.project.escuelas_project.alumno.repository.AlumnoRepository;
 import com.escuelas.project.escuelas_project.asistencia.entities.Asistencia;
-import com.escuelas.project.escuelas_project.asistencia.entities.AsistioEnum;
+import com.escuelas.project.escuelas_project.asistencia.dtos.AsistioEnum;
 import com.escuelas.project.escuelas_project.curso.entities.Curso;
 import com.escuelas.project.escuelas_project.curso.exceptions.CursoNoExistenteException;
 import com.escuelas.project.escuelas_project.curso.repository.CursoRepository;
@@ -38,7 +39,7 @@ public class AlumnoServiceImp implements AlumnoService {
     private final CursoRepository cursoRepository;
 
     @Override
-    public AlumnoResponseDto create(AlumnoDto dto, Long id)
+    public AlumnoResponseDto create(AlumnoDto dto, UUID id)
             throws CursoNoExistenteException, EntityDisabledException {
         Curso curso = searchCurso(id);
         Alumno alumno = this.alumnoRepository.save(new Alumno(dto, curso));
@@ -57,7 +58,7 @@ public class AlumnoServiceImp implements AlumnoService {
     }
 
     @Override
-    public AlumnoResponseDto update(AlumnoDtoUpdate dto, Long id)
+    public AlumnoResponseDto update(AlumnoDtoUpdate dto, UUID id)
             throws AlumnoNoExistenteException, EntityDisabledException {
         Alumno alumno = searchAlumno(id);
         alumno.update(dto);
@@ -65,7 +66,7 @@ public class AlumnoServiceImp implements AlumnoService {
     }
 
     @Override
-    public void disable(Long id) throws AlumnoNoExistenteException, EntityDisabledException {
+    public void disable(UUID id) throws AlumnoNoExistenteException, EntityDisabledException {
         Alumno alumno = searchAlumno(id);
         if (!alumno.getActivo()) {
             throw new EntityDisabledException("El alumno ya estaba deshabilitado");            
@@ -75,7 +76,7 @@ public class AlumnoServiceImp implements AlumnoService {
     }
 
     @Override
-    public void enable(Long id) throws AlumnoNoExistenteException, EntityDisabledException {
+    public void enable(UUID id) throws AlumnoNoExistenteException, EntityDisabledException {
         Alumno alumno = searchAlumno(id);
         if (alumno.getActivo()) {
             throw new EntityDisabledException("El alumno ya estaba habilitado");
@@ -85,13 +86,13 @@ public class AlumnoServiceImp implements AlumnoService {
     }
 
     @Override
-    public AlumnoResponseDto findById(Long id)
+    public AlumnoResponseDto findById(UUID id)
             throws AlumnoNoExistenteException, EntityDisabledException {
         return new AlumnoResponseDto(searchAlumno(id));
     }
 
     @Override
-    public List<AlumnoResponseDto> findAllActiveCurso(Long id)
+    public List<AlumnoResponseDto> findAllActiveCurso(UUID id)
             throws EntityDisabledException, CursoNoExistenteException {
         Curso curso = searchCurso(id);
         return this.alumnoRepository.findAllActiveByCurso(curso);
@@ -108,7 +109,7 @@ public class AlumnoServiceImp implements AlumnoService {
     };
 
     @Override
-    public AlumnoWithFullDataResponseDto findByIdWithData(Long id) throws AlumnoNoExistenteException, EntityDisabledException {
+    public AlumnoWithFullDataResponseDto findByIdWithData(UUID id) throws AlumnoNoExistenteException, EntityDisabledException {
         Alumno alumno = searchAlumno(id);
         return new AlumnoWithFullDataResponseDto(alumno);
     }
@@ -125,7 +126,7 @@ public class AlumnoServiceImp implements AlumnoService {
      *                                    habilitado
      */
 
-    private Alumno searchAlumno(Long id) throws AlumnoNoExistenteException, EntityDisabledException {
+    private Alumno searchAlumno(UUID id) throws AlumnoNoExistenteException, EntityDisabledException {
         Optional<Alumno> alumnoOptional = this.alumnoRepository.findById(id);
 
         alumnoOptional.orElseThrow(() -> new AlumnoNoExistenteException("El alumno no existe"));
@@ -149,7 +150,7 @@ public class AlumnoServiceImp implements AlumnoService {
      * @throws EntityDisabledException   si el Curso no está activo
      * @throws CursoNoExistenteException si no existe ningún Curso con el ID dado
      */
-    private Curso searchCurso(Long id) throws EntityDisabledException, CursoNoExistenteException {
+    private Curso searchCurso(UUID id) throws EntityDisabledException, CursoNoExistenteException {
         Optional<Curso> cursoOptional = this.cursoRepository.findById(id);
         cursoOptional.orElseThrow(() -> new CursoNoExistenteException("El curso no existe"));
         if (!cursoOptional.get().getActivo()) {

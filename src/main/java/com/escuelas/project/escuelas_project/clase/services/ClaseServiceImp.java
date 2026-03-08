@@ -1,16 +1,17 @@
 package com.escuelas.project.escuelas_project.clase.services;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.escuelas.project.escuelas_project.clase.dtos.ClaseCountResponseDto;
+import com.escuelas.project.escuelas_project.clase.dtos.ClaseDto;
+import com.escuelas.project.escuelas_project.clase.dtos.ClaseResponseDto;
+import com.escuelas.project.escuelas_project.clase.dtos.ClaseUpdateDto;
 import com.escuelas.project.escuelas_project.clase.entities.Clase;
-import com.escuelas.project.escuelas_project.clase.entities.ClaseCountResponseDto;
-import com.escuelas.project.escuelas_project.clase.entities.ClaseDto;
-import com.escuelas.project.escuelas_project.clase.entities.ClaseResponseDto;
-import com.escuelas.project.escuelas_project.clase.entities.ClaseUpdateDto;
 import com.escuelas.project.escuelas_project.clase.exceptions.ClaseNoExistenteException;
 import com.escuelas.project.escuelas_project.clase.repository.ClaseRepository;
 import com.escuelas.project.escuelas_project.curso.entities.Curso;
@@ -36,14 +37,14 @@ public class ClaseServiceImp implements ClaseService {
     private final CursoRepository cursoRepository;
 
     @Override
-    public ClaseResponseDto save(ClaseDto dto, Long id)
+    public ClaseResponseDto save(ClaseDto dto, UUID id)
             throws CursoNoExistenteException, EntityDisabledException {
         Curso curso = searchCurso(id);
         return new ClaseResponseDto(claseRepository.save(new Clase(curso, dto)));
     }
 
     @Override
-    public ClaseResponseDto update(ClaseUpdateDto dto, Long id)
+    public ClaseResponseDto update(ClaseUpdateDto dto, UUID id)
             throws ClaseNoExistenteException, EntityDisabledException {
         Clase clase = searchClase(id);
         clase.update(dto);
@@ -51,12 +52,12 @@ public class ClaseServiceImp implements ClaseService {
     }
 
     @Override
-    public ClaseResponseDto findById(Long id) throws ClaseNoExistenteException, EntityDisabledException {
+    public ClaseResponseDto findById(UUID id) throws ClaseNoExistenteException, EntityDisabledException {
         return new ClaseResponseDto(searchClase(id));
     }
 
     @Override
-    public void deleteById(Long id) throws ClaseNoExistenteException, EntityDisabledException {
+    public void deleteById(UUID id) throws ClaseNoExistenteException, EntityDisabledException {
         // Clase clase = searchClase(id);
         // clase.setActivo(false);
         // claseRepository.save(clase);
@@ -64,13 +65,13 @@ public class ClaseServiceImp implements ClaseService {
     }
 
     @Override
-    public Page<ClaseResponseDto> findAll(Long id, Pageable pageable) throws CursoNoExistenteException, EntityDisabledException {
+    public Page<ClaseResponseDto> findAll(UUID id, Pageable pageable) throws CursoNoExistenteException, EntityDisabledException {
         Curso curso = searchCurso(id);
         return this.claseRepository.findAllClasesDto(curso, pageable);
     }
 
     @Override
-    public ClaseCountResponseDto count(Long id) throws CursoNoExistenteException, EntityDisabledException {
+    public ClaseCountResponseDto count(UUID id) throws CursoNoExistenteException, EntityDisabledException {
         Curso curso = searchCurso(id);
         return this.claseRepository.countByCurso(curso).orElse(new ClaseCountResponseDto(0L));
     }
@@ -86,7 +87,7 @@ public class ClaseServiceImp implements ClaseService {
      *                                   habilitado
      */
 
-    private Curso searchCurso(Long id) throws CursoNoExistenteException, EntityDisabledException {
+    private Curso searchCurso(UUID id) throws CursoNoExistenteException, EntityDisabledException {
         Optional<Curso> cursoOptional = this.cursoRepository.findById(id);
         cursoOptional.orElseThrow(() -> new CursoNoExistenteException("El curso no existe"));
         if (!cursoOptional.get().getActivo()) {
@@ -105,7 +106,7 @@ public class ClaseServiceImp implements ClaseService {
      * @throws EntityDisabledException   si el curso con el ID proporcionado no
      *                                   está habilitado
      */
-    private Clase searchClase(Long id) throws ClaseNoExistenteException, EntityDisabledException {
+    private Clase searchClase(UUID id) throws ClaseNoExistenteException, EntityDisabledException {
         Optional<Clase> claseOptional = this.claseRepository.findById(id);
         claseOptional.orElseThrow(() -> new ClaseNoExistenteException("La clase no existe"));
 

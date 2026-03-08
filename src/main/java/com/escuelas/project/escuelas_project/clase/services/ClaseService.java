@@ -1,15 +1,18 @@
 package com.escuelas.project.escuelas_project.clase.services;
 
+import java.util.UUID;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.escuelas.project.escuelas_project.clase.entities.ClaseCountResponseDto;
-import com.escuelas.project.escuelas_project.clase.entities.ClaseDto;
-import com.escuelas.project.escuelas_project.clase.entities.ClaseResponseDto;
-import com.escuelas.project.escuelas_project.clase.entities.ClaseUpdateDto;
+import com.escuelas.project.escuelas_project.clase.dtos.ClaseCountResponseDto;
+import com.escuelas.project.escuelas_project.clase.dtos.ClaseDto;
+import com.escuelas.project.escuelas_project.clase.dtos.ClaseResponseDto;
+import com.escuelas.project.escuelas_project.clase.dtos.ClaseUpdateDto;
 import com.escuelas.project.escuelas_project.clase.exceptions.ClaseNoExistenteException;
 import com.escuelas.project.escuelas_project.curso.exceptions.CursoNoExistenteException;
 import com.escuelas.project.escuelas_project.service.exceptions.EntityDisabledException;
+
 /**
  * Esta clase define la interfaz {@link ClaseService} y proporciona las
  * operaciones de servicio para las clases.
@@ -43,7 +46,7 @@ public interface ClaseService {
      * @throws EntityDisabledException   si el curso con el ID proporcionado no
      *                                   está habilitado
      */
-    public ClaseResponseDto save(ClaseDto dto, Long id)
+    public ClaseResponseDto save(ClaseDto dto, UUID id)
             throws CursoNoExistenteException, EntityDisabledException;
 
     /**
@@ -56,7 +59,7 @@ public interface ClaseService {
      *                                   existe
      * @throws EntityDisabledException
      */
-    public ClaseResponseDto update(ClaseUpdateDto dto, Long id)
+    public ClaseResponseDto update(ClaseUpdateDto dto, UUID id)
             throws ClaseNoExistenteException, EntityDisabledException;
 
     /**
@@ -68,7 +71,7 @@ public interface ClaseService {
      *                                   existe
      * @throws EntityDisabledException
      */
-    public ClaseResponseDto findById(Long id) throws ClaseNoExistenteException, EntityDisabledException;
+    public ClaseResponseDto findById(UUID id) throws ClaseNoExistenteException, EntityDisabledException;
 
     /**
      * Elimina una clase por su ID.
@@ -78,7 +81,7 @@ public interface ClaseService {
      *                                   existe
      * @throws EntityDisabledException
      */
-    public void deleteById(Long id) throws ClaseNoExistenteException, EntityDisabledException;
+    public void deleteById(UUID id) throws ClaseNoExistenteException, EntityDisabledException;
 
     /**
      * Busca todas las clases de un curso por su ID.
@@ -90,7 +93,7 @@ public interface ClaseService {
      * @throws EntityDisabledException   si el curso con el ID proporcionado
      *                                   no está habilitado
      */
-    public Page<ClaseResponseDto> findAll(Long id, Pageable pageable) throws CursoNoExistenteException, EntityDisabledException;
+    public Page<ClaseResponseDto> findAll(UUID id, Pageable pageable) throws CursoNoExistenteException, EntityDisabledException;
 
     /**
      * Cuenta el número de clases de un curso por su ID.
@@ -102,6 +105,6 @@ public interface ClaseService {
      * @throws EntityDisabledException   si el curso con el ID proporcionado
      *                                   no está habilitado
      */
-    public ClaseCountResponseDto count(Long id) throws CursoNoExistenteException, EntityDisabledException;
+    public ClaseCountResponseDto count(UUID id) throws CursoNoExistenteException, EntityDisabledException;
 
 }

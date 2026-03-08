@@ -1,23 +1,22 @@
 package com.escuelas.project.escuelas_project.escuela.entities;
 
+import com.escuelas.project.escuelas_project.common.entities.BaseEntity;
+import com.escuelas.project.escuelas_project.escuela.dtos.EscuelaDtoUpdate;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "escuelas")
 @Data
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class Escuela {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_escuela;
+public class Escuela extends BaseEntity {
     private String nombre;
     private Boolean activo;
 
@@ -36,4 +35,7 @@ public class Escuela {
         this.activo = false;
     }
 
+    public void enable() {
+        this.activo = true;
+    }
 }

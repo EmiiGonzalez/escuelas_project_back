@@ -1,6 +1,7 @@
 package com.escuelas.project.escuelas_project.escuela.controllers;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.escuelas.project.escuelas_project.escuela.entities.EscuelaDto;
-import com.escuelas.project.escuelas_project.escuela.entities.EscuelaDtoUpdate;
-import com.escuelas.project.escuelas_project.escuela.entities.EscuelaResponseDto;
+import com.escuelas.project.escuelas_project.escuela.dtos.EscuelaDto;
+import com.escuelas.project.escuelas_project.escuela.dtos.EscuelaDtoUpdate;
+import com.escuelas.project.escuelas_project.escuela.dtos.EscuelaResponseDto;
 import com.escuelas.project.escuelas_project.escuela.exceptions.EscuelaExistenteException;
 import com.escuelas.project.escuelas_project.escuela.exceptions.EscuelaNoExistenteException;
 import com.escuelas.project.escuelas_project.escuela.services.EscuelaService;
@@ -95,7 +96,7 @@ public class EscuelaController {
      */
     @GetMapping(value = "/find/{id}", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<EscuelaResponseDto> findById(@PathVariable Long id)
+    public ResponseEntity<EscuelaResponseDto> findById(@PathVariable UUID id)
             throws EscuelaNoExistenteException, EntityDisabledException {
         return ResponseEntity.ok(escuelaService.findById(id));
     }
@@ -151,7 +152,7 @@ public class EscuelaController {
     @DeleteMapping(value = "/disable/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
-    public ResponseEntity<ResponseMessage> disable(@PathVariable Long id)
+    public ResponseEntity<ResponseMessage> disable(@PathVariable UUID id)
             throws EscuelaNoExistenteException, EntityDisabledException {
         escuelaService.disable(id);
         ResponseMessage responseMessage = new ResponseMessage(
@@ -183,7 +184,7 @@ public class EscuelaController {
     @PutMapping(value = "/update/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
-    public ResponseEntity<EscuelaResponseDto> update(@RequestBody EscuelaDtoUpdate escuela, @PathVariable Long id)
+    public ResponseEntity<EscuelaResponseDto> update(@RequestBody EscuelaDtoUpdate escuela, @PathVariable UUID id)
             throws EscuelaNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.OK).body(escuelaService.update(escuela, id));
     }
@@ -205,7 +206,7 @@ public class EscuelaController {
     @PutMapping(value = "/enable/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
-    public ResponseEntity<ResponseMessage> enable(@PathVariable Long id)
+    public ResponseEntity<ResponseMessage> enable(@PathVariable UUID id)
             throws EscuelaNoExistenteException, EntityDisabledException {
         escuelaService.enable(id);
         ResponseMessage responseMessage = new ResponseMessage(

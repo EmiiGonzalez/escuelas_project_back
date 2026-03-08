@@ -2,13 +2,14 @@ package com.escuelas.project.escuelas_project.curso.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
 import com.escuelas.project.escuelas_project.curso.entities.Curso;
-import com.escuelas.project.escuelas_project.curso.entities.CursoDto;
-import com.escuelas.project.escuelas_project.curso.entities.CursoDtoUpdate;
-import com.escuelas.project.escuelas_project.curso.entities.CursoResponseDto;
+import com.escuelas.project.escuelas_project.curso.dtos.CursoDto;
+import com.escuelas.project.escuelas_project.curso.dtos.CursoDtoUpdate;
+import com.escuelas.project.escuelas_project.curso.dtos.CursoResponseDto;
 import com.escuelas.project.escuelas_project.curso.exceptions.CursoExistenteException;
 import com.escuelas.project.escuelas_project.curso.exceptions.CursoNoExistenteException;
 import com.escuelas.project.escuelas_project.curso.repository.CursoRepository;
@@ -35,14 +36,14 @@ public class CursoServiceImp implements CursoService {
     private final EscuelaRepository escuelaRepository;
 
     @Override
-    public List<CursoResponseDto> findAllActiveDto(Integer year, Long id)
+    public List<CursoResponseDto> findAllActiveDto(Integer year, UUID id)
             throws EntityDisabledException, EscuelaNoExistenteException {
         Escuela escuelaEntity = this.searchEscuela(id);
         return this.cursoRepository.findAllActiveDto(year, escuelaEntity);
     }
 
     @Override
-    public CursoResponseDto findById(Long id) throws EntityDisabledException, CursoNoExistenteException {
+    public CursoResponseDto findById(UUID id) throws EntityDisabledException, CursoNoExistenteException {
         Optional<CursoResponseDto> optional = this.cursoRepository.findByIdActiveDto(id);
         optional.orElseThrow(() -> new CursoNoExistenteException("El curso no existe"));
 
@@ -51,10 +52,10 @@ public class CursoServiceImp implements CursoService {
     
 
     @Override
-    public CursoResponseDto save(CursoDto dto, Long id)
+    public CursoResponseDto save(CursoDto dto, UUID id)
             throws CursoExistenteException, EscuelaNoExistenteException, EntityDisabledException {
         Escuela escuela = searchEscuela(id);
-
+                
         if (this.cursoRepository.findByNombre(dto.nombre(), escuela).isPresent()) {
             throw new CursoExistenteException("El curso ya existe");
         }
@@ -65,7 +66,7 @@ public class CursoServiceImp implements CursoService {
     }
 
     @Override
-    public void enable(Long id) throws CursoNoExistenteException, EntityDisabledException {
+    public void enable(UUID id) throws CursoNoExistenteException, EntityDisabledException {
         Curso curso = searchCurso(id);
 
         if (curso.getActivo()) {
@@ -76,7 +77,7 @@ public class CursoServiceImp implements CursoService {
     }
 
     @Override
-    public void disable(Long id) throws CursoNoExistenteException, EntityDisabledException {
+    public void disable(UUID id) throws CursoNoExistenteException, EntityDisabledException {
         Curso curso = searchCurso(id);
 
         if (!curso.getActivo()) {
@@ -87,7 +88,7 @@ public class CursoServiceImp implements CursoService {
     }
 
     @Override
-    public CursoResponseDto update(CursoDtoUpdate dto, Long id)
+    public CursoResponseDto update(CursoDtoUpdate dto, UUID id)
             throws CursoNoExistenteException, EntityDisabledException {
 
         Curso curso = searchCurso(id);
@@ -104,7 +105,7 @@ public class CursoServiceImp implements CursoService {
      * @throws EscuelaNoExistenteException si la escuela no existe.
      * @throws EntityDisabledException     si la escuela esta deshabilitada.
      */
-    private Curso searchCurso(Long id) throws CursoNoExistenteException, EntityDisabledException {
+    private Curso searchCurso(UUID id) throws CursoNoExistenteException, EntityDisabledException {
         Curso curso = this.cursoRepository.findById(id)
                 .orElseThrow(() -> new CursoNoExistenteException("El curso no existe"));
 
@@ -123,7 +124,7 @@ public class CursoServiceImp implements CursoService {
      * @throws EscuelaNoExistenteException si la escuela no existe.
      * @throws EntityDisabledException     si la escuela esta deshabilitada.
      */
-    private Escuela searchEscuela(Long id) throws EscuelaNoExistenteException, EntityDisabledException {
+    private Escuela searchEscuela(UUID id) throws EscuelaNoExistenteException, EntityDisabledException {
         Optional<Escuela> escuela = this.escuelaRepository.findById(id);
         escuela.orElseThrow(() -> new EscuelaNoExistenteException("La escuela no existe"));
         Escuela escuelaEntity = escuela.get();

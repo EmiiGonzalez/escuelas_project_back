@@ -5,15 +5,15 @@ import java.util.List;
 
 import com.escuelas.project.escuelas_project.alumno.entities.Alumno;
 import com.escuelas.project.escuelas_project.clase.entities.Clase;
+import com.escuelas.project.escuelas_project.common.entities.BaseEntity;
+import com.escuelas.project.escuelas_project.curso.dtos.CursoDto;
+import com.escuelas.project.escuelas_project.curso.dtos.CursoDtoUpdate;
 import com.escuelas.project.escuelas_project.escuela.entities.Escuela;
 import com.escuelas.project.escuelas_project.service.utils.Util;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -22,17 +22,16 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "cursos")
-public class Curso {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_curso;
+public class Curso extends BaseEntity {
     private String nombre;
 
     private String materia;
@@ -41,7 +40,7 @@ public class Curso {
     private LocalDate fecha_de_curso;
 
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_escuela", nullable = false)
+    @JoinColumn(name = "escuela_id", nullable = false)
     private Escuela escuela;
 
     private Boolean activo;

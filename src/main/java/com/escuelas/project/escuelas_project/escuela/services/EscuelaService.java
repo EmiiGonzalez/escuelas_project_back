@@ -1,10 +1,11 @@
 package com.escuelas.project.escuelas_project.escuela.services;
 
 import java.util.List;
+import java.util.UUID;
 
-import com.escuelas.project.escuelas_project.escuela.entities.EscuelaDto;
-import com.escuelas.project.escuelas_project.escuela.entities.EscuelaDtoUpdate;
-import com.escuelas.project.escuelas_project.escuela.entities.EscuelaResponseDto;
+import com.escuelas.project.escuelas_project.escuela.dtos.EscuelaDto;
+import com.escuelas.project.escuelas_project.escuela.dtos.EscuelaDtoUpdate;
+import com.escuelas.project.escuelas_project.escuela.dtos.EscuelaResponseDto;
 import com.escuelas.project.escuelas_project.escuela.exceptions.EscuelaExistenteException;
 import com.escuelas.project.escuelas_project.escuela.exceptions.EscuelaNoExistenteException;
 import com.escuelas.project.escuelas_project.service.exceptions.EntityDisabledException;
@@ -45,7 +46,7 @@ public interface EscuelaService {
      * @throws EntityDisabledException     si la Escuela con el ID dado está
      *                                     deshabilitada
      */
-    EscuelaResponseDto findById(Long id) throws EscuelaNoExistenteException, EntityDisabledException;
+    EscuelaResponseDto findById(UUID id) throws EscuelaNoExistenteException, EntityDisabledException;
 
     /**
      * Actualiza una entidad Escuela con la información proporcionada en
@@ -60,7 +61,7 @@ public interface EscuelaService {
      * @throws EntityDisabledException     si la Escuela con el ID proporcionado
      *                                     está deshabilitada
      */
-    EscuelaResponseDto update(EscuelaDtoUpdate escuela, Long id)
+    EscuelaResponseDto update(EscuelaDtoUpdate escuela, UUID id)
             throws EscuelaNoExistenteException, EntityDisabledException;
 
     /**
@@ -85,7 +86,7 @@ public interface EscuelaService {
      * @throws EscuelaNoExistenteException si la Escuela no existe
      * @throws EntityDisabledException     si la Escuela ya está deshabilitada
      */
-    void disable(Long id) throws EscuelaNoExistenteException, EntityDisabledException;
+    void disable(UUID id) throws EscuelaNoExistenteException, EntityDisabledException;
 
     /**
      * Un método para habilitar una Escuela específica cambiando su estado a activo.
@@ -94,6 +95,6 @@ public interface EscuelaService {
      * @throws EscuelaNoExistenteException si la Escuela no existe
      * @throws EntityDisabledException     si la Escuela ya está habilitada
      */
-    void enable(Long id) throws EscuelaNoExistenteException, EntityDisabledException;
+    void enable(UUID id) throws EscuelaNoExistenteException, EntityDisabledException;
 
 }

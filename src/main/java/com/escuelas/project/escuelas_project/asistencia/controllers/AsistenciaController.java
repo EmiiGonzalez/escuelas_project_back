@@ -2,6 +2,7 @@ package com.escuelas.project.escuelas_project.asistencia.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.escuelas.project.escuelas_project.alumno.exceptions.AlumnoNoExistenteException;
-import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaDto;
-import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponseDto;
-import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponsePorClaseDto;
-import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaStats;
-import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaUpdateDto;
+import com.escuelas.project.escuelas_project.asistencia.dtos.AsistenciaDto;
+import com.escuelas.project.escuelas_project.asistencia.dtos.AsistenciaResponseDto;
+import com.escuelas.project.escuelas_project.asistencia.dtos.AsistenciaResponsePorClaseDto;
+import com.escuelas.project.escuelas_project.asistencia.dtos.AsistenciaStats;
+import com.escuelas.project.escuelas_project.asistencia.dtos.AsistenciaUpdateDto;
 import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaExistenteException;
 import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaNoExistenteException;
 import com.escuelas.project.escuelas_project.asistencia.services.AsistenciaService;
@@ -80,7 +81,7 @@ public class AsistenciaController {
     @PostMapping("/save/{claseId}")
     @ResponseBody
     @Transactional
-    public ResponseEntity<ArrayList<AsistenciaResponseDto>> save(@PathVariable Long claseId,
+    public ResponseEntity<ArrayList<AsistenciaResponseDto>> save(@PathVariable UUID claseId,
             @RequestBody @Valid List<AsistenciaDto> dto)
             throws AlumnoNoExistenteException, EntityDisabledException, ClaseNoExistenteException, AsistenciaExistenteException {
         return ResponseEntity.status(HttpStatus.CREATED).body(asistenciaService.createAsistencia(dto, claseId));
@@ -97,7 +98,7 @@ public class AsistenciaController {
      */
     @GetMapping("/find/{id}")
     @ResponseBody
-    public ResponseEntity<AsistenciaResponseDto> findById(@PathVariable Long id)
+    public ResponseEntity<AsistenciaResponseDto> findById(@PathVariable UUID id)
             throws AsistenciaNoExistenteException, EntityDisabledException {
         return ResponseEntity.ok(asistenciaService.findByIdAsistencia(id));
     }
@@ -113,7 +114,7 @@ public class AsistenciaController {
      */
     @GetMapping("/find/all/alumno/{id}")
     @ResponseBody
-    public ResponseEntity<List<AsistenciaResponseDto>> findAllByAlumno(@PathVariable Long id)
+    public ResponseEntity<List<AsistenciaResponseDto>> findAllByAlumno(@PathVariable UUID id)
             throws EntityDisabledException, AlumnoNoExistenteException {
         return ResponseEntity.ok(asistenciaService.findAllAsistenciaDtoByAlumno(id));
     }
@@ -129,7 +130,7 @@ public class AsistenciaController {
      */
     @GetMapping("/find/all/clase/stats/{id}")
     @ResponseBody
-    public ResponseEntity<List<AsistenciaStats>> findAllByClaseStats(@PathVariable Long id)
+    public ResponseEntity<List<AsistenciaStats>> findAllByClaseStats(@PathVariable UUID id)
             throws EntityDisabledException, ClaseNoExistenteException {
         return ResponseEntity.ok(asistenciaService.findAllAsistenciaDtoByClaseStats(id));
     }
@@ -145,7 +146,7 @@ public class AsistenciaController {
      */
     @GetMapping("/find/all/clase/{id}")
     @ResponseBody
-    public ResponseEntity<List<AsistenciaResponsePorClaseDto>> findAllByClase(@PathVariable Long id)
+    public ResponseEntity<List<AsistenciaResponsePorClaseDto>> findAllByClase(@PathVariable UUID id)
             throws ClaseNoExistenteException, EntityDisabledException {
         return ResponseEntity.ok(asistenciaService.findAllAsistenciaDtoByClase(id));
     }
@@ -163,7 +164,7 @@ public class AsistenciaController {
     @PutMapping("/update/{id}")
     @ResponseBody
     @Transactional
-    public ResponseEntity<AsistenciaResponseDto> update(@RequestBody @Valid AsistenciaUpdateDto dto, @PathVariable Long id)
+    public ResponseEntity<AsistenciaResponseDto> update(@RequestBody @Valid AsistenciaUpdateDto dto, @PathVariable UUID id)
             throws AsistenciaNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.OK).body(asistenciaService.updateAsistencia(id, dto));
     }
@@ -180,7 +181,7 @@ public class AsistenciaController {
     @DeleteMapping("/delete/{id}")
     @ResponseBody
     @Transactional
-    public ResponseEntity<ResponseMessage> delete(@PathVariable Long id)
+    public ResponseEntity<ResponseMessage> delete(@PathVariable UUID id)
             throws AsistenciaNoExistenteException, EntityDisabledException {
         asistenciaService.deleteAsistencia(id);
         ResponseMessage responseMessage = new ResponseMessage(

@@ -1,6 +1,7 @@
 package com.escuelas.project.escuelas_project.alumno.controllers;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.escuelas.project.escuelas_project.alumno.entities.Alumno;
-import com.escuelas.project.escuelas_project.alumno.entities.AlumnoDto;
-import com.escuelas.project.escuelas_project.alumno.entities.AlumnoDtoUpdate;
-import com.escuelas.project.escuelas_project.alumno.entities.AlumnoResponseDto;
-import com.escuelas.project.escuelas_project.alumno.entities.AlumnoWithFullDataResponseDto;
+import com.escuelas.project.escuelas_project.alumno.dtos.AlumnoDto;
+import com.escuelas.project.escuelas_project.alumno.dtos.AlumnoDtoUpdate;
+import com.escuelas.project.escuelas_project.alumno.dtos.AlumnoResponseDto;
+import com.escuelas.project.escuelas_project.alumno.dtos.AlumnoWithFullDataResponseDto;
 import com.escuelas.project.escuelas_project.alumno.exceptions.AlumnoNoExistenteException;
 import com.escuelas.project.escuelas_project.alumno.services.AlumnoService;
 import com.escuelas.project.escuelas_project.curso.exceptions.CursoNoExistenteException;
@@ -104,7 +105,7 @@ public class AlumnoController {
      */
     @GetMapping(value = "/find/all/active/{id}", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<List<AlumnoResponseDto>> findAllActiveCurso(@PathVariable Long id)
+    public ResponseEntity<List<AlumnoResponseDto>> findAllActiveCurso(@PathVariable UUID id)
             throws EntityDisabledException, CursoNoExistenteException {
         return ResponseEntity.status(HttpStatus.OK).body(alumnoService.findAllActiveCurso(id));
     }
@@ -119,7 +120,7 @@ public class AlumnoController {
      */
     @GetMapping(value = "find/{id}", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<AlumnoResponseDto> findById(@PathVariable Long id)
+    public ResponseEntity<AlumnoResponseDto> findById(@PathVariable UUID id)
             throws EntityDisabledException, AlumnoNoExistenteException {
         return ResponseEntity.status(HttpStatus.OK).body(alumnoService.findById(id));
     }
@@ -134,7 +135,7 @@ public class AlumnoController {
     @GetMapping(value = "find/full/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
-    public ResponseEntity<AlumnoWithFullDataResponseDto> findByIdWithData(@PathVariable Long id)
+    public ResponseEntity<AlumnoWithFullDataResponseDto> findByIdWithData(@PathVariable UUID id)
             throws EntityDisabledException, AlumnoNoExistenteException {
         return ResponseEntity.status(HttpStatus.OK).body(alumnoService.findByIdWithData(id));
     }
@@ -153,7 +154,7 @@ public class AlumnoController {
     @PostMapping(value = "/save/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
-    public ResponseEntity<AlumnoResponseDto> save(@PathVariable Long id, @RequestBody @Valid AlumnoDto dto)
+    public ResponseEntity<AlumnoResponseDto> save(@PathVariable UUID id, @RequestBody @Valid AlumnoDto dto)
             throws CursoNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.CREATED).body(alumnoService.create(dto, id));
     }
@@ -174,7 +175,7 @@ public class AlumnoController {
     @PutMapping(value = "/update/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
-    public ResponseEntity<AlumnoResponseDto> update(@RequestBody AlumnoDtoUpdate dto, @PathVariable Long id)
+    public ResponseEntity<AlumnoResponseDto> update(@RequestBody AlumnoDtoUpdate dto, @PathVariable UUID id)
             throws AlumnoNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.OK).body(alumnoService.update(dto, id));
     }
@@ -190,7 +191,7 @@ public class AlumnoController {
     @PutMapping(value = "/enable/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
-    public ResponseEntity<ResponseMessage> enable(@PathVariable Long id) throws AlumnoNoExistenteException, EntityDisabledException {
+    public ResponseEntity<ResponseMessage> enable(@PathVariable UUID id) throws AlumnoNoExistenteException, EntityDisabledException {
         alumnoService.enable(id);
         ResponseMessage responseMessage = new ResponseMessage(personalizedMessage.alumnoEnabled().replace("$", id.toString()), 0);
         return ResponseEntity.status(HttpStatus.OK).body(responseMessage);
@@ -213,7 +214,7 @@ public class AlumnoController {
     @DeleteMapping(value = "/delete/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
-    public ResponseEntity<ResponseMessage> delete(@PathVariable Long id) throws AlumnoNoExistenteException, EntityDisabledException {
+    public ResponseEntity<ResponseMessage> delete(@PathVariable UUID id) throws AlumnoNoExistenteException, EntityDisabledException {
         alumnoService.disable(id);
         ResponseMessage responseMessage = new ResponseMessage(personalizedMessage.alumnoDeleted().replace("$", id.toString()), 0);
         return ResponseEntity.status(HttpStatus.OK).body(responseMessage);

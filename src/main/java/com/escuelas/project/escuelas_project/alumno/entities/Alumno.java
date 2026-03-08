@@ -2,29 +2,27 @@ package com.escuelas.project.escuelas_project.alumno.entities;
 
 import java.util.List;
 
+import com.escuelas.project.escuelas_project.alumno.dtos.AlumnoDto;
+import com.escuelas.project.escuelas_project.alumno.dtos.AlumnoDtoUpdate;
 import com.escuelas.project.escuelas_project.asistencia.entities.Asistencia;
+import com.escuelas.project.escuelas_project.common.entities.BaseEntity;
 import com.escuelas.project.escuelas_project.curso.entities.Curso;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper = true)
 @Table(name = "alumnos")
 @Entity
-public class Alumno {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_alumno;
+public class Alumno extends BaseEntity {
 
     private String nombre;
     private String telefono;
@@ -55,7 +53,6 @@ public class Alumno {
         if (dto.nombre() != null) {
             this.setNombre(dto.nombre());
         }
-
         if (dto.telefono() != null) {
             this.setTelefono(dto.telefono().trim());
         }

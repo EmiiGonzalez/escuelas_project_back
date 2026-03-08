@@ -1,12 +1,13 @@
 package com.escuelas.project.escuelas_project.alumno.services;
 
 import java.util.List;
+import java.util.UUID;
 
 import com.escuelas.project.escuelas_project.alumno.entities.Alumno;
-import com.escuelas.project.escuelas_project.alumno.entities.AlumnoDto;
-import com.escuelas.project.escuelas_project.alumno.entities.AlumnoDtoUpdate;
-import com.escuelas.project.escuelas_project.alumno.entities.AlumnoResponseDto;
-import com.escuelas.project.escuelas_project.alumno.entities.AlumnoWithFullDataResponseDto;
+import com.escuelas.project.escuelas_project.alumno.dtos.AlumnoDto;
+import com.escuelas.project.escuelas_project.alumno.dtos.AlumnoDtoUpdate;
+import com.escuelas.project.escuelas_project.alumno.dtos.AlumnoResponseDto;
+import com.escuelas.project.escuelas_project.alumno.dtos.AlumnoWithFullDataResponseDto;
 import com.escuelas.project.escuelas_project.alumno.exceptions.AlumnoNoExistenteException;
 import com.escuelas.project.escuelas_project.curso.exceptions.CursoNoExistenteException;
 import com.escuelas.project.escuelas_project.escuela.exceptions.EscuelaNoExistenteException;
@@ -43,7 +44,7 @@ public interface AlumnoService {
          * @throws EntityDisabledException   si el curso o el alumno están
          *                                   deshabilitados
          */
-        public AlumnoResponseDto create(AlumnoDto dto, Long id)
+        public AlumnoResponseDto create(AlumnoDto dto, UUID id)
                         throws CursoNoExistenteException, EntityDisabledException;
 
         /**
@@ -56,7 +57,7 @@ public interface AlumnoService {
          * @throws EntityDisabledException    si el alumno o el curso están
          *                                    deshabilitados
          */
-        public AlumnoResponseDto update(AlumnoDtoUpdate dto, Long id)
+        public AlumnoResponseDto update(AlumnoDtoUpdate dto, UUID id)
                         throws AlumnoNoExistenteException, EntityDisabledException;
 
         /**
@@ -67,7 +68,7 @@ public interface AlumnoService {
          * @throws EntityDisabledException    si el alumno o el curso están
          *                                    deshabilitados
          */
-        public void disable(Long id) throws AlumnoNoExistenteException, EntityDisabledException;
+        public void disable(UUID id) throws AlumnoNoExistenteException, EntityDisabledException;
 
         /**
          * Habilita un alumno
@@ -77,7 +78,7 @@ public interface AlumnoService {
          * @throws EntityDisabledException    si el alumno o el curso están
          *                                    deshabilitados
          */
-        public void enable(Long id) throws AlumnoNoExistenteException, EntityDisabledException;
+        public void enable(UUID id) throws AlumnoNoExistenteException, EntityDisabledException;
 
         /**
          * Busca un alumno por su id
@@ -88,7 +89,7 @@ public interface AlumnoService {
          * @throws EntityDisabledException    si el alumno o el curso están
          *                                    deshabilitados
          */
-        public AlumnoResponseDto findById(Long id) throws AlumnoNoExistenteException, EntityDisabledException;
+        public AlumnoResponseDto findById(UUID id) throws AlumnoNoExistenteException, EntityDisabledException;
 
         /**
          * Busca todos los alumnos activos asociados a un curso
@@ -98,7 +99,7 @@ public interface AlumnoService {
          * @throws EntityDisabledException   si el curso está deshabilitado
          * @throws CursoNoExistenteException si el curso no existe
          */
-        public List<AlumnoResponseDto> findAllActiveCurso(Long id)
+        public List<AlumnoResponseDto> findAllActiveCurso(UUID id)
                         throws EntityDisabledException, CursoNoExistenteException;
 
         /**
@@ -110,7 +111,7 @@ public interface AlumnoService {
          * @throws EntityDisabledException    si el Alumno o el curso están
          *                                    deshabilitados
          */
-        public AlumnoWithFullDataResponseDto findByIdWithData(Long id)
+        public AlumnoWithFullDataResponseDto findByIdWithData(UUID id)
                         throws AlumnoNoExistenteException, EntityDisabledException;
 
         /**

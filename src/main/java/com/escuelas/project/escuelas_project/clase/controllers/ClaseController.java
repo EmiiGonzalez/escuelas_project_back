@@ -1,5 +1,7 @@
 package com.escuelas.project.escuelas_project.clase.controllers;
 
+import java.util.UUID;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -18,11 +20,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.escuelas.project.escuelas_project.clase.dtos.ClaseCountResponseDto;
+import com.escuelas.project.escuelas_project.clase.dtos.ClaseDto;
+import com.escuelas.project.escuelas_project.clase.dtos.ClaseResponseDto;
+import com.escuelas.project.escuelas_project.clase.dtos.ClaseUpdateDto;
 import com.escuelas.project.escuelas_project.clase.entities.Clase;
-import com.escuelas.project.escuelas_project.clase.entities.ClaseCountResponseDto;
-import com.escuelas.project.escuelas_project.clase.entities.ClaseDto;
-import com.escuelas.project.escuelas_project.clase.entities.ClaseResponseDto;
-import com.escuelas.project.escuelas_project.clase.entities.ClaseUpdateDto;
 import com.escuelas.project.escuelas_project.clase.exceptions.ClaseNoExistenteException;
 import com.escuelas.project.escuelas_project.clase.services.ClaseService;
 import com.escuelas.project.escuelas_project.curso.exceptions.CursoNoExistenteException;
@@ -72,7 +74,7 @@ public class ClaseController {
     @GetMapping(value = "/find/all/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
-    public ResponseEntity<Page<ClaseResponseDto>> findAll(@PathVariable Long id,
+    public ResponseEntity<Page<ClaseResponseDto>> findAll(@PathVariable UUID id,
             @PageableDefault(size = 5, page = 0) Pageable pageable,
             @RequestParam(name = "sort", defaultValue = "fecha_de_clase") String sortBy,
             @RequestParam(name = "direction", defaultValue = "DESC") String direction)
@@ -94,7 +96,7 @@ public class ClaseController {
     @GetMapping(value = "find/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
-    public ResponseEntity<ClaseResponseDto> findById(@PathVariable Long id)
+    public ResponseEntity<ClaseResponseDto> findById(@PathVariable UUID id)
             throws ClaseNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.OK).body(claseService.findById(id));
     }
@@ -110,7 +112,7 @@ public class ClaseController {
      */
     @GetMapping(value = "/count/{id}", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<ClaseCountResponseDto> count(@PathVariable Long id)
+    public ResponseEntity<ClaseCountResponseDto> count(@PathVariable UUID id)
             throws CursoNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.OK).body(claseService.count(id));
     }
@@ -133,7 +135,7 @@ public class ClaseController {
     @PostMapping(value = "/save/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
-    public ResponseEntity<ClaseResponseDto> save(@PathVariable Long id, @RequestBody ClaseDto dto)
+    public ResponseEntity<ClaseResponseDto> save(@PathVariable UUID id, @RequestBody ClaseDto dto)
             throws CursoNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.CREATED).body(claseService.save(dto, id));
     }
@@ -156,7 +158,7 @@ public class ClaseController {
     @PutMapping(value = "/update/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
-    public ResponseEntity<ClaseResponseDto> update(@PathVariable Long id, @RequestBody ClaseUpdateDto dto)
+    public ResponseEntity<ClaseResponseDto> update(@PathVariable UUID id, @RequestBody ClaseUpdateDto dto)
             throws ClaseNoExistenteException, EntityDisabledException {
         return ResponseEntity.status(HttpStatus.OK).body(claseService.update(dto, id));
     }
@@ -178,7 +180,7 @@ public class ClaseController {
     @DeleteMapping(value = "/delete/{id}", headers = "Accept=application/json")
     @ResponseBody
     @Transactional
-    public ResponseEntity<ResponseMessage> delete(@PathVariable Long id)
+    public ResponseEntity<ResponseMessage> delete(@PathVariable UUID id)
             throws ClaseNoExistenteException, EntityDisabledException {
         claseService.deleteById(id);
         ResponseMessage responseMessage = new ResponseMessage(

@@ -1,10 +1,11 @@
 package com.escuelas.project.escuelas_project.curso.services;
 
 import java.util.List;
+import java.util.UUID;
 
-import com.escuelas.project.escuelas_project.curso.entities.CursoDto;
-import com.escuelas.project.escuelas_project.curso.entities.CursoDtoUpdate;
-import com.escuelas.project.escuelas_project.curso.entities.CursoResponseDto;
+import com.escuelas.project.escuelas_project.curso.dtos.CursoDto;
+import com.escuelas.project.escuelas_project.curso.dtos.CursoDtoUpdate;
+import com.escuelas.project.escuelas_project.curso.dtos.CursoResponseDto;
 import com.escuelas.project.escuelas_project.curso.exceptions.CursoExistenteException;
 import com.escuelas.project.escuelas_project.curso.exceptions.CursoNoExistenteException;
 import com.escuelas.project.escuelas_project.escuela.exceptions.EscuelaNoExistenteException;
@@ -35,7 +36,7 @@ public interface CursoService {
          * @throws EntityDisabledException   si la escuela esta deshabilitada.
          * @throws CursoNoExistenteException si el curso no existe.
          */
-        CursoResponseDto findById(Long id) throws EntityDisabledException, CursoNoExistenteException;
+        CursoResponseDto findById(UUID id) throws EntityDisabledException, CursoNoExistenteException;
 
         /**
          * Metodo que busca todos los cursos activos de una escuela dada.
@@ -47,7 +48,7 @@ public interface CursoService {
          * @throws EntityDisabledException     si la escuela esta deshabilitada.
          * @throws EscuelaNoExistenteException si la escuela no existe.
          */
-        List<CursoResponseDto> findAllActiveDto(Integer year, Long id)
+        List<CursoResponseDto> findAllActiveDto(Integer year, UUID id)
                         throws EntityDisabledException, EscuelaNoExistenteException;
 
         /**
@@ -60,7 +61,7 @@ public interface CursoService {
          * @throws EscuelaNoExistenteException si la escuela no existe.
          * @throws EntityDisabledException     si la escuela esta deshabilitada.
          */
-        CursoResponseDto save(CursoDto dto, Long id)
+                CursoResponseDto save(CursoDto dto, UUID id)
                         throws CursoExistenteException, EscuelaNoExistenteException, EntityDisabledException;
 
         /**
@@ -70,7 +71,7 @@ public interface CursoService {
          * @throws CursoNoExistenteException si el curso no existe.
          * @throws EntityDisabledException   si el curso esta deshabilitado.
          */
-        void enable(Long id) throws CursoNoExistenteException, EntityDisabledException;
+        void enable(UUID id) throws CursoNoExistenteException, EntityDisabledException;
 
         /**
          * Metodo que deshabilita un curso.
@@ -79,7 +80,7 @@ public interface CursoService {
          * @throws CursoNoExistenteException si el curso no existe.
          * @throws EntityDisabledException   si el curso esta habilitado.
          */
-        void disable(Long id) throws CursoNoExistenteException, EntityDisabledException;
+        void disable(UUID id) throws CursoNoExistenteException, EntityDisabledException;
 
         /**
          * Metodo que actualiza un curso.
@@ -90,5 +91,5 @@ public interface CursoService {
          * @throws CursoNoExistenteException si el curso no existe.
          * @throws EntityDisabledException   si el curso esta deshabilitado.
          */
-        CursoResponseDto update(CursoDtoUpdate dto, Long id) throws CursoNoExistenteException, EntityDisabledException;
+        CursoResponseDto update(CursoDtoUpdate dto, UUID id) throws CursoNoExistenteException, EntityDisabledException;
 }

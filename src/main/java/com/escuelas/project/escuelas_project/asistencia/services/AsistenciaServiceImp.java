@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -11,12 +12,12 @@ import com.escuelas.project.escuelas_project.alumno.entities.Alumno;
 import com.escuelas.project.escuelas_project.alumno.exceptions.AlumnoNoExistenteException;
 import com.escuelas.project.escuelas_project.alumno.repository.AlumnoRepository;
 import com.escuelas.project.escuelas_project.asistencia.entities.Asistencia;
-import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaDto;
-import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponseDto;
-import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaResponsePorClaseDto;
-import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaStats;
-import com.escuelas.project.escuelas_project.asistencia.entities.AsistenciaUpdateDto;
-import com.escuelas.project.escuelas_project.asistencia.entities.AsistioEnum;
+import com.escuelas.project.escuelas_project.asistencia.dtos.AsistenciaDto;
+import com.escuelas.project.escuelas_project.asistencia.dtos.AsistenciaResponseDto;
+import com.escuelas.project.escuelas_project.asistencia.dtos.AsistenciaResponsePorClaseDto;
+import com.escuelas.project.escuelas_project.asistencia.dtos.AsistenciaStats;
+import com.escuelas.project.escuelas_project.asistencia.dtos.AsistenciaUpdateDto;
+import com.escuelas.project.escuelas_project.asistencia.dtos.AsistioEnum;
 import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaExistenteException;
 import com.escuelas.project.escuelas_project.asistencia.exceptions.AsistenciaNoExistenteException;
 import com.escuelas.project.escuelas_project.asistencia.repository.AsistenciaRepository;
@@ -44,7 +45,7 @@ public class AsistenciaServiceImp implements AsistenciaService {
     private final AlumnoRepository alumnoRepository;
 
     @Override
-    public ArrayList<AsistenciaResponseDto> createAsistencia(List<AsistenciaDto> asistenciaDto, Long idClase)
+    public ArrayList<AsistenciaResponseDto> createAsistencia(List<AsistenciaDto> asistenciaDto, UUID idClase)
             throws AlumnoNoExistenteException, EntityDisabledException, ClaseNoExistenteException,
             AsistenciaExistenteException {
 
@@ -72,7 +73,7 @@ public class AsistenciaServiceImp implements AsistenciaService {
     }
 
     @Override
-    public AsistenciaResponseDto updateAsistencia(Long id, AsistenciaUpdateDto asistenciaUpdateDto)
+    public AsistenciaResponseDto updateAsistencia(UUID id, AsistenciaUpdateDto asistenciaUpdateDto)
             throws AsistenciaNoExistenteException, EntityDisabledException {
         System.out.println(asistenciaUpdateDto);
         Asistencia asistencia = this.searchAsistencia(id);
@@ -82,32 +83,32 @@ public class AsistenciaServiceImp implements AsistenciaService {
     }
 
     @Override
-    public void deleteAsistencia(Long id) throws AsistenciaNoExistenteException, EntityDisabledException {
+    public void deleteAsistencia(UUID id) throws AsistenciaNoExistenteException, EntityDisabledException {
         this.asistenciaRepository.delete(this.searchAsistencia(id));
     }
 
     @Override
-    public AsistenciaResponseDto findByIdAsistencia(Long id)
+    public AsistenciaResponseDto findByIdAsistencia(UUID id)
             throws AsistenciaNoExistenteException, EntityDisabledException {
         return new AsistenciaResponseDto(this.searchAsistencia(id));
     }
 
     @Override
-    public List<AsistenciaResponseDto> findAllAsistenciaDtoByAlumno(Long id)
+    public List<AsistenciaResponseDto> findAllAsistenciaDtoByAlumno(UUID id)
             throws AlumnoNoExistenteException, EntityDisabledException {
         Alumno alumno = this.searchAlumno(id);
         return this.asistenciaRepository.findAllAsistenciaDtoByAlumno(alumno);
     }
 
     @Override
-    public List<AsistenciaResponsePorClaseDto> findAllAsistenciaDtoByClase(Long id)
+    public List<AsistenciaResponsePorClaseDto> findAllAsistenciaDtoByClase(UUID id)
             throws ClaseNoExistenteException, EntityDisabledException {
         Clase clase = this.searchClase(id);
         return this.asistenciaRepository.findAllAsistenciaDtoByClase(clase);
     }
 
     @Override
-    public List<AsistenciaStats> findAllAsistenciaDtoByClaseStats(Long id)
+    public List<AsistenciaStats> findAllAsistenciaDtoByClaseStats(UUID id)
             throws ClaseNoExistenteException, EntityDisabledException {
 
         List<Asistencia> asistencias = this.findAllAsistenciaByClase(id);
@@ -130,7 +131,7 @@ public class AsistenciaServiceImp implements AsistenciaService {
      *                                    habilitado
      */
 
-    private Alumno searchAlumno(Long id) throws AlumnoNoExistenteException, EntityDisabledException {
+    private Alumno searchAlumno(UUID id) throws AlumnoNoExistenteException, EntityDisabledException {
         Optional<Alumno> alumnoOptional = this.alumnoRepository.findById(id);
 
         alumnoOptional.orElseThrow(() -> new AlumnoNoExistenteException("El alumno no existe"));
@@ -155,7 +156,7 @@ public class AsistenciaServiceImp implements AsistenciaService {
      * @throws EntityDisabledException   si el curso con el ID proporcionado no
      *                                   está habilitado
      */
-    private Clase searchClase(Long id) throws ClaseNoExistenteException, EntityDisabledException {
+    private Clase searchClase(UUID id) throws ClaseNoExistenteException, EntityDisabledException {
         Optional<Clase> claseOptional = this.claseRepository.findById(id);
         claseOptional.orElseThrow(() -> new ClaseNoExistenteException("La clase no existe"));
 
@@ -175,7 +176,7 @@ public class AsistenciaServiceImp implements AsistenciaService {
      * @throws EntityDisabledException        si el Alumno o el Curso de la
      *                                        Asistencia no están activos
      */
-    private Asistencia searchAsistencia(Long id) throws AsistenciaNoExistenteException, EntityDisabledException {
+    private Asistencia searchAsistencia(UUID id) throws AsistenciaNoExistenteException, EntityDisabledException {
         Optional<Asistencia> asistenciaOptional = this.asistenciaRepository.findById(id);
 
         asistenciaOptional.orElseThrow(() -> new AsistenciaNoExistenteException("La asistencia no existe"));
@@ -191,7 +192,7 @@ public class AsistenciaServiceImp implements AsistenciaService {
         return asistenciaOptional.get();
     }
 
-    private List<Asistencia> findAllAsistenciaByClase(Long id)
+    private List<Asistencia> findAllAsistenciaByClase(UUID id)
             throws ClaseNoExistenteException, EntityDisabledException {
         Clase clase = this.searchClase(id);
         Optional<List<Asistencia>> asistencias = this.asistenciaRepository.findAllAsistenciaByClase(clase);
